@@ -1,0 +1,35 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import Icons from '../components/Icons.astro';
+import { getLinkPath, opensInNewTab } from '../utils/link.js';
+
+const { widget } = Astro.props;
+const path = getLinkPath(widget);
+const isBlank = opensInNewTab(widget.linkTarget);
+const linkClass = `link button ${widget.style || ''}`;
+---
+
+<div class={`widget card-widget card-widget--bg-${widget.bg} card-widget--orientation-${widget.orientation}`}>
+  {widget.icon && (
+    <div class="card__icon">
+      <Icons name={widget.icon} />
+    </div>
+  )}
+  <div class="card__content">
+    <div class="card__title-container">
+      <AposArea area={widget.titleRT} />
+    </div>
+    <div class="card__text-container">
+      <AposArea area={widget.contentRT} />
+    </div>
+  </div>
+  {widget.linkText && (
+    <div class="card__link">
+      <a
+        class={linkClass}
+        href={path}
+        target={isBlank ? '_blank' : undefined}
+      >{widget.linkText}</a>
+    </div>
+  )}
+</div>

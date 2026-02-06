@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node app @apostrophecms/migration:migrate --site=dashboard 
+node app @apostrophecms/migration:migrate --all-sites

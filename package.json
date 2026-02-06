@@ -1,0 +1,34 @@
+{
+  "name": "astro-public-demo-multisite",
+  "version": "1.0.0",
+  "description": "The public demo for ApostropheCMS+Astro with Assembly",
+  "type": "module",
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "dev-frontend": "npm run dev --workspace=frontend",
+    "dev-backend": "npm run dev --workspace=backend",
+    "build": "npm run build --workspaces",
+    "migrate": "npm run migrate --workspace=backend",
+    "serve-frontend": "npm run serve --workspace=frontend",
+    "serve-backend": "npm run serve --workspace=backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apostrophecms/astro-public-demo-multisite.git"
+  },
+  "keywords": [
+    "astro",
+    "apostrophecms",
+    "apostrophe"
+  ],
+  "author": "Apostrophe Technologies Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apostrophecms/astro-public-demo-multisite/issues"
+  },
+  "homepage": "https://github.com/apostrophecms/astro-public-demo-multisite#readme",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}

@@ -1,0 +1,36 @@
+export default {
+  options: {
+    label: 'project:richText',
+    description: 'project:richTextDescription',
+    previewImage: 'svg',
+    className: 'widget demo-rte',
+    imageStyles: [
+      {
+        value: 'image-full',
+        label: 'project:fullWidth'
+      },
+      {
+        value: 'image-center',
+        label: 'project:center'
+      },
+      {
+        value: 'image-float-left',
+        label: 'project:left'
+      },
+      {
+        value: 'image-float-right',
+        label: 'project:right'
+      }
+    ]
+  },
+  extendMethods(self) {
+    return {
+      annotateWidgetForExternalFront(_super, widget, { scene } = {}) {
+        return {
+          ..._super(widget, { scene }),
+          className: self.options.className
+        };
+      }
+    };
+  }
+};

@@ -1,0 +1,34 @@
+---
+import ImageLink from "./ImageLink.astro";
+
+export interface Props {
+  image: {
+    src: string;
+    alt?: string | null;
+    style?: string | null;
+    srcset?: string;
+    objectPosition: string;
+    width?: number | string;
+    height?: number | string;
+    aspectRatio?: string;
+  };
+  caption?: string;
+  link?: {
+    url: string;
+    title?: string | null;
+    target?: string | null;
+    rel?: string | null;
+  };
+  style?: string | null;
+  baseClassName?: string | null;
+}
+
+const { image, caption, link, style, baseClassName } = Astro.props;
+const linkClass = baseClassName ? `${baseClassName}__link` : undefined;
+const captionClass = baseClassName ? `${baseClassName}__caption` : undefined;
+---
+
+<figure class={style}>
+  <ImageLink image={image} link={link} linkClass={linkClass} />
+  {caption && <figcaption class={captionClass}>{caption}</figcaption>}
+</figure>

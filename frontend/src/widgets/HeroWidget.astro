@@ -1,0 +1,28 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import { getLinkPath, opensInNewTab } from '../utils/link.js';
+
+const { widget } = Astro.props;
+---
+
+<div class="widget hero-widget">
+  <div class="hero-widget__content">
+    <AposArea area={widget.content} />
+  </div>
+  {widget.links?.length > 0 && (
+    <div class="hero-widget__buttons">
+      {widget.links.map((item) => {
+        const path = getLinkPath(item);
+        const isBlank = opensInNewTab(item.linkTarget);
+        const linkClass = `link button ${item.style || ''}`;
+        return (
+          <a
+            class={linkClass}
+            href={path}
+            target={isBlank ? '_blank' : undefined}
+          >{item.linkText}</a>
+        );
+      })}
+    </div>
+  )}
+</div>

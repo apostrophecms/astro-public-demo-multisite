@@ -1,0 +1,68 @@
+---
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getFocalPoint,
+  getWidth,
+  getHeight,
+} from "@apostrophecms/apostrophe-astro/lib/attachment.js";
+import { slugify } from "@apostrophecms/apostrophe-astro/lib/util.js";
+import placeholderImg from "../../public/images/image-widget-placeholder.jpg";
+import Figure from "../components/Figure.astro";
+
+const { widget = {}, options = {} } = Astro.props;
+
+const className = options.className || widget.className || 'img-widget';
+const dimensionAttrs = options.dimensionAttrs ?? widget.dimensionAttrs ?? true;
+
+const placeholder = widget?.aposPlaceholder;
+const imageObj = widget?._image?.[0];
+
+const src = placeholder ? placeholderImg.src : getAttachmentUrl(imageObj);
+
+const srcset = placeholder ? "" : getAttachmentSrcset(imageObj);
+const objectPosition = placeholder ? "center center" : getFocalPoint(imageObj);
+// Only add width/height if they exist to prevent layout shift
+const width = dimensionAttrs && imageObj ? getWidth(imageObj) : undefined;
+const height = dimensionAttrs && imageObj ? getHeight(imageObj) : undefined;
+const aspectRatio = width && height ? `${width}/${height}` : undefined;
+
+let link = {
+  url: widget.linkHref,
+  title: widget.linkHrefTitle || widget.caption,
+  target: widget.linkTarget,
+  rel: null,
+};
+const image = {
+  src,
+  alt: imageObj?.alt || imageObj?.attachment?._alt || "",
+  style: className,
+  srcset,
+  objectPosition,
+  width,
+  height,
+  aspectRatio
+};
+let style = `${className}__wrapper`;
+
+switch (widget.linkTo) {
+  case "none": {
+    link = null;
+    break;
+  }
+  case "_url": {
+    link.rel = widget.target === "_blank" ? "noopener noreferrer" : null;
+    break;
+  }
+  default: {
+    // slugify the linkTo value to reference the widget field.
+    const name = "_" + slugify(widget.linkTo);
+    const item = widget[name]?.[0];
+    link.url = item?._url;
+    link.title = widget.linkTitle || item?.title;
+    break;
+  }
+}
+---
+
+<Figure {image} {link} caption={widget.caption} {style} baseClassName={className} />

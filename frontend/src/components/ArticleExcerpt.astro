@@ -1,0 +1,71 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getWidth,
+  getHeight,
+} from "@apostrophecms/apostrophe-astro/lib/attachment.js";
+import dayjs from 'dayjs';
+
+const { article } = Astro.props;
+
+const imageObj = article?._image?.[0];
+const url = imageObj ? getAttachmentUrl(imageObj, { size: 'one-half' }) : null;
+const srcset = imageObj ? getAttachmentSrcset(imageObj) : null;
+const width = imageObj ? getWidth(imageObj) : undefined;
+const height = imageObj ? getHeight(imageObj) : undefined;
+
+const hasBlurb = article?.blurb?.items?.length > 0;
+
+// Ensure blurb has options for AposArea (REST API responses may not include them)
+if (article?.blurb && !article.blurb.options) {
+  article.blurb.options = { widgets: {} };
+}
+---
+
+<div class="article-excerpt">
+  {url && (
+    <a class="article-excerpt-image-container" href={article._url}>
+      <img
+        loading="lazy"
+        class="article-excerpt-image"
+        src={url}
+        alt={imageObj?.title || ''}
+        width={width}
+        height={height}
+        srcset={srcset}
+      />
+    </a>
+  )}
+  <div class="article-excerpt-content">
+    {!article._url && (
+      <p class="meta">
+        <em>Article index page required</em>
+      </p>
+    )}
+    {article._categories?.length > 0 && (
+      <div class="article-topics">
+        {article._categories.map((category) => (
+          <a href={`${article._parentUrl}?categories=${category.slug}`} class="chip">{category.title}</a>
+        ))}
+      </div>
+    )}
+    {article._author?.length > 0 && (
+      <div class="article-detail article-author">
+        Written by {article._author[0].title}
+      </div>
+    )}
+    <div class="article-detail article-published">
+      {dayjs(article.publishedDate).format('MMMM D, YYYY')}
+    </div>
+    <h3><a href={article._url}>{article.title}</a></h3>
+    <article>
+      {hasBlurb ? (
+        <AposArea area={article.blurb} />
+      ) : (
+        <p class="placeholder">No summary provided</p>
+      )}
+    </article>
+  </div>
+</div>

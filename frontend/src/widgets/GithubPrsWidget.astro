@@ -1,0 +1,65 @@
+---
+import dayjs from 'dayjs';
+
+const { widget } = Astro.props;
+
+const capitalize = (str) => str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+
+// Fetch PRs directly from GitHub API
+const repo = widget.repo || 'apostrophecms/apostrophe';
+const state = widget.state || 'open';
+const limit = widget.limit || 5;
+
+let response = null;
+try {
+  const githubToken = import.meta.env.GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+  const headers = githubToken
+    ? { Authorization: `token ${githubToken}` }
+    : {};
+
+  const res = await fetch(
+    `https://api.github.com/repos/${repo}/pulls?state=${state}&per_page=${limit}`,
+    { headers }
+  );
+
+  if (res.ok) {
+    response = await res.json();
+  } else if (res.status === 403) {
+    response = { message: 'Rate limit exceeded. Set GITHUB_TOKEN env var for higher limits.' };
+  } else {
+    response = { message: `GitHub API error: ${res.status}` };
+  }
+} catch (error) {
+  console.error('Failed to fetch GitHub PRs:', error);
+  response = { message: 'Failed to fetch PRs' };
+}
+---
+
+<section class="widget gh-pr-widget">
+  <h3 class="gh-pr-widget__title">
+    {capitalize(widget.state)} PRs for {widget.repo}
+  </h3>
+  {!response ? (
+    <p>Something isn't right :(</p>
+  ) : response.message ? (
+    <h3>{response.message}</h3>
+  ) : (
+    <ol class="gh-pr-widget__items">
+      {response.map((item) => (
+        <li class="gh-pr-widget__item">
+          <h2 class="gh-pr-widget__subtitle">
+            <a href={item.url}>{item.title}</a>
+          </h2>
+          <a target="_blank" href={item.user.html_url} class="gh-pr-widget__details">
+            <img loading="lazy" class="gh-pr-widget__avatar" src={item.user.avatar_url} alt={item.user.login} />
+            <p class="gh-pr-widget__login">{item.user.login}</p>
+          </a>
+          <div class="gh-pr-widget__subdetails">
+            <p class="gh-pr-widget__subdetail">Opened on {dayjs(item.created_at).format('MMMM D YYYY')}</p>
+            <p class="gh-pr-widget__subdetail">Number {item.number}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  )}
+</section>

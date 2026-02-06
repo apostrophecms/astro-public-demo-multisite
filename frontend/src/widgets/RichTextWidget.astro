@@ -1,0 +1,6 @@
+---
+const { widget, options, area } = Astro.props;
+const { content } = widget;
+const className = options?.className || widget.className || 'widget demo-rte';
+---
+<div data-rich-text class={className} set:html={content}></div>

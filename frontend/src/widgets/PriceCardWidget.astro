@@ -1,0 +1,54 @@
+---
+import Icons from '../components/Icons.astro';
+import { getLinkPath, opensInNewTab } from '../utils/link.js';
+
+const { widget } = Astro.props;
+const path = getLinkPath(widget);
+const isBlank = opensInNewTab(widget.linkTarget);
+---
+
+<div class={`widget price-card-widget price-card-widget--featured-${widget.featured} price-card-widget--has-badge-${widget.badge}`}>
+  {widget.badge && (
+    <div class="price-card__badge">
+      <div class="price-card__chip chip">
+        {widget.badgeIcon && (
+          <span class="price-card__badge-icon">
+            <Icons name={widget.badgeIcon} />
+          </span>
+        )}
+        <span class="price-card__badge-label">{widget.badgeLabel || 'No label entered'}</span>
+      </div>
+    </div>
+  )}
+  <h3 class="price-card__title">
+    {widget.title}
+  </h3>
+  <p class="price-card__content">
+    {widget.content}
+  </p>
+  <div class="price-card__price">
+    <span class="price-card__price-text">{widget.priceText || 'No price text'}</span>
+    {widget.priceTextUnit && (
+      <span class="price-card__price-detail">{widget.priceTextUnit}</span>
+    )}
+  </div>
+  {widget.priceDetail && (
+    <p class="price-card__price-detail">{widget.priceDetail}</p>
+  )}
+  {widget.features?.length > 0 && (
+    <ol class="price-card__features">
+      {widget.features.map((feature) => (
+        <li>{feature.item}</li>
+      ))}
+    </ol>
+  )}
+  {widget.linkText && (
+    <div class="price-card__link">
+      <a
+        class="link button button--small price-card__button"
+        href={path}
+        target={isBlank ? '_blank' : undefined}
+      >{widget.linkText}</a>
+    </div>
+  )}
+</div>

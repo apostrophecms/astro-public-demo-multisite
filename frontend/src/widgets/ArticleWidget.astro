@@ -1,0 +1,35 @@
+---
+import ArticleExcerpt from '../components/ArticleExcerpt.astro';
+
+const { widget } = Astro.props;
+
+const limit = widget.limit || 5;
+const display = widget.display || '';
+
+let articles = [];
+try {
+  const aposHost = import.meta.env.APOS_HOST || process.env.APOS_HOST || 'http://localhost:3000';
+  const response = await fetch(
+    `${aposHost}/api/v1/article?perPage=${limit}&sort[createdAt]=-1`
+  );
+
+  if (response.ok) {
+    const data = await response.json();
+    articles = data.results || [];
+  } else {
+    console.error('Article API response:', response.status, response.statusText);
+  }
+} catch (error) {
+  console.error('Failed to fetch articles:', error);
+}
+---
+
+<div class={`widget article-widget article-excerpts ${display ? `article-excerpts--display-${display}` : ''}`}>
+  {articles.length > 0 ? (
+    articles.map((article) => (
+      <ArticleExcerpt article={article} />
+    ))
+  ) : (
+    <p>No articles available</p>
+  )}
+</div>

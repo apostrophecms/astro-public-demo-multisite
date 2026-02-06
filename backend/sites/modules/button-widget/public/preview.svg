@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="130px" height="89px" viewBox="0 0 130 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>button</title>
+    <defs>
+        <path d="M0,0 L130,0 L130,89 L0,89 L0,0 Z" id="path-1"></path>
+    </defs>
+    <g id="button" stroke="none" fill="none" xlink:href="#path-1">
+        <use fill="#ADC4FE" fill-rule="evenodd" xlink:href="#path-1"></use>
+        <rect id="Rectangle-Copy-11" fill="#FFFFFD" fill-rule="evenodd" x="10" y="10" width="110" height="69" rx="8"></rect>
+        <g id="Group" stroke-width="1" fill-rule="evenodd" transform="translate(42, 45)">
+            <rect id="Rectangle-Copy-11" fill="#2C5AD8" x="-8" y="-22" width="61" height="18" rx="9"></rect>
+            <rect id="Rectangle-Copy-12" stroke="#ADC4FE" stroke-width="1.76190476" x="-7.11904762" y="4.88095238" width="59.2380952" height="16.2380952" rx="8.11904762"></rect>
+        </g>
+        <line x1="46" y1="32.5" x2="52.5" y2="32.5" id="Line-Copy-3" stroke="#FFFFFD" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="76" y1="32.5" x2="83.5" y2="32.5" id="Line-Copy-4" stroke="#FFFFFD" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="58" y1="32.5" x2="70.5" y2="32.5" id="Line-Copy-5" stroke="#FFFFFD" stroke-width="3" stroke-linecap="round"></line>
+        <g id="Group" stroke-width="1" fill-rule="evenodd" transform="translate(64.9222, 58.5) rotate(180) translate(-64.9222, -58.5)translate(45.4222, 58)" stroke="#587FEA" stroke-linecap="round">
+            <line x1="0.577777778" y1="0.5" x2="7.07777778" y2="0.5" id="Line-Copy-8" stroke-width="3"></line>
+            <line x1="30.5777778" y1="0.5" x2="38.0777778" y2="0.5" id="Line-Copy-7" stroke-width="3"></line>
+            <line x1="12.5777778" y1="0.5" x2="25.0777778" y2="0.5" id="Line-Copy-6" stroke-width="3"></line>
+        </g>
+    </g>
+</svg>

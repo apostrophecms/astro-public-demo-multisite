@@ -1,0 +1,66 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getWidth,
+  getHeight,
+} from "@apostrophecms/apostrophe-astro/lib/attachment.js";
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const { page, piece } = Astro.props.aposData;
+const article = piece;
+
+const imageObj = article?._image?.[0];
+const url = imageObj ? getAttachmentUrl(imageObj, { size: 'full' }) : null;
+const srcset = imageObj ? getAttachmentSrcset(imageObj) : null;
+const width = imageObj ? getWidth(imageObj) : undefined;
+const height = imageObj ? getHeight(imageObj) : undefined;
+---
+
+<Breadcrumbs {page} {piece} />
+
+<div class="article-title-wrapper">
+  <div class="layout">
+    <h1 class="page-title">{article.title}</h1>
+  </div>
+  <div class="article-details">
+    {article._author?.length > 0 && (
+      <div class="article-detail article-author">
+        Written by{' '}
+        <a href={`${article._parentSlug}?author=${article._author[0].slug}`}>
+          {article._author[0].title}
+        </a>
+      </div>
+    )}
+    <div class="article-detail article-published">
+      {new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </div>
+  </div>
+  {article._categories?.length > 0 && (
+    <div class="inner article-topics article-topics--show">
+      {article._categories.map((category) => (
+        <a href={`${article._parentSlug}?categories=${category.slug}`} class="chip">{category.title}</a>
+      ))}
+    </div>
+  )}
+</div>
+
+<div class="layout">
+  <main>
+    <article class="article-show general-content">
+      {url && (
+        <img
+          class="article-show__image"
+          src={url}
+          alt={article.title}
+          loading="lazy"
+          width={width}
+          height={height}
+          srcset={srcset}
+        />
+      )}
+      <AposArea area={article.main} />
+    </article>
+  </main>
+</div>

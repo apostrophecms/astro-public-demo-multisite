@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export NODE_ENV=production
+export APOS_UPLOADFS_ASSETS=1
+node app @apostrophecms/asset:build --site=dashboard 
+./deployment/for-all-themes @apostrophecms/asset:build

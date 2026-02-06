@@ -1,0 +1,133 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import setParameter from '@apostrophecms/apostrophe-astro/lib/aposSetQueryParameter.js';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ArticleExcerpt from '../components/ArticleExcerpt.astro';
+
+const {
+  page,
+  pieces = [],
+  _categories,
+  query,
+  currentPage = 1,
+  totalPages = 1,
+  url: pageUrl
+} = Astro.props.aposData;
+
+const pagerOptions = {
+  page: currentPage,
+  total: totalPages,
+  shown: 5
+};
+
+function getPageRange(options) {
+  const pages = [];
+  const shown = options.shown || 5;
+  const half = Math.floor(shown / 2);
+  let start = Math.max(2, options.page - half);
+  let end = Math.min(options.total - 1, options.page + half);
+
+  if (options.page <= half + 1) {
+    end = Math.min(options.total - 1, shown);
+  }
+  if (options.page >= options.total - half) {
+    start = Math.max(2, options.total - shown + 1);
+  }
+
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
+  return pages;
+}
+
+const pageRange = getPageRange(pagerOptions);
+const showHeadGap = currentPage > 3;
+const showTailGap = currentPage < totalPages - 2;
+
+function buildUrl(pageNum) {
+  return setParameter(new URL(pageUrl, Astro.url), 'page', pageNum);
+}
+---
+
+<Breadcrumbs {page} />
+
+<div class="article-title-wrapper">
+  <div class="layout">
+    <h1 class="page-title">{page.title}</h1>
+    {_categories?.length > 0 && (
+      <ul class="article-topic-filters">
+        <li>
+          <a
+            href="?"
+            class={!query?.categories ? 'active' : ''}
+          >All Articles</a>
+        </li>
+        {_categories.map((category) => (
+          <li>
+            <a
+              href={`?categories=${category.slug}`}
+              class={query?.categories === category.slug ? 'active' : ''}
+            >{category.title}</a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</div>
+
+<div class="layout">
+  <main>
+    <section class="article-index">
+      <header class="article-intro general-content">
+        <AposArea area={page.intro} />
+      </header>
+
+      {/* First two articles with featured/horizontal treatment */}
+      <div class="article-excerpts article-excerpts--display-horizontal article-excerpts--display-featured">
+        {pieces.slice(0, 2).map((article) => (
+          <ArticleExcerpt article={article} />
+        ))}
+      </div>
+
+      {/* Remaining articles in grid */}
+      <div class="article-excerpts article-excerpts--display-grid">
+        {pieces.slice(2).map((article) => (
+          <ArticleExcerpt article={article} />
+        ))}
+      </div>
+
+      {/* Pagination */}
+      {(currentPage > 1 || totalPages > 1) && (
+        <div>
+          <span class={`${currentPage === 1 ? 'is-active' : ''} is-first`}>
+            {currentPage !== 1 ? (
+              <a href={buildUrl(1)}>1</a>
+            ) : (
+              1
+            )}
+          </span>
+          {showHeadGap && <span>&hellip;</span>}
+          {pageRange.map((pageNum) => (
+            <span class={currentPage === pageNum ? 'is-active' : ''}>
+              {currentPage !== pageNum ? (
+                <a href={buildUrl(pageNum)}>{pageNum}</a>
+              ) : (
+                pageNum
+              )}
+            </span>
+          ))}
+          {showTailGap && <span>&hellip;</span>}
+          {totalPages > 1 && (
+            <span class={`${currentPage === totalPages ? 'is-active' : ''} is-last`}>
+              {currentPage !== totalPages ? (
+                <a href={buildUrl(totalPages)}>{totalPages}</a>
+              ) : (
+                totalPages
+              )}
+            </span>
+          )}
+        </div>
+      )}
+    </section>
+  </main>
+</div>

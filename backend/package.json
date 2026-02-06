@@ -1,0 +1,43 @@
+{
+  "name": "astro-public-demo-multisite-backend",
+  "version": "1.0.0",
+  "description": "Apostrophe Public Demo Site",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app",
+    "serve": "cross-env APOS_UPLOADFS_ASSETS=1 NODE_ENV=production npm run start",
+    "dev": "cross-env APOS_EXTERNAL_FRONT_KEY=dev APOS_DEV=1 nodemon",
+    "build": "./deployment/build",
+    "release": "npm install && npm run build && npm run migrate",
+    "migrate": "./deployment/migrate",
+    "test": "npm run eslint && npm run stylelint",
+    "eslint": "eslint .",
+    "stylelint": "stylelint {dashboard,sites}/modules/**/*.{scss,vue}"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "@apostrophecms-pro/multisite": "^4.4.1",
+    "@apostrophecms-pro/multisite-dashboard": "^1.5.0",
+    "@apostrophecms/favicon": "^1.1.3",
+    "@apostrophecms/import-export": "^2.4.1",
+    "@apostrophecms/open-graph": "^1.2.3",
+    "@apostrophecms/seo": "^1.2.3",
+    "@apostrophecms/vite": "^1.1.0",
+    "apostrophe": "^4.24.1",
+    "cross-env": "^10.1.0",
+    "klona": "^2.0.6"
+  },
+  "author": "Apostrophe Technologies, Inc",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.34.0",
+    "eslint-config-apostrophe": "^6.0.1",
+    "stylelint": "^16.1.0",
+    "stylelint-config-apostrophe": "^4.4.0",
+    "nodemon": "^2.0.12"
+  }
+}

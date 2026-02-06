@@ -1,0 +1,25 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const { page, global } = Astro.props.aposData;
+const siteTitle = global?.siteTitle || 'ApostropheCMS Demo';
+---
+
+<Breadcrumbs {page} />
+
+<h1 class="home-title">
+  <span class="chip">Home: {siteTitle}</span>
+</h1>
+
+<div class="layout">
+  <main>
+    <div class="home">
+      <div class="content">
+        <div class="general-content">
+          <AposArea area={page.main} />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

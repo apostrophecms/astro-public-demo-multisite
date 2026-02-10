@@ -75,7 +75,13 @@ export default async function (site) {
       'article-category': {},
 
       // Import and export content
-      '@apostrophecms/import-export': {}
+      '@apostrophecms/import-export': {},
+      '@apostrophecms-pro/automatic-translation': {
+        options: {
+          provider: 'deepl'
+        }
+      },
+      '@apostrophecms-pro/automatic-translation-deepl': {}
     }
   };
 

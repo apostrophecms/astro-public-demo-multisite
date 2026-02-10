@@ -21,13 +21,13 @@
   },
   "dependencies": {
     "@apostrophecms-pro/multisite": "^4.4.1",
-    "@apostrophecms-pro/multisite-dashboard": "^1.5.0",
+    "@apostrophecms-pro/multisite-dashboard": "1.6.0-alpha.1",
     "@apostrophecms/favicon": "^1.1.3",
     "@apostrophecms/import-export": "^2.4.1",
     "@apostrophecms/open-graph": "^1.2.3",
     "@apostrophecms/seo": "^1.2.3",
     "@apostrophecms/vite": "^1.1.0",
-    "apostrophe": "^4.24.1",
+    "apostrophe": "4.27.0-alpha.2",
     "cross-env": "^10.1.0",
     "klona": "^2.0.6"
   },

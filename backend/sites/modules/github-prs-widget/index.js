@@ -76,5 +76,26 @@ export default {
   },
   icons: {
     github: 'Github'
+  },
+  styles: {
+    add: {
+      backgroundColor: {
+        type: 'color',
+        label: 'project:backgroundColor',
+        property: 'background-color',
+        def: '--surface-color',
+        options: {
+          presetColors: [
+            '--surface-color',
+            '--accent-color',
+            '--default-color',
+            '--heading-color'
+          ]
+        }
+      },
+      border: 'border',
+      padding: 'padding',
+      boxShadow: 'boxShadow'
+    }
   }
 };

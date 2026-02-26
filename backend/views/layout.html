@@ -62,13 +62,20 @@
   <h1>ApostropheCMS Backend for Astro</h1>
   
   <div class="info-box">
-    <p>You are currently viewing the ApostropheCMS backend, used to manage the content for your project. It supplies the Admin UI and in-context editing functionality. The frontend rendering of the website is handled by Astro and is delivered from a separate repository.</p>
+    <p>You are currently viewing the ApostropheCMS backend, used to manage the 
+      content for your project. It supplies the Admin UI and in-context editing 
+      functionality. The frontend rendering of the website is handled by Astro 
+      and is delivered from the Astro project in the "frontend/" folder.</p>
   </div>
 
-    <div class="warning-box">
+    <div id="warning-box" class="warning-box">
     <h2>Important Note About Frontend Server</h2>
-    <p>This status checker only works when the Astro frontend is running in development mode (<code>npm run dev</code>). It will not detect servers running in preview mode (<code>npm run preview</code>) or production mode (<code>npm run serve</code>).</p>
-    <p>For local development and content editing, please ensure you're using <code>npm run dev</code> to start the Astro frontend.</p>
+    <p>This status checker only works when the Astro frontend is running in 
+      development mode (<code>npm run dev</code>). It will not detect servers 
+      running in preview mode (<code>npm run preview</code>) or production mode 
+      (<code>npm run serve</code>).</p>
+    <p>For local development and content editing, please ensure you're 
+      using <code>npm run dev</code> to start the Astro frontend.</p>
   </div>
 
   <div id="status-box" class="status-box">
@@ -78,24 +85,26 @@
   
   <div id="astro-instructions" class="instructions hidden">
     <h2>Setting up the Astro Frontend Project</h2>
-    <p>To view the complete project, you need to set up and run the Astro frontend. Follow these steps:</p>
+    <p>To view the complete project, you need to run the Astro 
+      frontend. Follow these steps:</p>
     <ol>
-      <li>Either <a href="https://github.com/apostrophecms/astro-frontend.git" target="_blank">fork</a> or clone the frontend repository: <code>git clone https://github.com/apostrophecms/astro-frontend.git</code></li>
-      <li>Navigate to the frontend directory: <code>cd astro-frontend</code></li>
-      <li>Install dependencies: <code>npm install</code></li>
-      <li>Export the same <code>APOS_EXTERNAL_FRONT_KEY</code> environment variable you used to start the backend</li>
+      <li>Navigate to the frontend directory: <code>cd frontend</code></li>
+      <li>Install dependencies: <code>npm install</code> if not already done</li>
       <li>Start the Astro development server: <code>npm run dev</code></li>
     </ol>
   </div>
   
   <div id="astro-running" class="hidden">
-    <p>The Astro frontend is running. You can access the complete site at: <a href="http://dashboard.localhost:4321" id="astro-link">http://dashboard.localhost:4321</a></p>
+    <p>The Astro frontend is running. You can access the complete site 
+      (default configuration) at: 
+      <a href="http://localhost:4321" id="astro-link">http://localhost:4321</a></p>
   </div>
 </div>
 
 <script>
   const statusBox = document.getElementById('status-box');
   const statusMessage = document.getElementById('status-message');
+  const warningBox = document.getElementById('warning-box');
   const astroInstructions = document.getElementById('astro-instructions');
   const astroRunning = document.getElementById('astro-running');
   const astroLink = document.getElementById('astro-link');
@@ -106,35 +115,38 @@
     if (isRunning) {
       statusBox.classList.add('running');
       statusMessage.textContent = 'Astro frontend is running!';
+      warningBox.classList.add('hidden');
       astroInstructions.classList.add('hidden');
       astroRunning.classList.remove('hidden');
     } else {
       statusBox.classList.remove('running');
       statusMessage.textContent = 'Astro frontend is not running.';
+      warningBox.classList.remove('hidden');
       astroInstructions.classList.remove('hidden');
       astroRunning.classList.add('hidden');
     }
   }
 
+  function stopTimer(message) {
+    if (checkInterval) {
+      // Do not disable it for now, 5 seconds is OK.
+      // clearInterval(checkInterval);
+      message && console.log(message);
+    }
+  }
+
   function checkAstroConnection() {
-    fetch('http://dashboard.localhost:4321')
+    fetch('http://localhost:4321')
       .then(() => {
         // Server responded successfully
         updateUI(true);
-        if (checkInterval) {
-          clearInterval(checkInterval);
-          console.log('Astro frontend detected. Stopping periodic checks.');
-        }
+        stopTimer('Astro frontend detected.');
       })
       .catch((error) => {
-        console.log('Astro frontend check error:', error.message);
         if (error.message.includes('CORS')) {
           // CORS error means server exists but blocked the request - that's fine!
           updateUI(true);
-          if (checkInterval) {
-            clearInterval(checkInterval);
-            console.log('Astro frontend detected (CORS block). Stopping periodic checks.');
-          }
+          stopTimer('Astro frontend detected (CORS block).');
         } else {
           // Other errors mean no server
           updateUI(false);

@@ -5,7 +5,9 @@ export default {
     previewImage: 'svg',
     inlineStyles: false,
     className: 'widget demo-image',
-    dimensionAttrs: true
+    dimensionAttrs: true,
+    size: 'full',
+    loadingType: 'lazy'
   },
   styles: {
     add: {
@@ -128,16 +130,5 @@ export default {
         ]
       }
     }
-  },
-  extendMethods(self) {
-    return {
-      annotateWidgetForExternalFront(_super, widget, { scene } = {}) {
-        return {
-          ..._super(widget, { scene }),
-          className: self.options.className,
-          dimensionAttrs: self.options.dimensionAttrs
-        };
-      }
-    };
   }
 };

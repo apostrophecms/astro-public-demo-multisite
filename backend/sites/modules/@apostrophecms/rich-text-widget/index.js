@@ -23,6 +23,30 @@ export default {
       }
     ]
   },
+  styles: {
+    add: {
+      width: 'width',
+      alignment: {
+        type: 'radio',
+        buttons: true,
+        class: true,
+        choices: [
+          {
+            label: 'apostrophe:styleLeft',
+            value: 'apos-left'
+          },
+          {
+            label: 'apostrophe:styleCenter',
+            value: 'apos-center'
+          },
+          {
+            label: 'apostrophe:styleRight',
+            value: 'apos-right'
+          }
+        ]
+      }
+    }
+  },
   extendMethods(self) {
     return {
       annotateWidgetForExternalFront(_super, widget, { scene } = {}) {

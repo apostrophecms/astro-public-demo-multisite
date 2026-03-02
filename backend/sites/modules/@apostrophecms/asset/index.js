@@ -1,4 +1,11 @@
 export default {
+  methods(self) {
+    return {
+      getNamespace() {
+        return self.apos.options.theme || 'default';
+      }
+    };
+  },
   options: {
     breakpointPreviewMode: {
       enable: true,

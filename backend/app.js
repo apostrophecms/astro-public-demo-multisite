@@ -36,7 +36,7 @@ export default await multisite({
   oldInstanceGracePeriod: 60000,
 
   orphan(req, res) {
-    console.error(`method: ${req.method} url: ${req.url} host: ${req.host} host header: ${req.headers.host}`);
+    console.error(`method: ${req.method} url: ${req.url} host: ${req.hostname} host header: ${req.headers.host}`);
     return res.status(404).send('not found');
   },
   sites,

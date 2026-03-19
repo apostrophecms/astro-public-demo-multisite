@@ -1,0 +1,22 @@
+{
+  "title": "Technical Writer",
+  "team": "Engineering",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "contract",
+  "experienceLevel": "mid",
+  "salaryMin": 80000,
+  "salaryMax": 110000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Technical Writer on a 12-month contract to overhaul and expand our developer documentation. You will work closely with engineering and product teams to create clear, accurate, and comprehensive documentation for our APIs, SDKs, and platform features.</p><p>Great documentation is a product in itself, and we need someone who cares deeply about the developer experience and can translate complex technical concepts into approachable guides and references.</p><h3>Responsibilities</h3><ul><li>Write and maintain API reference documentation, tutorials, and quickstart guides</li><li>Create architecture diagrams, code samples, and integration guides</li><li>Collaborate with engineers to understand new features and document them before release</li><li>Organize and restructure existing documentation for improved navigation and discoverability</li><li>Gather feedback from developers and support teams to identify documentation gaps</li></ul><h3>Requirements</h3><ul><li>3+ years of technical writing experience, preferably for developer audiences</li><li>Ability to read and understand code in JavaScript, Python, or similar languages</li><li>Experience with docs-as-code workflows (Markdown, Git, static site generators)</li><li>Strong editing skills and attention to technical accuracy</li><li>Portfolio of published technical documentation</li></ul><h3>Nice to Have</h3><ul><li>Experience documenting REST APIs and GraphQL schemas</li><li>Familiarity with OpenAPI/Swagger specifications</li><li>Experience with documentation platforms (ReadMe, GitBook, Docusaurus)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

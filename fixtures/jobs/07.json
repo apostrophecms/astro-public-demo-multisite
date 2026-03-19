@@ -1,0 +1,22 @@
+{
+  "title": "Security Engineer",
+  "team": "Security",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 155000,
+  "salaryMax": 200000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Senior Security Engineer to strengthen our security posture across the entire organization. You will be responsible for identifying vulnerabilities, building security tooling, and embedding security practices into our development lifecycle.</p><p>In this role you will work across teams to ensure that security is not an afterthought but a core part of how we build and ship software. You will report to the Head of Security and have significant autonomy in shaping our security roadmap.</p><h3>Responsibilities</h3><ul><li>Conduct application security assessments, penetration testing, and threat modeling</li><li>Build and maintain automated security scanning in CI/CD pipelines</li><li>Develop and enforce security policies, standards, and incident response procedures</li><li>Monitor for security threats using SIEM tools and respond to incidents promptly</li><li>Lead security awareness training and champion a security-first culture</li><li>Evaluate and manage third-party security tools and vendor relationships</li></ul><h3>Requirements</h3><ul><li>6+ years of experience in application or infrastructure security</li><li>Deep understanding of OWASP Top 10, common attack vectors, and remediation strategies</li><li>Experience with security tools such as Burp Suite, Snyk, SonarQube, or equivalent</li><li>Strong knowledge of cloud security (AWS or GCP) and container security</li><li>Familiarity with compliance frameworks (SOC 2, ISO 27001, GDPR)</li></ul><h3>Nice to Have</h3><ul><li>Relevant certifications (CISSP, OSCP, CEH)</li><li>Experience with bug bounty programs</li><li>Background in software engineering</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

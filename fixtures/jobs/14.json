@@ -1,0 +1,22 @@
+{
+  "title": "Senior Data Engineer",
+  "team": "Data Science",
+  "location": "Berlin, Germany",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 75000,
+  "salaryMax": 95000,
+  "salaryCurrency": "EUR",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring a Senior Data Engineer to build and maintain the data infrastructure that powers analytics, machine learning, and business intelligence across the organization. Based in our Berlin office, you will work with cutting-edge tools to design reliable, scalable data pipelines.</p><p>You will be part of a collaborative team that values clean data architecture and engineering excellence. This is a hands-on role where you will write code daily while also influencing our data strategy.</p><h3>Responsibilities</h3><ul><li>Design, build, and maintain ETL/ELT pipelines using dbt, Airflow, and Spark</li><li>Model and optimize our data warehouse on Snowflake or BigQuery</li><li>Ensure data quality, consistency, and freshness through automated testing and monitoring</li><li>Collaborate with data scientists and analysts to provide clean, well-documented datasets</li><li>Implement data governance policies and privacy controls in compliance with GDPR</li><li>Evaluate and introduce new tools and technologies to improve the data stack</li></ul><h3>Requirements</h3><ul><li>5+ years of data engineering experience</li><li>Strong proficiency in SQL and Python</li><li>Experience with modern data stack tools (dbt, Snowflake, Airflow, Fivetran)</li><li>Knowledge of data modeling techniques (star schema, data vault, etc.)</li><li>Understanding of GDPR and data privacy requirements</li></ul><h3>Nice to Have</h3><ul><li>Experience with streaming data (Kafka, Kinesis, Flink)</li><li>Familiarity with machine learning pipelines and feature stores</li><li>German language skills (business proficiency)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Security Operations Analyst",
+  "team": "Security",
+  "location": "Austin, TX",
+  "locationType": "onsite",
+  "employmentType": "full-time",
+  "experienceLevel": "entry",
+  "salaryMin": 75000,
+  "salaryMax": 95000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Security Operations Analyst to join our Security team and help protect our platform and corporate infrastructure from threats. You will monitor security alerts, investigate incidents, and help maintain the tools and processes that keep our systems safe.</p><p>This is an ideal role for someone beginning their security career who wants hands-on experience across multiple security domains in a fast-paced technology environment. You will receive mentorship from senior security engineers and have access to training and certification opportunities.</p><h3>Responsibilities</h3><ul><li>Monitor SIEM dashboards and triage security alerts for potential threats</li><li>Investigate and document security incidents following established playbooks</li><li>Assist with vulnerability scanning and coordinate remediation with engineering teams</li><li>Help manage endpoint security tools (EDR, antivirus, DLP)</li><li>Maintain security documentation and contribute to runbook development</li><li>Participate in phishing simulation campaigns and security awareness programs</li></ul><h3>Requirements</h3><ul><li>1-2 years of experience in IT, security, or a related technical field</li><li>Basic understanding of network security, operating systems, and common attack techniques</li><li>Familiarity with SIEM tools (Splunk, Sentinel, or Elastic Security)</li><li>Strong analytical and problem-solving skills</li><li>Excellent attention to detail and written communication</li></ul><h3>Nice to Have</h3><ul><li>CompTIA Security+, CySA+, or equivalent certification</li><li>Experience with cloud security monitoring (AWS CloudTrail, GuardDuty)</li><li>Scripting skills in Python or PowerShell</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

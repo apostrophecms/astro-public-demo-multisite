@@ -1,0 +1,22 @@
+{
+  "title": "Data Scientist",
+  "team": "Data Science",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 120000,
+  "salaryMax": 160000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>Join our Data Science team to turn complex datasets into actionable insights that drive product and business decisions. You will build predictive models, design experiments, and partner with teams across the company to unlock the value hidden in our data.</p><p>We believe in a rigorous, experiment-driven culture where data scientists have a seat at the table for every major product decision.</p><h3>Responsibilities</h3><ul><li>Build and deploy machine learning models for recommendation, classification, and forecasting</li><li>Design and analyze A/B tests and other controlled experiments</li><li>Develop dashboards and automated reporting pipelines for key business metrics</li><li>Collaborate with product and engineering to integrate models into production systems</li><li>Communicate findings to both technical and non-technical audiences through clear visualizations and presentations</li></ul><h3>Requirements</h3><ul><li>3+ years of experience in data science or a related quantitative role</li><li>Strong proficiency in Python and SQL</li><li>Experience with machine learning frameworks such as scikit-learn, TensorFlow, or PyTorch</li><li>Solid foundation in statistics, probability, and experimental design</li><li>MS or PhD in a quantitative field (Statistics, Computer Science, Economics, Physics, etc.)</li></ul><h3>Nice to Have</h3><ul><li>Experience with NLP or large language model fine-tuning</li><li>Familiarity with dbt, Airflow, or similar data orchestration tools</li><li>Experience with real-time inference systems</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

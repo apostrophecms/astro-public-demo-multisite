@@ -91,7 +91,8 @@ const fullConfig = Object.assign({
   '@apostrophecms/layout': {},
   article: {},
   card: {},
-  'price-card': {}
+  'price-card': {},
+  job: {}
 }, basicConfig);
 
 const fullConfigExpandedGroups = {
@@ -118,7 +119,8 @@ const fullConfigExpandedGroups = {
       'github-prs': {},
       '@apostrophecms/rich-text': defaultRtConfig,
       article: {},
-      'price-card': {}
+      'price-card': {},
+      job: {}
     },
     columns: 3
   }

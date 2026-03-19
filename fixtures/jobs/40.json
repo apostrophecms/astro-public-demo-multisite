@@ -1,0 +1,22 @@
+{
+  "title": "Business Intelligence Analyst",
+  "team": "Data Science",
+  "location": "Austin, TX",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 90000,
+  "salaryMax": 120000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Business Intelligence Analyst to transform data into actionable insights that help our leadership team make better decisions. You will build dashboards, create reports, and conduct deep-dive analyses that surface the stories hidden in our data.</p><p>Sitting at the intersection of data engineering and business strategy, you will work with stakeholders across sales, marketing, product, and finance to understand their questions and deliver answers in a clear, compelling format.</p><h3>Responsibilities</h3><ul><li>Design and build interactive dashboards and reports in Looker, Tableau, or similar tools</li><li>Write complex SQL queries to extract, transform, and analyze data from multiple sources</li><li>Conduct ad-hoc analyses to support strategic decisions across departments</li><li>Define and standardize key metrics and KPIs in collaboration with business stakeholders</li><li>Identify data quality issues and work with data engineering to resolve them</li><li>Present findings and recommendations to leadership in a clear, non-technical manner</li></ul><h3>Requirements</h3><ul><li>3+ years of BI or analytics experience</li><li>Advanced SQL skills and experience with modern data warehouses (Snowflake, BigQuery, Redshift)</li><li>Proficiency with BI tools (Looker, Tableau, Power BI, or Metabase)</li><li>Strong analytical thinking and ability to translate business questions into data analyses</li><li>Excellent communication and data visualization skills</li></ul><h3>Nice to Have</h3><ul><li>Experience with dbt or other data transformation tools</li><li>Python or R skills for statistical analysis</li><li>Experience with SaaS business metrics (ARR, NRR, churn, cohort analysis)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

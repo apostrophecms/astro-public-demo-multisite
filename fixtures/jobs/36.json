@@ -1,0 +1,22 @@
+{
+  "title": "Recruiter, Technical",
+  "team": "People Operations",
+  "location": "San Francisco, CA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 95000,
+  "salaryMax": 125000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Technical Recruiter to help us scale our engineering, data, and product teams. You will own the full-cycle recruiting process, from sourcing and screening through offer negotiation and close. We are growing rapidly and need a recruiter who can keep pace while maintaining a high bar for talent.</p><p>This role is equal parts talent scout, brand ambassador, and project manager. You will represent our company to candidates and work closely with hiring managers to build diverse, world-class teams.</p><h3>Responsibilities</h3><ul><li>Manage full-cycle recruiting for engineering, data science, and product roles</li><li>Source passive candidates through LinkedIn, GitHub, conferences, and creative channels</li><li>Screen and assess candidates for technical skills, culture fit, and potential</li><li>Partner with hiring managers to define role requirements and interview processes</li><li>Manage candidate experience from first touch through onboarding</li><li>Track and report on recruiting metrics (time-to-fill, pipeline conversion, diversity)</li></ul><h3>Requirements</h3><ul><li>3+ years of technical recruiting experience, preferably in-house at a technology company</li><li>Proven track record of filling engineering and technical roles</li><li>Strong sourcing skills and ability to engage passive candidates</li><li>Experience with ATS platforms (Greenhouse, Lever, or Ashby)</li><li>Excellent interpersonal and negotiation skills</li></ul><h3>Nice to Have</h3><ul><li>Experience recruiting for startup or high-growth environments</li><li>Understanding of technical concepts and ability to assess technical backgrounds</li><li>Passion for diversity, equity, and inclusion in hiring</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

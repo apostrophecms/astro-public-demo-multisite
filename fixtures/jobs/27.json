@@ -1,0 +1,22 @@
+{
+  "title": "Machine Learning Engineer",
+  "team": "Data Science",
+  "location": "San Francisco, CA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 175000,
+  "salaryMax": 230000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Senior Machine Learning Engineer to design, build, and deploy ML systems that power intelligent features across our platform. You will bridge the gap between research and production, turning prototype models into reliable, scalable services that millions of users interact with daily.</p><p>This role requires both deep ML expertise and strong software engineering skills. You will work closely with data scientists, backend engineers, and product managers to deliver AI-driven capabilities that differentiate our product in the market.</p><h3>Responsibilities</h3><ul><li>Design and implement ML pipelines from data ingestion through model serving</li><li>Build and optimize model training infrastructure using PyTorch and distributed computing</li><li>Deploy models to production with low-latency inference requirements</li><li>Implement monitoring for model performance, data drift, and system health</li><li>Collaborate with data scientists to productionize research prototypes</li><li>Evaluate and integrate emerging ML technologies including LLMs and retrieval-augmented generation</li></ul><h3>Requirements</h3><ul><li>5+ years of experience in machine learning engineering or applied ML</li><li>Strong proficiency in Python, PyTorch or TensorFlow, and SQL</li><li>Experience deploying ML models to production at scale</li><li>Knowledge of ML infrastructure tools (MLflow, Kubeflow, SageMaker, or similar)</li><li>Solid foundation in computer science fundamentals and distributed systems</li></ul><h3>Nice to Have</h3><ul><li>Experience with large language models, RAG architectures, and vector databases</li><li>Publications in top ML conferences (NeurIPS, ICML, ACL)</li><li>Experience with real-time recommendation or personalization systems</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

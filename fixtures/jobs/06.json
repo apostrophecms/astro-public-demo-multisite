@@ -1,0 +1,22 @@
+{
+  "title": "Frontend Engineer",
+  "team": "Engineering",
+  "location": "London, UK",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 65000,
+  "salaryMax": 85000,
+  "salaryCurrency": "GBP",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Frontend Engineer to join our London office and help build the next generation of our web application. You will work closely with designers and backend engineers to create performant, accessible, and beautiful user interfaces that our customers rely on every day.</p><p>Our frontend stack is built on React, TypeScript, and Next.js, and we take pride in writing clean, well-tested code.</p><h3>Responsibilities</h3><ul><li>Build and maintain responsive, accessible UI components using React and TypeScript</li><li>Collaborate with designers to translate Figma mockups into production-ready interfaces</li><li>Write unit and integration tests to ensure code quality and reliability</li><li>Optimize application performance including bundle size, rendering, and network requests</li><li>Contribute to our shared component library and design system</li><li>Participate in code reviews and architectural discussions</li></ul><h3>Requirements</h3><ul><li>3+ years of professional frontend development experience</li><li>Strong proficiency in React, TypeScript, and modern CSS (CSS Modules, Tailwind, or styled-components)</li><li>Experience with Next.js or similar SSR/SSG frameworks</li><li>Understanding of web accessibility standards (WCAG 2.1)</li><li>Familiarity with testing frameworks like Jest, React Testing Library, or Cypress</li></ul><h3>Nice to Have</h3><ul><li>Experience with GraphQL and Apollo Client</li><li>Knowledge of performance profiling and Core Web Vitals optimization</li><li>Contributions to open-source frontend projects</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

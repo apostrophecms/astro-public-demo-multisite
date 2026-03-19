@@ -1,0 +1,22 @@
+{
+  "title": "QA Engineer",
+  "team": "QA",
+  "location": "Portland, OR",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 90000,
+  "salaryMax": 120000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a QA Engineer to help us maintain the highest standards of quality across our platform. You will design and execute test strategies, build automation frameworks, and work alongside developers to catch issues before they reach production.</p><p>Quality is a shared responsibility here, and as a QA Engineer you will be a key partner in shaping how we think about testing, reliability, and user experience.</p><h3>Responsibilities</h3><ul><li>Design and execute comprehensive test plans for new features and regression testing</li><li>Build and maintain automated test suites using Cypress, Playwright, or similar frameworks</li><li>Identify, document, and track defects through resolution</li><li>Collaborate with product and engineering to define acceptance criteria and quality gates</li><li>Contribute to API testing and integration testing strategies</li><li>Analyze test results and provide actionable insights to improve product quality</li></ul><h3>Requirements</h3><ul><li>3+ years of QA or SDET experience in a software company</li><li>Proficiency with test automation frameworks (Cypress, Playwright, Selenium)</li><li>Experience with API testing tools like Postman or REST Assured</li><li>Solid understanding of software development lifecycle and agile methodologies</li><li>Strong problem-solving skills and attention to detail</li></ul><h3>Nice to Have</h3><ul><li>Experience with performance testing tools (k6, JMeter, Gatling)</li><li>Knowledge of accessibility testing tools and standards</li><li>ISTQB or similar QA certification</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

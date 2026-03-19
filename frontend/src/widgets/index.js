@@ -10,6 +10,7 @@ import CardWidget from './CardWidget.astro';
 import PriceCardWidget from './PriceCardWidget.astro';
 import ArticleWidget from './ArticleWidget.astro';
 import GithubPrsWidget from './GithubPrsWidget.astro';
+import JobWidget from './JobWidget.astro';
 
 const widgetComponents = {
   '@apostrophecms/rich-text': RichTextWidget,
@@ -25,7 +26,8 @@ const widgetComponents = {
   'card-content-rt': RichTextWidget,
   'price-card': PriceCardWidget,
   'article': ArticleWidget,
-  'github-prs': GithubPrsWidget
+  'github-prs': GithubPrsWidget,
+  'job': JobWidget
 };
 
 export default widgetComponents;

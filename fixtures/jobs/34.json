@@ -1,0 +1,22 @@
+{
+  "title": "Engineering Manager, Frontend",
+  "team": "Engineering",
+  "location": "New York, NY",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "lead",
+  "salaryMin": 180000,
+  "salaryMax": 230000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for an Engineering Manager to lead our Frontend team. You will manage a team of 6-8 frontend engineers, driving the technical direction of our web application while ensuring your team members are growing, engaged, and doing the best work of their careers.</p><p>This is a people-first leadership role. While you will participate in architectural decisions and occasionally write code, your primary focus will be on team health, delivery execution, and cross-functional collaboration.</p><h3>Responsibilities</h3><ul><li>Lead, mentor, and grow a team of frontend engineers through regular 1:1s, career development, and performance feedback</li><li>Partner with Product and Design to plan sprints, manage scope, and deliver on commitments</li><li>Drive technical strategy for the frontend, including framework choices, testing practices, and performance standards</li><li>Remove blockers, manage dependencies, and ensure smooth delivery across teams</li><li>Recruit and hire top frontend talent to grow the team</li><li>Foster a culture of quality, collaboration, and continuous improvement</li></ul><h3>Requirements</h3><ul><li>8+ years of software engineering experience, with 2+ years managing engineers</li><li>Strong technical background in frontend development (React, TypeScript, CSS)</li><li>Experience managing teams of 5+ engineers in an agile environment</li><li>Track record of developing and retaining engineering talent</li><li>Excellent communication and stakeholder management skills</li></ul><h3>Nice to Have</h3><ul><li>Experience managing remote or distributed teams</li><li>Background in design systems and accessibility at scale</li><li>Experience with Next.js, Astro, or similar modern web frameworks</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

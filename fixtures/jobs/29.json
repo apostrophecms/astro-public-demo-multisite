@@ -1,0 +1,22 @@
+{
+  "title": "Platform Engineer",
+  "team": "Engineering",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 155000,
+  "salaryMax": 195000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring a Senior Platform Engineer to build the internal developer platform that enables our engineering teams to ship faster and more reliably. You will design and build self-service tools, abstractions, and workflows that reduce friction and improve the developer experience across the organization.</p><p>This is a high-leverage role where your work multiplies the productivity of every engineer in the company. You will work on internal CLIs, deployment pipelines, environment provisioning, and service templates.</p><h3>Responsibilities</h3><ul><li>Design and build internal developer tools and platform services</li><li>Create self-service workflows for environment provisioning, deployments, and service creation</li><li>Build and maintain CI/CD pipelines that are fast, reliable, and secure</li><li>Develop service templates and golden paths that encode best practices</li><li>Measure and improve developer experience metrics (deploy frequency, lead time, DORA metrics)</li><li>Provide guidance and support to product engineering teams on platform adoption</li></ul><h3>Requirements</h3><ul><li>6+ years of software engineering experience with a focus on infrastructure or platform</li><li>Strong proficiency in Go, Python, or TypeScript</li><li>Deep experience with Kubernetes, Docker, and cloud-native architectures</li><li>Experience building internal tools, CLIs, or developer platforms</li><li>Excellent understanding of CI/CD, GitOps, and infrastructure-as-code</li></ul><h3>Nice to Have</h3><ul><li>Experience with Backstage, Port, or similar internal developer portals</li><li>Familiarity with platform engineering community practices and CNCF ecosystem</li><li>Experience with multi-tenant SaaS platform architecture</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

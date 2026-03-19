@@ -1,0 +1,22 @@
+{
+  "title": "Product Designer",
+  "team": "Design",
+  "location": "New York, NY",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 110000,
+  "salaryMax": 145000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a talented Product Designer to craft intuitive and delightful user experiences across our platform. You will work end-to-end, from discovery and research through to high-fidelity prototypes and production-ready designs.</p><p>You will be embedded within a product squad and collaborate daily with engineers and product managers to ship features that users love. Our design team values craft, curiosity, and empathy in equal measure.</p><h3>Responsibilities</h3><ul><li>Own the design process from concept to delivery for key product features</li><li>Conduct user research, usability testing, and synthesize findings into actionable insights</li><li>Create wireframes, prototypes, and high-fidelity mockups in Figma</li><li>Contribute to and evolve our design system to ensure consistency at scale</li><li>Partner with engineers to ensure pixel-perfect implementation</li><li>Present design work to stakeholders and incorporate feedback thoughtfully</li></ul><h3>Requirements</h3><ul><li>4+ years of product design experience at a technology company</li><li>Strong portfolio demonstrating end-to-end design thinking</li><li>Expert-level proficiency in Figma and modern prototyping tools</li><li>Experience conducting and synthesizing user research</li><li>Solid understanding of accessibility standards and responsive design</li></ul><h3>Nice to Have</h3><ul><li>Experience designing for B2B SaaS products</li><li>Familiarity with front-end development (HTML, CSS, React)</li><li>Motion design skills using tools like After Effects or Rive</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

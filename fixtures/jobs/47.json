@@ -1,0 +1,22 @@
+{
+  "title": "Part-Time Social Media Manager",
+  "team": "Marketing",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "part-time",
+  "experienceLevel": "mid",
+  "salaryMin": 45000,
+  "salaryMax": 60000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Part-Time Social Media Manager to manage our brand presence across LinkedIn, Twitter/X, and other relevant platforms. Working approximately 20 hours per week, you will create and curate content, engage with our community, and grow our social following among developers and technology decision-makers.</p><p>This is a flexible, remote role ideal for someone who wants to apply their social media expertise in the B2B technology space while maintaining work-life balance.</p><h3>Responsibilities</h3><ul><li>Develop and manage the social media content calendar across LinkedIn and Twitter/X</li><li>Create engaging social content including text posts, graphics, short-form video, and threads</li><li>Monitor social channels and engage with followers, industry conversations, and mentions</li><li>Track and report on social media metrics (engagement, reach, follower growth, traffic)</li><li>Collaborate with content marketing and developer relations to amplify blog posts, releases, and events</li></ul><h3>Requirements</h3><ul><li>3+ years of social media management experience, preferably in B2B technology</li><li>Strong writing skills with the ability to adapt tone for different platforms and audiences</li><li>Experience with social media management tools (Buffer, Hootsuite, or Sprout Social)</li><li>Understanding of social media analytics and reporting</li><li>Familiarity with the developer and technology community on social platforms</li></ul><h3>Nice to Have</h3><ul><li>Experience with short-form video production (Reels, TikTok-style content)</li><li>Graphic design skills (Canva, Figma)</li><li>Experience managing community forums or Discord servers</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Director of Customer Success",
+  "team": "Customer Success",
+  "location": "San Francisco, CA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "lead",
+  "salaryMin": 170000,
+  "salaryMax": 220000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Director of Customer Success to build and lead a team that drives customer retention, expansion, and advocacy. You will define the CS strategy, establish scalable processes, and create a data-driven organization that delivers measurable business outcomes for our customers.</p><p>Reporting to the CRO, you will be a key member of the revenue leadership team and directly responsible for net revenue retention and customer satisfaction metrics.</p><h3>Responsibilities</h3><ul><li>Build, hire, and lead a team of 8-12 Customer Success Managers and CS Operations staff</li><li>Define and implement the customer success strategy, including segmentation, playbooks, and health scoring</li><li>Own net revenue retention (NRR) targets and drive expansion through upsell and cross-sell motions</li><li>Establish scalable onboarding, QBR, and renewal processes</li><li>Build executive relationships with strategic accounts</li><li>Collaborate with Sales, Product, and Support to align on customer outcomes</li></ul><h3>Requirements</h3><ul><li>8+ years of customer success experience, with 3+ years leading CS teams</li><li>Proven track record of driving NRR above 110% in a B2B SaaS environment</li><li>Experience building CS teams and processes from the ground up or scaling them significantly</li><li>Strong analytical skills and experience with CS platforms (Gainsight, Totango, or ChurnZero)</li><li>Excellent executive presence and communication skills</li></ul><h3>Nice to Have</h3><ul><li>Experience in the CMS, DXP, or MarTech space</li><li>Background in professional services or technical consulting</li><li>Experience managing customer advisory boards or community programs</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

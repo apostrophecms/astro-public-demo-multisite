@@ -1,0 +1,22 @@
+{
+  "title": "Sales Development Representative",
+  "team": "Sales",
+  "location": "Boston, MA",
+  "locationType": "onsite",
+  "employmentType": "full-time",
+  "experienceLevel": "entry",
+  "salaryMin": 55000,
+  "salaryMax": 70000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring Sales Development Representatives to join our outbound prospecting team. You will be the first point of contact for potential customers, responsible for generating qualified meetings for our Account Executive team through strategic outreach.</p><p>This is an entry point into a high-performing sales organization with a clear career path into closing roles. We provide extensive training, mentorship, and a supportive team environment where you can develop your sales skills.</p><h3>Responsibilities</h3><ul><li>Conduct outbound prospecting via email, phone, and LinkedIn to generate qualified meetings</li><li>Research target accounts and identify key decision-makers and buying signals</li><li>Qualify inbound leads based on our ideal customer profile and BANT criteria</li><li>Maintain accurate records of all activities and pipeline in Salesforce</li><li>Collaborate with Account Executives to develop account-based outreach strategies</li><li>Meet or exceed monthly quotas for meetings booked and pipeline generated</li></ul><h3>Requirements</h3><ul><li>0-2 years of professional experience (sales experience preferred but not required)</li><li>Excellent verbal and written communication skills</li><li>Resilience, grit, and a competitive drive to exceed targets</li><li>Coachability and willingness to learn and iterate on your approach</li><li>Bachelor's degree or equivalent experience</li></ul><h3>Nice to Have</h3><ul><li>Experience using sales tools (Outreach, SalesLoft, ZoomInfo, LinkedIn Sales Navigator)</li><li>Interest in technology and understanding of the SaaS business model</li><li>Previous experience in customer-facing roles (retail, hospitality, support)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

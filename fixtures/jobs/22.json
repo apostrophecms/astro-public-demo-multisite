@@ -1,0 +1,22 @@
+{
+  "title": "Site Reliability Engineer",
+  "team": "DevOps",
+  "location": "Seattle, WA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 160000,
+  "salaryMax": 205000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Senior Site Reliability Engineer to ensure the availability, performance, and scalability of our production systems. You will be part of a team that treats reliability as a feature and applies software engineering practices to operations challenges.</p><p>Our platform serves enterprise customers who depend on us for business-critical content delivery, so uptime and performance are paramount. You will play a crucial role in keeping our SLAs and earning customer trust.</p><h3>Responsibilities</h3><ul><li>Define and enforce SLOs, SLIs, and error budgets for production services</li><li>Build and improve monitoring, alerting, and incident response tooling</li><li>Lead post-incident reviews and drive follow-up actions to prevent recurrence</li><li>Automate toil and operational processes through code and tooling</li><li>Capacity plan for growth and optimize infrastructure costs</li><li>Collaborate with development teams to improve service reliability through architectural improvements</li></ul><h3>Requirements</h3><ul><li>6+ years of experience in SRE, DevOps, or infrastructure engineering</li><li>Strong proficiency with cloud platforms (AWS preferred) and Kubernetes</li><li>Experience building observability stacks with tools like Prometheus, Grafana, and PagerDuty</li><li>Solid programming skills in Python, Go, or similar languages</li><li>Deep understanding of distributed systems, networking, and Linux internals</li></ul><h3>Nice to Have</h3><ul><li>Experience managing multi-tenant SaaS platforms with strict SLA requirements</li><li>Knowledge of chaos engineering practices and tools (Gremlin, Litmus)</li><li>Familiarity with FinOps and cloud cost optimization strategies</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

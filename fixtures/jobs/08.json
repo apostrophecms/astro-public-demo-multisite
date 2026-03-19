@@ -1,0 +1,22 @@
+{
+  "title": "Marketing Manager, Content",
+  "team": "Marketing",
+  "location": "Chicago, IL",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 90000,
+  "salaryMax": 120000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Content Marketing Manager to develop and execute our content strategy across all channels. You will be the voice of our brand, creating compelling narratives that educate, engage, and convert our target audience of technical decision-makers.</p><p>This role sits at the intersection of creativity and analytics. You will produce high-quality content while continuously measuring its impact on pipeline and revenue.</p><h3>Responsibilities</h3><ul><li>Develop and own the editorial calendar across blog, email, social, and webinars</li><li>Write and edit long-form content including whitepapers, case studies, and technical guides</li><li>Collaborate with product marketing, demand gen, and sales to align content with campaigns</li><li>Optimize content for SEO and track performance using Google Analytics and Search Console</li><li>Manage relationships with freelance writers and external contributors</li></ul><h3>Requirements</h3><ul><li>4+ years of content marketing experience in B2B technology</li><li>Exceptional writing and editing skills with a portfolio of published work</li><li>Experience with SEO strategy and content optimization tools like Ahrefs or SEMrush</li><li>Proficiency with CMS platforms and marketing automation tools</li><li>Ability to translate complex technical concepts into accessible content</li></ul><h3>Nice to Have</h3><ul><li>Experience marketing developer tools or SaaS platforms</li><li>Video content production experience</li><li>Familiarity with ABM (account-based marketing) strategies</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

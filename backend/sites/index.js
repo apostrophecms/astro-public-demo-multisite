@@ -14,6 +14,8 @@ export default async function (site) {
     root: import.meta,
     // Theme name is globally available as apos.options.theme
     theme: site.theme,
+    // Company name from the site piece title, available as apos.options.companyName
+    companyName: site.title || '',
     nestedModuleSubdirs: true,
     modules: {
       // Apostrophe module configuration
@@ -74,14 +76,19 @@ export default async function (site) {
       // A piece type for categorizing articles
       'article-category': {},
 
+      // Job board
+      job: {},
+      'job-widget': {},
+      'job-page': {},
+
       // Import and export content
       '@apostrophecms/import-export': {},
-      '@apostrophecms-pro/automatic-translation': {
-        options: {
-          provider: 'deepl'
-        }
-      },
-      '@apostrophecms-pro/automatic-translation-deepl': {}
+      // '@apostrophecms-pro/automatic-translation': {
+      //   options: {
+      //     provider: 'deepl'
+      //   }
+      // },
+      // '@apostrophecms-pro/automatic-translation-deepl': {}
     }
   };
 

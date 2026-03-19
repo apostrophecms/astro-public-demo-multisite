@@ -1,0 +1,22 @@
+{
+  "title": "Design Systems Lead",
+  "team": "Design",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "lead",
+  "salaryMin": 155000,
+  "salaryMax": 195000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Design Systems Lead to own and evolve our shared design system. You will bridge design and engineering, creating a cohesive library of components, tokens, and patterns that enable teams to build consistent, high-quality interfaces at speed.</p><p>This is a unique role that requires both design expertise and technical fluency. You will define how our components look, behave, and are implemented, working with designers who consume the system and engineers who build it.</p><h3>Responsibilities</h3><ul><li>Define the vision, strategy, and roadmap for our design system</li><li>Design and document UI components, patterns, and design tokens in Figma</li><li>Collaborate with frontend engineers to implement and test components in code</li><li>Establish contribution guidelines and governance processes for the design system</li><li>Audit existing UI for inconsistencies and drive adoption of the design system</li><li>Measure design system adoption, coverage, and impact on team velocity</li></ul><h3>Requirements</h3><ul><li>7+ years of product or UI design experience, with 2+ years focused on design systems</li><li>Deep expertise in Figma, including component architecture, variants, and auto-layout</li><li>Understanding of frontend technologies (HTML, CSS, React) and how design maps to code</li><li>Experience building and scaling design systems used by multiple teams</li><li>Strong documentation and communication skills</li></ul><h3>Nice to Have</h3><ul><li>Experience building design system Figma plugins or custom tooling</li><li>Familiarity with design token standards (Style Dictionary, W3C design tokens)</li><li>Experience with Storybook or similar component documentation tools</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Head of Product",
+  "team": "Product",
+  "location": "San Francisco, CA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "executive",
+  "salaryMin": 220000,
+  "salaryMax": 300000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Head of Product to lead our product organization and define the strategic direction for our platform. Reporting to the CEO, you will be responsible for the entire product lifecycle, from vision and strategy through execution and iteration.</p><p>You will lead a team of product managers and work in close partnership with engineering, design, sales, and customer success to build a product that delights users and drives sustainable growth. This is a rare opportunity to shape the product direction of a company at an inflection point in its growth trajectory.</p><h3>Responsibilities</h3><ul><li>Define and communicate the product vision, strategy, and roadmap</li><li>Lead, mentor, and grow a team of 6+ product managers</li><li>Establish product development processes that balance speed with strategic rigor</li><li>Drive alignment across executive leadership on priorities and trade-offs</li><li>Deeply understand our market, competitors, and customer needs through research and engagement</li><li>Own product metrics and ensure the team is focused on outcomes over outputs</li></ul><h3>Requirements</h3><ul><li>10+ years of product management experience, with 4+ years leading product teams</li><li>Experience building and scaling B2B SaaS or platform products</li><li>Strong strategic thinking and ability to translate business goals into product roadmaps</li><li>Proven ability to recruit, develop, and inspire high-performing product teams</li><li>Exceptional stakeholder management and executive communication skills</li></ul><h3>Nice to Have</h3><ul><li>Experience in the CMS, DXP, or content technology space</li><li>Technical background with the ability to engage deeply with engineering teams</li><li>Experience with product-led growth strategies</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

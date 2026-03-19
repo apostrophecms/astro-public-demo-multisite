@@ -13,6 +13,10 @@ export default {
         label: 'project:articleIndexPage'
       },
       {
+        name: 'job-page',
+        label: 'Job Board'
+      },
+      {
         name: '@apostrophecms/home-page',
         label: 'project:home'
       }

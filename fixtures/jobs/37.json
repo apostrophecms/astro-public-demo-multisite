@@ -1,0 +1,22 @@
+{
+  "title": "Database Administrator",
+  "team": "Engineering",
+  "location": "Atlanta, GA",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 130000,
+  "salaryMax": 170000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a Senior Database Administrator to manage and optimize the database systems that underpin our entire platform. You will ensure high availability, performance, and security of our MongoDB and PostgreSQL deployments across multiple environments.</p><p>Data is the backbone of our product, and this role is critical to ensuring it is stored reliably, queried efficiently, and protected rigorously. You will work with engineering teams to optimize data access patterns and plan for growth.</p><h3>Responsibilities</h3><ul><li>Administer, tune, and monitor MongoDB and PostgreSQL databases in production</li><li>Design and implement backup, recovery, and high-availability strategies</li><li>Optimize query performance and indexing strategies based on workload analysis</li><li>Plan and execute database migrations, upgrades, and schema changes with zero downtime</li><li>Implement database security controls including encryption, access management, and auditing</li><li>Collaborate with developers to review data models and query patterns</li></ul><h3>Requirements</h3><ul><li>6+ years of database administration experience</li><li>Deep expertise in MongoDB (sharding, replication, aggregation framework)</li><li>Strong experience with PostgreSQL or MySQL in production environments</li><li>Knowledge of database performance tuning, indexing strategies, and query optimization</li><li>Experience with cloud-managed database services (Atlas, RDS, Cloud SQL)</li></ul><h3>Nice to Have</h3><ul><li>Experience with Redis, Elasticsearch, or other specialized data stores</li><li>Familiarity with database migration tools (Flyway, Liquibase, mongomigrate)</li><li>Knowledge of data compliance requirements (GDPR, HIPAA)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

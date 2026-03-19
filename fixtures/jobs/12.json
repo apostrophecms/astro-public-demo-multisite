@@ -1,0 +1,22 @@
+{
+  "title": "Account Executive, Enterprise",
+  "team": "Sales",
+  "location": "New York, NY",
+  "locationType": "onsite",
+  "employmentType": "full-time",
+  "experienceLevel": "senior",
+  "salaryMin": 130000,
+  "salaryMax": 170000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are seeking a driven Enterprise Account Executive to close large, complex deals with Fortune 1000 companies. You will manage the full sales cycle from prospecting to close, working with technical buyers, procurement, and C-level executives to demonstrate the value of our platform.</p><p>Our enterprise segment is the fastest-growing part of our business, and this role offers significant earning potential with uncapped commissions on top of a competitive base salary.</p><h3>Responsibilities</h3><ul><li>Own and manage a pipeline of enterprise opportunities with deal sizes of $100K-$500K+ ARR</li><li>Conduct discovery calls, product demonstrations, and technical evaluations</li><li>Navigate complex multi-stakeholder sales cycles with procurement and legal teams</li><li>Develop and execute strategic account plans for target accounts</li><li>Collaborate with Solutions Engineers, Customer Success, and Marketing to drive deals forward</li><li>Accurately forecast pipeline and revenue on a weekly and monthly basis</li></ul><h3>Requirements</h3><ul><li>5+ years of enterprise SaaS sales experience with a consistent track record of exceeding quota</li><li>Experience selling to VP and C-level buyers in mid-market and enterprise organizations</li><li>Strong understanding of MEDDPICC, Challenger, or similar sales methodologies</li><li>Experience with Salesforce, Gong, and modern sales engagement tools</li><li>Excellent negotiation and presentation skills</li></ul><h3>Nice to Have</h3><ul><li>Experience selling CMS, DXP, or marketing technology solutions</li><li>Existing relationships with digital and IT leaders at target accounts</li><li>Technical background or ability to conduct product demos independently</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "UX Researcher",
+  "team": "Design",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 100000,
+  "salaryMax": 135000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring a UX Researcher to deepen our understanding of customers and inform product strategy through rigorous research. You will plan and conduct studies across the entire product lifecycle, from early-stage discovery to evaluative testing of shipped features.</p><p>Working closely with product designers, product managers, and engineers, you will ensure that our decisions are grounded in real user needs and behaviors rather than assumptions.</p><h3>Responsibilities</h3><ul><li>Plan and conduct qualitative and quantitative research studies (interviews, surveys, usability tests, card sorts)</li><li>Synthesize research findings into clear, actionable insights and recommendations</li><li>Build and maintain user personas, journey maps, and other research artifacts</li><li>Establish and promote research best practices across the organization</li><li>Manage participant recruitment and maintain a research participant panel</li><li>Present findings to stakeholders and advocate for user-centered design</li></ul><h3>Requirements</h3><ul><li>3+ years of UX research experience in a product-driven organization</li><li>Proficiency with a range of research methodologies (qualitative and quantitative)</li><li>Experience with tools like UserTesting, Dovetail, Optimal Workshop, or similar</li><li>Strong analytical skills and ability to synthesize complex data</li><li>Excellent written and verbal communication skills</li></ul><h3>Nice to Have</h3><ul><li>Experience researching enterprise or B2B SaaS products</li><li>Background in behavioral science, HCI, or cognitive psychology</li><li>Experience with data analysis tools (R, Python, SPSS)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Compliance Analyst",
+  "team": "Legal",
+  "location": "Remote",
+  "locationType": "remote",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 85000,
+  "salaryMax": 115000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring a Compliance Analyst to help maintain and expand our compliance program. You will work across the organization to ensure we meet the security and privacy requirements of our enterprise customers, regulatory bodies, and industry standards.</p><p>As a company that handles sensitive customer data, compliance is essential to our business. You will play a key role in maintaining trust with our customers by ensuring our practices meet the highest standards.</p><h3>Responsibilities</h3><ul><li>Manage SOC 2 Type II audit preparation, evidence collection, and remediation</li><li>Maintain compliance documentation including policies, procedures, and control matrices</li><li>Respond to customer security questionnaires and due diligence requests</li><li>Monitor regulatory changes (GDPR, CCPA, HIPAA) and assess impact on our programs</li><li>Coordinate with Engineering and Security teams to implement compliance controls</li><li>Conduct internal compliance assessments and track remediation of findings</li></ul><h3>Requirements</h3><ul><li>3+ years of experience in compliance, audit, or information security</li><li>Strong knowledge of SOC 2, ISO 27001, and GDPR frameworks</li><li>Experience managing audit cycles and working with external auditors</li><li>Excellent documentation and organizational skills</li><li>Ability to communicate compliance requirements to technical teams</li></ul><h3>Nice to Have</h3><ul><li>CISA, CISM, or CRISC certification</li><li>Experience with GRC tools (Vanta, Drata, OneTrust)</li><li>Background in SaaS or cloud computing compliance</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

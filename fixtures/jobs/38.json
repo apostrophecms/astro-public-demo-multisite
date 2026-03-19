@@ -1,0 +1,22 @@
+{
+  "title": "Partner Marketing Manager",
+  "team": "Marketing",
+  "location": "London, UK",
+  "locationType": "hybrid",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 55000,
+  "salaryMax": 75000,
+  "salaryCurrency": "GBP",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are looking for a Partner Marketing Manager to develop and execute joint marketing programs with our technology and agency partners. Based in our London office, you will work with partners across Europe to create co-branded campaigns, events, and content that drive mutual growth.</p><p>Our partner ecosystem is a key growth lever, and this role will help us deepen those relationships through strategic marketing initiatives that benefit both our partners and our business.</p><h3>Responsibilities</h3><ul><li>Develop and execute joint marketing plans with technology and agency partners</li><li>Create co-branded content, webinars, case studies, and campaign assets</li><li>Plan and manage partner events, including co-sponsored conferences and workshops</li><li>Manage partner communication channels including newsletters and partner portals</li><li>Track and report on partner marketing ROI, pipeline influence, and engagement metrics</li><li>Coordinate with sales and partnerships teams to align marketing efforts with revenue goals</li></ul><h3>Requirements</h3><ul><li>3-5 years of partner marketing or channel marketing experience in B2B technology</li><li>Experience building and managing co-marketing programs with technology partners</li><li>Strong project management skills and ability to manage multiple programs simultaneously</li><li>Excellent written and verbal communication skills</li><li>Experience with marketing automation and CRM tools</li></ul><h3>Nice to Have</h3><ul><li>Experience with agency partner programs in the digital services space</li><li>Knowledge of the European technology market and partner landscape</li><li>Additional European language skills</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

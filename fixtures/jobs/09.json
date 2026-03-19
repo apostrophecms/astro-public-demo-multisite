@@ -1,0 +1,22 @@
+{
+  "title": "Customer Success Manager",
+  "team": "Customer Success",
+  "location": "Boston, MA",
+  "locationType": "onsite",
+  "employmentType": "full-time",
+  "experienceLevel": "mid",
+  "salaryMin": 85000,
+  "salaryMax": 115000,
+  "salaryCurrency": "USD",
+  "description": {
+    "metaType": "area",
+    "items": [
+      {
+        "metaType": "widget",
+        "type": "@apostrophecms/rich-text",
+        "content": "<h3>About This Role</h3><p>We are hiring a Customer Success Manager to serve as the primary point of contact for a portfolio of enterprise accounts. You will ensure our customers achieve their desired outcomes, drive product adoption, and identify opportunities for expansion.</p><p>Customer Success is the heartbeat of our business. You will build deep relationships with stakeholders, understand their goals, and act as their internal advocate to ensure they get maximum value from our platform.</p><h3>Responsibilities</h3><ul><li>Manage a portfolio of 30-40 enterprise accounts, driving retention and net revenue expansion</li><li>Conduct regular business reviews and health checks with key stakeholders</li><li>Develop and execute success plans tailored to each customer's objectives</li><li>Collaborate with Sales on expansion opportunities and renewal negotiations</li><li>Serve as the voice of the customer internally, providing feedback to Product and Engineering</li><li>Monitor account health metrics and proactively address risks</li></ul><h3>Requirements</h3><ul><li>3+ years of customer success or account management experience in B2B SaaS</li><li>Proven ability to manage complex enterprise relationships</li><li>Strong analytical skills and experience with customer health scoring</li><li>Excellent presentation and communication skills</li><li>Experience with CRM and CS platforms (Salesforce, Gainsight, or similar)</li></ul><h3>Nice to Have</h3><ul><li>Experience in the content management or digital experience space</li><li>Technical aptitude and ability to understand API integrations</li><li>Project management certification (PMP, CSM)</li></ul>"
+      }
+    ]
+  },
+  "visibility": "public"
+}

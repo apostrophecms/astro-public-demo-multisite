@@ -12,6 +12,14 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
+    security: {
+    allowedDomains: [
+      {
+        hostname: '**.apos.dev',
+        protocol: 'https',
+      },
+    ],
+  },
   integrations: [
     apostrophe({
       aposHost: 'http://localhost:3000',

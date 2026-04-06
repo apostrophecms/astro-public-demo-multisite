@@ -1,17 +1,12 @@
-# ApostropheCMS Assembly + Astro Hybrid Demo
+# ApostropheCMS + Astro Hybrid Demo
 
-> **Note:** This starter kit requires an ApostropheCMS Assembly license, which includes all Pro features. [View Assembly pricing](https://apostrophecms.com/pricing) or [contact us](https://apostrophecms.com/contact-us) to learn more about licensing options.
->
-> **Hosting option:** ApostropheCMS provides turnkey hosting for Assembly + Astro projects, managing the infrastructure so you can focus on building. [Learn more](https://apostrophecms.com/hosting) and [contact us](https://apostrophecms.com/contact-us) to get started.
-
-**Learn how to build modern websites with a headless CMS architecture** using ApostropheCMS multisite as your backend and Astro for lightning-fast frontend rendering. This demo shows you the complete integration pattern with working examples you can use immediately.
+**Learn how to build modern websites with a headless CMS architecture** using ApostropheCMS as your backend and Astro for lightning-fast frontend rendering. This demo shows you the complete integration pattern with working examples you can use immediately.
 
 This repository serves as both a learning resource and starter template for building your own ApostropheCMS + Astro projects.
 
 ## Why This Architecture?
 
 This hybrid approach combines:
-- **Multisite Management** – Run multiple sites from one dashboard and one codebase
 - **Structured content management** - ApostropheCMS provides an intuitive editing experience with in-context editing
 - **Modern frontend performance** - Astro delivers optimal page load speeds with partial hydration
 - **Developer flexibility** - Keep backend content modeling separate from frontend presentation
@@ -28,6 +23,7 @@ This hybrid approach combines:
 
 **Widgets:**
 - Core content widgets (rich text, image, video, file)
+- Layout widgets (layout, layout column) for structured page composition
 - Marketing components (hero, button, card, price card)
 - Article widget for content relationships
 - GitHub PRs widget demonstrating external API integration
@@ -45,25 +41,30 @@ This hybrid approach combines:
 
 ### Installation
 
-First, fork the [astro-public-demo-multisite](https://github.com/apostrophecms/astro-public-demo-multisite/) repo (give it a star while you're there).
+First, fork the [astro-public-demo](https://github.com/apostrophecms/astro-public-demo/) repo (give it a star while you're there).
 
 Then:
 ```bash
 git clone <your-repo-url>
-cd astro-public-demo-multisite
-npm run install
+cd astro-public-demo
+npm run install-all
 ```
 
 ### Development
 
-Then start both servers in separate terminals:
+Set the environment variable in your terminal:
 
 ```bash
-npm run dev-frontend
-npm run dev-backend
+export APOS_EXTERNAL_FRONT_KEY=dev
 ```
 
-Or run them manually by folder in separate terminals:
+Then start both servers:
+
+```bash
+npm run dev
+```
+
+Or run them separately in two terminals:
 
 ```bash
 # Terminal 1 - Backend (port 3000)
@@ -73,23 +74,21 @@ cd backend && npm run dev
 cd frontend && npm run dev
 ```
 
-> NOTE: You can change the secret key that is used to communicate between the frontend and backend by setting the `APOS_EXTERNAL_FRONT_KEY` environment variable. By default, it is set to `dev` in the `dev` npm script, but you can change it to anything you like. 
+Visit `http://localhost:4321` to see the site.
 
 ### Create an Admin User
 
 ```bash
 cd backend
-node app @apostrophecms/user:add admin admin --site=dashboard
+node app @apostrophecms/user:add admin admin
 ```
-
-Visit `http://dashboard.localhost:4321` to see the dashboard and create new sites.
 
 ## Architecture
 
 ```
-├── backend/               # ApostropheCMS headless multisite application
-│   ├── dashboard/         # Multisite dashboard
-│   ├── sites/             # Individual site configurations and modules
+├── backend/               # ApostropheCMS headless CMS
+│   ├── modules/           # Page types, pieces, and widgets
+│   ├── lib/               # Shared utilities (area config, link fields)
 │   └── app.js             # Main configuration
 ├── frontend/              # Astro application
 │   ├── src/
@@ -120,19 +119,17 @@ Keys must match backend module names exactly (e.g., `'default-page'`, `'@apostro
 
 ## Development Guide
 
-> NOTE: For convinience, all modules are registered in `backend/sites/index.js`. In a real project, you would typically register modules in their respective site themes, using `backend/sites/lib/theme-{site-name}.js` (see `backend/sites/lib/theme-demo.js` for an example).
-
 ### Adding a New Widget
 
-1. Create the widget module in `backend/sites/modules/{widget-name}/index.js`
-2. Register it in `backend/sites/index.js`
+1. Create the widget module in `backend/modules/{widget-name}/index.js`
+2. Register it in `backend/app.js`
 3. Create the Astro component in `frontend/src/widgets/{WidgetName}.astro`
 4. Add the mapping in `frontend/src/widgets/index.js`
 
 ### Adding a New Page Type
 
-1. Create the page module in `backend/sites/modules/{page-name}/index.js`
-2. Register it in `backend/sites/index.js` and add to `@apostrophecms/page` types
+1. Create the page module in `backend/modules/{page-name}/index.js`
+2. Register it in `backend/app.js` and add to `@apostrophecms/page` types
 3. Create the template in `frontend/src/templates/{PageName}.astro`
 4. Add the mapping in `frontend/src/templates/index.js`
 
@@ -161,12 +158,37 @@ Deploy the backend and frontend separately:
 
 **Frontend:** Any SSR-capable host (Netlify, Vercel, Cloudflare Pages, etc.) with the `APOS_EXTERNAL_FRONT_KEY` environment variable set
 
-## Production-Ready Starter Kits
+**Important: Production Security Configuration**
 
-This demo focuses on core integration patterns. For production projects with complete design systems and advanced features, check out:
+Astro requires an `allowedDomains` entry in `astro.config.mjs` for certain
+ApostropheCMS operations — including file uploads and logout — to work correctly
+in production. Without it, those operations will silently fail with a 403.
+This does **not** affect local development.
 
-- **[Apollo Starter Kit](https://github.com/apostrophecms/starter-kit-astro-apollo)** - Production-ready with Bulma design system
-- **[Astro Essentials](https://github.com/apostrophecms/starter-kit-astro-essentials)** - Minimal foundation for custom designs
+Add your ApostropheCMS backend domain to the `security` block in
+`frontend/astro.config.mjs`:
+
+```js
+export default defineConfig({
+  // ... other config
+  security: {
+    allowedDomains: [
+      { hostname: 'your-apos-backend.com' }
+    ]
+  }
+});
+```
+
+This tells Astro to trust `X-Forwarded-Host` headers from your backend, which
+it uses to construct the request origin for CSRF validation. Setting
+`checkOrigin: false` alone is **not** sufficient.
+
+> Requires `astro@5.14.2` or later. Wildcard hostnames (e.g.
+> `*.yourdomain.com`) are supported if your backend and frontend share a domain.
+
+## Production-Ready Starter Kit
+
+This demo focuses on core integration patterns. When you're ready to build a production project, the **[Astro Essentials Starter Kit](https://github.com/apostrophecms/starter-kit-astro-essentials)** provides a minimal foundation you can build your own design system on top of.
 
 Need enterprise features like advanced permissions, automated translation, or document versioning? [Contact us](https://apostrophecms.com/contact-us) to learn about ApostropheCMS Pro.
 

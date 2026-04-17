@@ -16,6 +16,7 @@
     "astro": "^5.13.7",
     "cross-env": "^10.1.0",
     "dayjs": "^1.11.10",
+    "htmx.org": "^2.0.8",
     "postcss-viewport-to-container-toggle": "^2.2.0",
     "sass": "^1.77.0",
     "vite": "^7.1.5"

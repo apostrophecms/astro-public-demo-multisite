@@ -46,5 +46,10 @@ if (aposData.notFound) {
     <script>
       import "../widgets/players.ts";
     </script>
+    <script>
+      import htmx from "htmx.org";
+      // Ensure htmx is available globally and processes the initial page
+      window.htmx = htmx;
+    </script>
   </Fragment>
 </AposLayout>

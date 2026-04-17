@@ -107,7 +107,9 @@ export default {
                 { tag: 'h3', label: 'Heading 3' },
                 { tag: 'h4', label: 'Heading 4' }
               ]
-            }
+            },
+            '@apostrophecms/image': {},
+            '@apostrophecms/video': {}
           }
         }
       }

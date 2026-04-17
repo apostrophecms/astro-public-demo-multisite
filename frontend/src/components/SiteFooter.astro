@@ -277,7 +277,7 @@
   }
 
   setTimeout(() => {
-    if (window.apos) {
+    if (window.apos?.bus?.on) {
       window.apos.bus.on('refreshed', initThemeToggle);
       window.apos.bus.on('modal-resolved', initThemeToggle);
     }

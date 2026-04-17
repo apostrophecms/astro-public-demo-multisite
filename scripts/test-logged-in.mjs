@@ -16,17 +16,62 @@ await (await page.$('input[type="password"]')).fill('tomtest1');
 await (await page.$('button[type="submit"], button')).click();
 await page.waitForTimeout(5000);
 
-// Screenshot unfiltered
-console.log('Testing unfiltered page...');
+// Visit homepage
+console.log('Loading job board...');
 await page.goto(BASE, { waitUntil: 'load', timeout: 30000 });
-await page.waitForTimeout(2000);
-await page.screenshot({ path: '/tmp/jobs-unfiltered.png', fullPage: true });
+await page.waitForTimeout(3000);
 
-// Screenshot filtered
-console.log('Testing filtered page (Engineering + Remote)...');
-await page.goto(`${BASE}/?team=Engineering&locationType=remote`, { waitUntil: 'load', timeout: 30000 });
-await page.waitForTimeout(2000);
-await page.screenshot({ path: '/tmp/jobs-filtered.png', fullPage: true });
+const htmxLoaded = await page.evaluate(() => typeof window.htmx !== 'undefined');
+console.log('HTMX loaded:', htmxLoaded);
+
+// Mark the DOM to detect full-page reload
+await page.evaluate(() => {
+  document.body.setAttribute('data-htmx-test', 'alive');
+});
+
+// Listen for HTMX events
+await page.evaluate(() => {
+  window._htmxEvents = [];
+  document.body.addEventListener('htmx:beforeRequest', () => window._htmxEvents.push('beforeRequest'));
+  document.body.addEventListener('htmx:afterSwap', () => window._htmxEvents.push('afterSwap'));
+  document.body.addEventListener('htmx:swapError', (e) => window._htmxEvents.push('swapError: ' + e.detail?.error));
+  document.body.addEventListener('htmx:responseError', (e) => window._htmxEvents.push('responseError: ' + e.detail?.xhr?.status));
+});
+
+// Click the "Engineering" filter chip
+console.log('\n--- Clicking Engineering filter ---');
+const chip = await page.$('a.job-filter-chip:has-text("Engineering")');
+if (chip) {
+  // Check its htmx attributes
+  const attrs = await chip.evaluate(el => ({
+    hxGet: el.getAttribute('hx-get'),
+    hxTarget: el.getAttribute('hx-target'),
+    hxSelect: el.getAttribute('hx-select'),
+    hxSwap: el.getAttribute('hx-swap'),
+    hxPushUrl: el.getAttribute('hx-push-url'),
+    href: el.getAttribute('href')
+  }));
+  console.log('Chip attributes:', JSON.stringify(attrs, null, 2));
+
+  await chip.click();
+  await page.waitForTimeout(3000);
+
+  // Check if our marker survived (= no full reload)
+  const markerAlive = await page.evaluate(() => document.body.getAttribute('data-htmx-test') === 'alive');
+  console.log('DOM marker survived (no full reload):', markerAlive);
+
+  // Check htmx events
+  const events = await page.evaluate(() => window._htmxEvents || []);
+  console.log('HTMX events:', events);
+
+  const url = page.url();
+  console.log('Current URL:', url);
+
+  const jobs = await page.$$eval('.job-excerpt-title a', els => els.map(e => e.textContent.trim()));
+  console.log(`Jobs after filter: ${jobs.length}`);
+
+  await page.screenshot({ path: '/tmp/htmx-test.png', fullPage: true });
+}
 
 await browser.close();
-console.log('Done. Screenshots: /tmp/jobs-unfiltered.png, /tmp/jobs-filtered.png');
+console.log('\nDone.');

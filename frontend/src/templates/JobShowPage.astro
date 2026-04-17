@@ -52,34 +52,45 @@ const experienceLevelLabels = {
 </div>
 
 <div class="layout">
-  <main>
-    <article class="job-show">
-      <div class="job-meta">
-        {job.team && (
-          <span class="job-tag job-tag--team">{job.team}</span>
-        )}
-        {job.location && (
-          <span class="job-tag job-tag--location">{job.location}</span>
-        )}
-        {job.locationType && (
-          <span class="job-tag job-tag--location-type">{locationTypeLabels[job.locationType] || job.locationType}</span>
-        )}
-        {job.employmentType && (
-          <span class="job-tag job-tag--employment">{employmentTypeLabels[job.employmentType] || job.employmentType}</span>
-        )}
-        {job.experienceLevel && (
-          <span class="job-tag job-tag--experience">{experienceLevelLabels[job.experienceLevel] || job.experienceLevel}</span>
-        )}
-        {salary && (
-          <span class="job-tag job-tag--salary">{salary}</span>
-        )}
-      </div>
+  <div class="job-columns">
+    <main>
+      {page.aboveJob && <AposArea area={page.aboveJob} />}
 
-      <div class="job-description general-content">
-        <AposArea area={job.description} />
-      </div>
-    </article>
-  </main>
+      <article class="job-show">
+        <div class="job-meta">
+          {job.team && (
+            <span class="job-tag job-tag--team">{job.team}</span>
+          )}
+          {job.location && (
+            <span class="job-tag job-tag--location">{job.location}</span>
+          )}
+          {job.locationType && (
+            <span class="job-tag job-tag--location-type">{locationTypeLabels[job.locationType] || job.locationType}</span>
+          )}
+          {job.employmentType && (
+            <span class="job-tag job-tag--employment">{employmentTypeLabels[job.employmentType] || job.employmentType}</span>
+          )}
+          {job.experienceLevel && (
+            <span class="job-tag job-tag--experience">{experienceLevelLabels[job.experienceLevel] || job.experienceLevel}</span>
+          )}
+          {salary && (
+            <span class="job-tag job-tag--salary">{salary}</span>
+          )}
+        </div>
+
+        <div class="job-description general-content">
+          <AposArea area={job.description} />
+        </div>
+      </article>
+
+      {page.belowJob && <AposArea area={page.belowJob} />}
+    </main>
+    {page.sidebar && (
+      <aside class="job-sidebar">
+        <AposArea area={page.sidebar} />
+      </aside>
+    )}
+  </div>
 </div>
 
 <style>
@@ -90,9 +101,6 @@ const experienceLevelLabels = {
     color: #666;
     font-size: 1.1rem;
     margin-top: 0.25rem;
-  }
-  .job-show {
-    padding-bottom: 3rem;
   }
   .job-meta {
     display: flex;
@@ -120,8 +128,5 @@ const experienceLevelLabels = {
   .job-tag--salary {
     background: #fef7e0;
     color: #b06000;
-  }
-  .job-description {
-    max-width: 800px;
   }
 </style>

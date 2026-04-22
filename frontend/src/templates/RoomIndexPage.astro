@@ -1,0 +1,63 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RoomResults from '../components/RoomResults.astro';
+
+const {
+  page,
+  pieces = [],
+  piecesFilters = {},
+  currentPage = 1,
+  totalPages = 1,
+  url: aposUrl,
+  global
+} = Astro.props.aposData;
+
+const pageUrl = aposUrl || page?._url || Astro.url.pathname;
+const companyName = global?.companyName || global?.siteTitle || '';
+const searchParams = Astro.url.searchParams;
+---
+
+<Breadcrumbs {page} />
+
+<div class="room-title-wrapper">
+  <div class="layout">
+    <h1 class="page-title">{page.title}</h1>
+    {companyName && <p class="room-company-subtitle">Stay with {companyName}</p>}
+  </div>
+</div>
+
+<div class="layout">
+  <div class="room-columns">
+    <main class="room-index">
+      {page.aboveRooms && <AposArea area={page.aboveRooms} />}
+
+      <RoomResults
+        {pieces}
+        {piecesFilters}
+        {currentPage}
+        {totalPages}
+        {pageUrl}
+        {searchParams}
+      />
+
+      {page.belowRooms && <AposArea area={page.belowRooms} />}
+    </main>
+    {page.sidebar && (
+      <aside class="room-sidebar">
+        <AposArea area={page.sidebar} />
+      </aside>
+    )}
+  </div>
+</div>
+
+<style>
+  .room-title-wrapper {
+    padding: 2rem 0 1rem;
+  }
+  .room-company-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+  }
+</style>

@@ -1,0 +1,29 @@
+{
+  "slug": "azure-coast",
+  "name": "Azure Coast Resort",
+  "tagline": "Barefoot luxury on the turquoise coast",
+  "description": "Azure Coast Resort is a secluded beachfront sanctuary where whitewashed villas meet the endless Mediterranean blue. Five-star spa, private beach, and chef-led coastal dining.",
+  "home": {
+    "heroHeadline": "Where the horizon begins",
+    "heroSubhead": "A family-owned resort on 40 private acres of Mediterranean coastline.",
+    "heroImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1800&q=80&auto=format&fit=crop",
+    "bookingHeadline": "Plan Your Stay on the Coast",
+    "bookingSubhead": "Check live rates and reserve your oceanfront suite in seconds.",
+    "bookingImage": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1800&q=80&auto=format&fit=crop"
+  },
+  "amenities": {
+    "heading": "Resort Amenities",
+    "intro": "From morning yoga on the bluff to moonlit dinners at the water's edge.",
+    "columns": "4",
+    "items": [
+      { "icon": "pool", "label": "Infinity Pool", "description": "Three heated pools overlooking the sea" },
+      { "icon": "spa", "label": "Seaside Spa", "description": "Couples treatments and hammam" },
+      { "icon": "restaurant", "label": "Two Restaurants", "description": "Coastal fine dining & beach grill" },
+      { "icon": "beach", "label": "Private Beach", "description": "Attended loungers and cabanas" },
+      { "icon": "gym", "label": "Wellness Center", "description": "Peloton, Pilates, and ocean-view gym" },
+      { "icon": "concierge", "label": "24h Concierge", "description": "Excursions, reservations, surprises" },
+      { "icon": "airport", "label": "Airport Transfer", "description": "Complimentary for suite guests" },
+      { "icon": "family", "label": "Kids' Club", "description": "Ages 4-12, daily programming" }
+    ]
+  }
+}

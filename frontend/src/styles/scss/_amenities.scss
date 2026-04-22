@@ -1,0 +1,69 @@
+.amenities-widget {
+  margin: 2rem 0;
+}
+
+.amenities-widget__heading {
+  text-align: center;
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.amenities-widget__intro {
+  text-align: center;
+  color: #4b5563;
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+
+.amenities-grid {
+  display: grid;
+  gap: 1.5rem;
+
+  &--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  &--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  &--cols-4 { grid-template-columns: repeat(4, 1fr); }
+  &--cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+  @media (max-width: 768px) {
+    &--cols-3,
+    &--cols-4,
+    &--cols-6 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.amenity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+}
+
+.amenity__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--a-primary, #6236ff);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.amenity__label {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.amenity__description {
+  color: #6b7280;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}

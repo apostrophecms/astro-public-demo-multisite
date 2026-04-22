@@ -1,0 +1,19 @@
+{
+  "title": "Garden Villa",
+  "roomType": "villa",
+  "bedConfiguration": "king",
+  "view": "garden",
+  "maxOccupancy": 3,
+  "bedroomCount": 1,
+  "squareFeet": 920,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "balcony", "jacuzzi", "smart-tv", "workspace", "room-service", "pet-friendly" ],
+  "nightlyRate": 780,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>Tucked into the fragrant gardens</h3><p>A single-level villa wrapped in lavender and olive trees, with its own outdoor soaking tub and lounging pergola. Perfect for couples seeking privacy or a traveling guest with a four-legged companion.</p><ul><li>King bed plus convertible daybed</li><li>Outdoor soaking tub and shower garden</li><li>Full lounging pergola with daybed</li><li>Dedicated villa attendant</li></ul>",
+  "visibility": "public"
+}

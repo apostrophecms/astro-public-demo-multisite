@@ -1,0 +1,20 @@
+{
+  "title": "Weekend Wanderer",
+  "subtitle": "Friday-to-Sunday city break",
+  "tagline": "Friends rate",
+  "fromPrice": 225,
+  "priceCurrency": "USD",
+  "priceUnit": "per night",
+  "validFrom": "2026-03-01",
+  "validTo": "2026-12-15",
+  "promoCode": "WANDER",
+  "highlights": [
+    { "text": "Two-night weekend stay" },
+    { "text": "Rooftop bar welcome cocktail" },
+    { "text": "Neighborhood guide curated by our concierge" },
+    { "text": "Late checkout Sunday until 3pm" }
+  ],
+  "ctaText": "Plan a weekend",
+  "heroImage": "https://images.unsplash.com/photo-1551632811-561732d1e306?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Designed for a Friday arrival that starts at the bar and a Sunday departure that takes its time.</p>"
+}

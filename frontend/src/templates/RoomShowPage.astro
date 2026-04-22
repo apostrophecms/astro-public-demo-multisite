@@ -1,0 +1,241 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getWidth,
+  getHeight
+} from '@apostrophecms/apostrophe-astro/lib/attachment.js';
+
+const { page, piece, global } = Astro.props.aposData;
+const room = piece;
+const companyName = global?.companyName || global?.siteTitle || '';
+
+const roomTypeLabels = {
+  standard: 'Standard',
+  deluxe: 'Deluxe',
+  'junior-suite': 'Junior Suite',
+  suite: 'Suite',
+  'executive-suite': 'Executive Suite',
+  penthouse: 'Penthouse',
+  villa: 'Villa',
+  studio: 'Studio'
+};
+
+const bedLabels = {
+  king: 'King bed',
+  queen: 'Queen bed',
+  'two-queens': 'Two queen beds',
+  'two-doubles': 'Two double beds',
+  'two-twins': 'Two twin beds',
+  'king-sofa': 'King + sofa bed',
+  bunk: 'Bunk bed'
+};
+
+const viewLabels = {
+  ocean: 'Ocean View',
+  pool: 'Pool View',
+  garden: 'Garden View',
+  city: 'City Skyline',
+  courtyard: 'Courtyard',
+  mountain: 'Mountain View',
+  interior: 'Interior'
+};
+
+const amenityLabels = {
+  wifi: 'Free Wi-Fi',
+  breakfast: 'Breakfast Included',
+  'mini-bar': 'Mini Bar',
+  balcony: 'Private Balcony',
+  jacuzzi: 'Jacuzzi / Soaking Tub',
+  fireplace: 'Fireplace',
+  kitchenette: 'Kitchenette',
+  kitchen: 'Full Kitchen',
+  'smart-tv': 'Smart TV',
+  workspace: 'Work Desk',
+  'room-service': '24h Room Service',
+  'pet-friendly': 'Pet Friendly',
+  accessible: 'Accessible'
+};
+
+function formatRate(amount, currency) {
+  if (!amount) return null;
+  const fmt = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency || 'USD',
+    maximumFractionDigits: 0
+  });
+  return fmt.format(amount);
+}
+
+const rate = formatRate(room.nightlyRate, room.rateCurrency);
+
+const featured = room?._featuredImage?.[0];
+const featuredUrl = featured ? getAttachmentUrl(featured) : null;
+const featuredSrcset = featured ? getAttachmentSrcset(featured) : null;
+const featuredWidth = featured ? getWidth(featured) : undefined;
+const featuredHeight = featured ? getHeight(featured) : undefined;
+---
+
+<Breadcrumbs {page} {piece} />
+
+<div class="room-title-wrapper">
+  <div class="layout">
+    <h1 class="page-title">{room.title}</h1>
+    {companyName && <p class="room-company">{companyName}</p>}
+  </div>
+</div>
+
+<div class="layout">
+  <div class="room-columns">
+    <main>
+      {page.aboveRoom && <AposArea area={page.aboveRoom} />}
+
+      <article class="room-show">
+        {featuredUrl && (
+          <div class="room-hero">
+            <img
+              src={featuredUrl}
+              srcset={featuredSrcset}
+              alt={featured?.title || room.title}
+              width={featuredWidth}
+              height={featuredHeight}
+            />
+          </div>
+        )}
+
+        <div class="room-meta">
+          {room.roomType && (
+            <span class="room-tag room-tag--type">{roomTypeLabels[room.roomType] || room.roomType}</span>
+          )}
+          {room.view && (
+            <span class="room-tag room-tag--view">{viewLabels[room.view] || room.view}</span>
+          )}
+          {room.bedConfiguration && (
+            <span class="room-tag">{bedLabels[room.bedConfiguration] || room.bedConfiguration}</span>
+          )}
+          {room.maxOccupancy && (
+            <span class="room-tag">Sleeps {room.maxOccupancy}</span>
+          )}
+          {room.bedroomCount > 1 && (
+            <span class="room-tag">{room.bedroomCount} Bedrooms</span>
+          )}
+          {room.squareFeet && (
+            <span class="room-tag">{room.squareFeet} sq ft</span>
+          )}
+          {rate && (
+            <span class="room-tag room-tag--rate">From {rate} / night</span>
+          )}
+        </div>
+
+        <div class="room-description general-content">
+          <AposArea area={room.description} />
+        </div>
+
+        {room.gallery?.items?.length > 0 && (
+          <>
+            <h3>Gallery</h3>
+            <div class="room-gallery-area">
+              <AposArea area={room.gallery} />
+            </div>
+          </>
+        )}
+
+        {room.amenities?.length > 0 && (
+          <div class="room-amenities">
+            <h3>Room Amenities</h3>
+            <ul class="room-amenities-list">
+              {room.amenities.map((key) => (
+                <li>{amenityLabels[key] || key}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </article>
+
+      {page.belowRoom && <AposArea area={page.belowRoom} />}
+    </main>
+    {page.sidebar && (
+      <aside class="room-sidebar">
+        <AposArea area={page.sidebar} />
+      </aside>
+    )}
+  </div>
+</div>
+
+<style>
+  .room-title-wrapper {
+    padding: 2rem 0 1rem;
+  }
+  .room-company {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+  }
+  .room-hero {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .room-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .room-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .room-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: #f0f0f0;
+    color: #444;
+  }
+  .room-tag--type {
+    background: #eef2ff;
+    color: #4338ca;
+  }
+  .room-tag--view {
+    background: #ecfdf5;
+    color: #047857;
+  }
+  .room-tag--rate {
+    background: #fef7e0;
+    color: #b06000;
+    font-weight: 600;
+  }
+  .room-amenities {
+    margin-top: 2rem;
+  }
+  .room-amenities-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.4rem 1rem;
+  }
+  .room-amenities-list li {
+    padding-left: 1.2rem;
+    position: relative;
+    color: #374151;
+  }
+  .room-amenities-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--a-primary, #6236ff);
+    font-weight: bold;
+  }
+  .room-gallery-area :global(.apos-area) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+</style>

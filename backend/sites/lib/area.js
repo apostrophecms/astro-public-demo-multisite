@@ -92,7 +92,11 @@ const fullConfig = Object.assign({
   article: {},
   card: {},
   'price-card': {},
-  job: {}
+  room: {},
+  offer: {},
+  testimonial: {},
+  amenities: {},
+  'booking-cta': {}
 }, basicConfig);
 
 const fullConfigExpandedGroups = {
@@ -120,7 +124,18 @@ const fullConfigExpandedGroups = {
       '@apostrophecms/rich-text': defaultRtConfig,
       article: {},
       'price-card': {},
-      job: {}
+      card: {}
+    },
+    columns: 3
+  },
+  hospitality: {
+    label: 'Hospitality',
+    widgets: {
+      room: {},
+      offer: {},
+      testimonial: {},
+      amenities: {},
+      'booking-cta': {}
     },
     columns: 3
   }

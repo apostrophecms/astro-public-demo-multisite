@@ -1,0 +1,132 @@
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.offer-card__image {
+  aspect-ratio: 3 / 2;
+  background: #f3f4f6;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.offer-card__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.offer-card__tagline {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.offer-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.offer-card__subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.offer-card__price {
+  font-weight: 600;
+  color: #111827;
+
+  .offer-card__price-amount {
+    font-size: 1.4rem;
+  }
+
+  .offer-card__price-unit {
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin-left: 0.25rem;
+  }
+
+  .offer-card__price-from {
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin-right: 0.25rem;
+  }
+}
+
+.offer-card__highlights {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #374151;
+  font-size: 0.9rem;
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.offer-card__dates {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.offer-card__promo {
+  font-size: 0.8rem;
+  color: #374151;
+
+  code {
+    background: #f3f4f6;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+}
+
+.offer-card__cta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.offer-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}

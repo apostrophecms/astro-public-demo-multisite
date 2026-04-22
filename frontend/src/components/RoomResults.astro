@@ -1,0 +1,291 @@
+---
+/**
+ * The dynamic portion of the rooms index page: filters, listings, pagination.
+ * Rendered both as part of the full page and as an HTMX partial.
+ */
+import RoomExcerpt from './RoomExcerpt.astro';
+
+const {
+  pieces = [],
+  piecesFilters = {},
+  currentPage = 1,
+  totalPages = 1,
+  pageUrl,
+  searchParams
+} = Astro.props;
+
+const filterDefs = [
+  { name: 'roomType', label: 'Room Type' },
+  { name: 'view', label: 'View' },
+  { name: 'bedConfiguration', label: 'Beds' }
+];
+
+function buildFilterUrl(filterName, filterValue) {
+  const params = new URLSearchParams();
+  for (const def of filterDefs) {
+    if (def.name === filterName) {
+      if (filterValue) {
+        params.set(def.name, filterValue);
+      }
+    } else if (searchParams.get(def.name)) {
+      params.set(def.name, searchParams.get(def.name));
+    }
+  }
+  const qs = params.toString();
+  return pageUrl + (qs ? `?${qs}` : '');
+}
+
+const hasActiveFilters = filterDefs.some(f => searchParams.has(f.name));
+
+function getPageRange(options) {
+  const pages = [];
+  const shown = options.shown || 5;
+  const half = Math.floor(shown / 2);
+  let start = Math.max(2, options.page - half);
+  let end = Math.min(options.total - 1, options.page + half);
+  if (options.page <= half + 1) {
+    end = Math.min(options.total - 1, shown);
+  }
+  if (options.page >= options.total - half) {
+    start = Math.max(2, options.total - shown + 1);
+  }
+  for (let i = start; i <= end; i++) {
+    pages.push(i);
+  }
+  return pages;
+}
+
+const pageRange = getPageRange({ page: currentPage, total: totalPages, shown: 5 });
+const showHeadGap = currentPage > 3;
+const showTailGap = currentPage < totalPages - 2;
+
+function buildPaginationUrl(pageNum) {
+  const params = new URLSearchParams();
+  for (const def of filterDefs) {
+    if (searchParams.get(def.name)) {
+      params.set(def.name, searchParams.get(def.name));
+    }
+  }
+  if (pageNum > 1) {
+    params.set('page', String(pageNum));
+  }
+  const qs = params.toString();
+  return pageUrl + (qs ? `?${qs}` : '');
+}
+
+---
+
+<div id="room-results">
+  <div id="room-loading" class="htmx-indicator room-loading">Loading&hellip;</div>
+
+  <div class="room-filters">
+    {filterDefs.map((def) => {
+      const choices = piecesFilters?.[def.name] || [];
+      if (choices.length === 0) return null;
+      const activeValue = searchParams.get(def.name) || '';
+      return (
+        <div class="room-filter">
+          <span class="room-filter-label">{def.label}</span>
+          <div class="room-filter-options">
+            <a
+              href={buildFilterUrl(def.name, null)}
+              hx-get={buildFilterUrl(def.name, null)}
+              hx-target="#room-results"
+              hx-select="#room-results"
+              hx-swap="outerHTML"
+              hx-push-url="true"
+              class={`room-filter-chip ${!activeValue ? 'active' : ''}`}
+            >All</a>
+            {choices.map((choice) => (
+              <a
+                href={buildFilterUrl(def.name, choice.value)}
+                hx-get={buildFilterUrl(def.name, choice.value)}
+                hx-target="#room-results"
+                hx-select="#room-results"
+                hx-swap="outerHTML"
+                hx-push-url="true"
+                class={`room-filter-chip ${activeValue === choice.value ? 'active' : ''}`}
+              >{choice.label}</a>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+    {hasActiveFilters && (
+      <div class="room-filter-clear">
+        <a
+          href={pageUrl}
+          hx-get={pageUrl}
+          hx-target="#room-results"
+          hx-select="#room-results"
+          hx-swap="outerHTML"
+          hx-push-url="true"
+        >Clear all filters</a>
+      </div>
+    )}
+  </div>
+
+  <div class="room-listings">
+    {pieces.length > 0 ? (
+      pieces.map((room) => (
+        <RoomExcerpt room={room} />
+      ))
+    ) : (
+      <p class="no-rooms">No rooms match your filters.</p>
+    )}
+  </div>
+
+  {(currentPage > 1 || totalPages > 1) && (
+    <nav class="pagination">
+      <span class={`${currentPage === 1 ? 'is-active' : ''} is-first`}>
+        {currentPage !== 1 ? (
+          <a
+            href={buildPaginationUrl(1)}
+            hx-get={buildPaginationUrl(1)}
+            hx-target="#room-results"
+            hx-select="#room-results"
+            hx-swap="outerHTML show:#room-results:top"
+            hx-push-url="true"
+          >1</a>
+        ) : (
+          1
+        )}
+      </span>
+      {showHeadGap && <span>&hellip;</span>}
+      {pageRange.map((pageNum) => (
+        <span class={currentPage === pageNum ? 'is-active' : ''}>
+          {currentPage !== pageNum ? (
+            <a
+              href={buildPaginationUrl(pageNum)}
+              hx-get={buildPaginationUrl(pageNum)}
+              hx-target="#room-results"
+              hx-select="#room-results"
+              hx-swap="outerHTML show:#room-results:top"
+              hx-push-url="true"
+            >{pageNum}</a>
+          ) : (
+            pageNum
+          )}
+        </span>
+      ))}
+      {showTailGap && <span>&hellip;</span>}
+      {totalPages > 1 && (
+        <span class={`${currentPage === totalPages ? 'is-active' : ''} is-last`}>
+          {currentPage !== totalPages ? (
+            <a
+              href={buildPaginationUrl(totalPages)}
+              hx-get={buildPaginationUrl(totalPages)}
+              hx-target="#room-results"
+              hx-select="#room-results"
+              hx-swap="outerHTML show:#room-results:top"
+              hx-push-url="true"
+            >{totalPages}</a>
+          ) : (
+            totalPages
+          )}
+        </span>
+      )}
+    </nav>
+  )}
+</div>
+
+<style>
+  .room-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+  }
+  .room-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .room-filter-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #374151;
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+  .room-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .room-filter-chip {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #555;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    transition: all 0.15s;
+  }
+  .room-filter-chip:hover {
+    border-color: var(--a-primary, #6236ff);
+    color: var(--a-primary, #6236ff);
+  }
+  .room-filter-chip.active {
+    background: var(--a-primary, #6236ff);
+    color: white;
+    border-color: var(--a-primary, #6236ff);
+  }
+  .room-filter-clear {
+    padding-top: 0.25rem;
+  }
+  .room-filter-clear a {
+    font-size: 0.8rem;
+    color: #888;
+    text-decoration: underline;
+  }
+  .room-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .no-rooms {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-style: italic;
+  }
+  .pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .pagination span {
+    padding: 0.4rem 0.8rem;
+  }
+  .pagination .is-active {
+    font-weight: bold;
+    background: var(--a-primary, #6236ff);
+    color: white;
+    border-radius: 4px;
+  }
+  .pagination a {
+    text-decoration: none;
+    color: var(--a-primary, #6236ff);
+  }
+  .room-loading {
+    text-align: center;
+    padding: 0.5rem;
+    color: #888;
+    font-size: 0.85rem;
+    display: none;
+  }
+  .room-loading.htmx-request {
+    display: block;
+  }
+</style>

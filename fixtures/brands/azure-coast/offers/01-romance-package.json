@@ -1,0 +1,20 @@
+{
+  "title": "Endless Summer Romance",
+  "subtitle": "A three-night escape for two",
+  "tagline": "Save 20%",
+  "fromPrice": 1890,
+  "priceCurrency": "EUR",
+  "priceUnit": "per couple, total",
+  "validFrom": "2026-05-01",
+  "validTo": "2026-10-31",
+  "promoCode": "AZULROMANCE",
+  "highlights": [
+    { "text": "Three nights in an Ocean King Suite" },
+    { "text": "Nightly sunset aperitivo for two" },
+    { "text": "90-minute couples spa ritual" },
+    { "text": "Private beach dinner on one evening" }
+  ],
+  "ctaText": "Reserve the Romance package",
+  "heroImage": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Our most-booked package, reimagined for the 2026 season. Arrive to a chilled bottle of local rosé and a handwritten note from your butler; depart feeling like you've been spoken for.</p>"
+}

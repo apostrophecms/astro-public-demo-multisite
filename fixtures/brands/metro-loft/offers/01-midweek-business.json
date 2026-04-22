@@ -1,0 +1,20 @@
+{
+  "title": "Midweek Reset",
+  "subtitle": "Tuesday through Thursday rates",
+  "tagline": "30% off",
+  "fromPrice": 179,
+  "priceCurrency": "USD",
+  "priceUnit": "per night",
+  "validFrom": "2026-01-07",
+  "validTo": "2026-06-26",
+  "promoCode": "MIDWEEK",
+  "highlights": [
+    { "text": "Tuesday through Thursday stays" },
+    { "text": "Daily coworking lounge access" },
+    { "text": "Late checkout until 2pm" },
+    { "text": "$20 food & beverage credit per night" }
+  ],
+  "ctaText": "Book a midweek stay",
+  "heroImage": "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>A rate that rewards the flexible. If your week doesn't have to start with a Monday commute, Metro Loft is a very persuasive alternative.</p>"
+}

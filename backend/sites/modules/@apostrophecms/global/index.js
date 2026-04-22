@@ -7,9 +7,9 @@ export default {
         def: 'ApostropheCMS Website'
       },
       companyName: {
-        label: 'Company Name',
+        label: 'Hotel Name',
         type: 'string',
-        help: 'The company name for this site, used in job listings and branding'
+        help: 'The hotel or brand name for this site, used in room listings and branding'
       },
       _siteLogo: {
         label: 'project:siteLogo',

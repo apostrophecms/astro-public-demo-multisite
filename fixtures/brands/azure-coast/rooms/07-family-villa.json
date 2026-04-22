@@ -1,0 +1,15 @@
+{
+  "title": "Two-Bedroom Family Villa",
+  "roomType": "villa",
+  "bedConfiguration": "two-queens",
+  "view": "garden",
+  "maxOccupancy": 5,
+  "bedroomCount": 2,
+  "squareFeet": 1250,
+  "amenities": [ "wifi", "breakfast", "balcony", "kitchenette", "smart-tv", "room-service", "pet-friendly", "accessible" ],
+  "nightlyRate": 1100,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1616046386594-c152babc9e15?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>A generous two-bedroom villa with an enclosed garden and its own outdoor dining terrace. Stroller-ready and fully accessible, with connecting rooms for larger families.</p>",
+  "visibility": "public"
+}

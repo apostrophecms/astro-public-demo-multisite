@@ -1,0 +1,15 @@
+{
+  "title": "Twin Loft",
+  "roomType": "standard",
+  "bedConfiguration": "two-twins",
+  "view": "courtyard",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 340,
+  "amenities": [ "wifi", "smart-tv", "workspace" ],
+  "nightlyRate": 205,
+  "rateCurrency": "USD",
+  "featuredImage": "https://images.unsplash.com/photo-1549294413-26f195200c16?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Two twin beds for colleagues or siblings. Interior courtyard view, so it's blissfully quiet.</p>",
+  "visibility": "public"
+}

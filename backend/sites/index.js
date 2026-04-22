@@ -14,7 +14,7 @@ export default async function (site) {
     root: import.meta,
     // Theme name is globally available as apos.options.theme
     theme: site.theme,
-    // Company name from the site piece title, available as apos.options.companyName
+    // Hotel/brand name from the site piece title, available as apos.options.companyName
     companyName: site.title || '',
     nestedModuleSubdirs: true,
     modules: {
@@ -64,7 +64,7 @@ export default async function (site) {
       // A page type for ordinary pages
       'default-page': {},
 
-      // A piece type for articles
+      // A piece type for articles (used for news & blog)
       article: {},
 
       // Tease an article on any page
@@ -76,19 +76,27 @@ export default async function (site) {
       // A piece type for categorizing articles
       'article-category': {},
 
-      // Job board
-      job: {},
-      'job-widget': {},
-      'job-page': {},
+      // Rooms & suites
+      room: {},
+      'room-widget': {},
+      'room-page': {},
+
+      // Seasonal offers and packages
+      offer: {},
+      'offer-widget': {},
+
+      // Guest testimonials
+      testimonial: {},
+      'testimonial-widget': {},
+
+      // Hotel amenities icon grid
+      'amenities-widget': {},
+
+      // Check-in / check-out booking CTA
+      'booking-cta-widget': {},
 
       // Import and export content
-      '@apostrophecms/import-export': {},
-      // '@apostrophecms-pro/automatic-translation': {
-      //   options: {
-      //     provider: 'deepl'
-      //   }
-      // },
-      // '@apostrophecms-pro/automatic-translation-deepl': {}
+      '@apostrophecms/import-export': {}
     }
   };
 

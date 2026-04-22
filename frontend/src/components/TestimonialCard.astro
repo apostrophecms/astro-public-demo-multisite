@@ -1,0 +1,69 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import { getAttachmentUrl } from '@apostrophecms/apostrophe-astro/lib/attachment.js';
+
+const { testimonial, feature = false } = Astro.props;
+
+const tripLabels = {
+  leisure: 'Leisure',
+  business: 'Business',
+  couples: 'Couples',
+  family: 'Family',
+  solo: 'Solo'
+};
+
+function formatStayDate(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr + 'T00:00:00');
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+const rating = Math.max(1, Math.min(5, testimonial.rating || 5));
+const stars = Array.from({ length: 5 }, (_, i) => i < rating);
+const stayMonth = formatStayDate(testimonial.stayDate);
+
+const photoWidget = testimonial?.photo?.items?.[0];
+const photoObj = photoWidget?._image?.[0];
+const photoUrl = photoObj ? getAttachmentUrl(photoObj, { size: 'one-sixth' }) : null;
+
+if (testimonial?.quote && !testimonial.quote.options) {
+  testimonial.quote.options = { widgets: {} };
+}
+---
+
+<article class={`testimonial ${feature ? 'testimonial--feature' : ''}`}>
+  <div class="testimonial__rating" aria-label={`${rating} out of 5 stars`}>
+    {stars.map((filled) => (
+      <span class={filled ? '' : 'testimonial__star--empty'}>★</span>
+    ))}
+  </div>
+  <div class="testimonial__quote">
+    {testimonial.quote ? (
+      <AposArea area={testimonial.quote} />
+    ) : (
+      <p>{testimonial.title}</p>
+    )}
+  </div>
+  <div class="testimonial__meta">
+    {photoUrl && (
+      <img class="testimonial__photo" src={photoUrl} alt={testimonial.guestName || ''} loading="lazy" />
+    )}
+    <div>
+      {testimonial.guestName && (
+        <div class="testimonial__name">{testimonial.guestName}</div>
+      )}
+      <div>
+        {testimonial.guestLocation && (
+          <span class="testimonial__location">{testimonial.guestLocation}</span>
+        )}
+        {stayMonth && (
+          <span class="testimonial__location"> · Stayed {stayMonth}</span>
+        )}
+      </div>
+    </div>
+    {testimonial.tripType && (
+      <span class="testimonial__trip">{tripLabels[testimonial.tripType] || testimonial.tripType}</span>
+    )}
+  </div>
+</article>

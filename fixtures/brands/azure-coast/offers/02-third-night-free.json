@@ -1,0 +1,19 @@
+{
+  "title": "Third Night on Us",
+  "subtitle": "Book three nights, pay for two",
+  "tagline": "Limited dates",
+  "fromPrice": 640,
+  "priceCurrency": "EUR",
+  "priceUnit": "per night (avg)",
+  "validFrom": "2026-04-15",
+  "validTo": "2026-06-15",
+  "promoCode": "AZUL3FOR2",
+  "highlights": [
+    { "text": "Third night free on any room category" },
+    { "text": "Daily breakfast on the terrace" },
+    { "text": "Welcome cocktail at The Cove Bar" }
+  ],
+  "ctaText": "Book three, pay for two",
+  "heroImage": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Stay three consecutive nights and only pay for two. A smart way to experience a longer summer break without a bigger bill.</p>"
+}

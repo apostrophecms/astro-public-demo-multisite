@@ -1,0 +1,19 @@
+{
+  "title": "Beach Bungalow",
+  "roomType": "deluxe",
+  "bedConfiguration": "king",
+  "view": "ocean",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 540,
+  "amenities": [ "wifi", "breakfast", "balcony", "smart-tv", "room-service" ],
+  "nightlyRate": 480,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>Steps from the sand</h3><p>A breezy, sun-soaked bungalow arranged in two crescents just above the high-tide line. Barefoot check-in on the beach, beach umbrella reserved in your name.</p>",
+  "visibility": "public"
+}

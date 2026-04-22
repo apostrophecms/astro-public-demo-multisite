@@ -1,0 +1,32 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import AmenityIcon from '../components/AmenityIcon.astro';
+
+const { widget } = Astro.props;
+const heading = widget.heading || 'Hotel Amenities';
+const columns = widget.columns || '4';
+const amenities = Array.isArray(widget.amenities) ? widget.amenities : [];
+const hasIntro = widget?.intro?.items?.length > 0;
+---
+
+<section class="widget amenities-widget">
+  {heading && <h3 class="amenities-widget__heading">{heading}</h3>}
+  {hasIntro && (
+    <div class="amenities-widget__intro">
+      <AposArea area={widget.intro} />
+    </div>
+  )}
+  {amenities.length > 0 && (
+    <div class={`amenities-grid amenities-grid--cols-${columns}`}>
+      {amenities.map((amenity) => (
+        <div class="amenity">
+          <div class="amenity__icon">
+            <AmenityIcon name={amenity.icon || 'pool'} />
+          </div>
+          {amenity.label && <span class="amenity__label">{amenity.label}</span>}
+          {amenity.description && <span class="amenity__description">{amenity.description}</span>}
+        </div>
+      ))}
+    </div>
+  )}
+</section>

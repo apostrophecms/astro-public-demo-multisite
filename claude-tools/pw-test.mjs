@@ -40,8 +40,8 @@ console.log('URL:', page.url());
 console.log('Status:', resp?.status());
 console.log('Title:', await page.title());
 
-const jobCount = await page.$$eval('.job-excerpt', els => els.length).catch(() => 0);
-console.log('Job excerpts:', jobCount);
+const roomCount = await page.$$eval('.room-excerpt', els => els.length).catch(() => 0);
+console.log('Room excerpts:', roomCount);
 
 const bodyText = await page.textContent('body').catch(() => '');
 if (bodyText.length < 200) {

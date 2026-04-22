@@ -1,0 +1,18 @@
+{
+  "title": "Pool Junior Suite",
+  "roomType": "junior-suite",
+  "bedConfiguration": "king",
+  "view": "pool",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 520,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "balcony", "smart-tv", "room-service" ],
+  "nightlyRate": 410,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>Direct pool access</h3><p>Step from your terrace directly into the lagoon-style pool. Ideal for travelers who plan to spend most of their stay somewhere between a lounger and the swim-up bar.</p>",
+  "visibility": "public"
+}

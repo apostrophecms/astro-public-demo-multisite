@@ -1,0 +1,64 @@
+---
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { aposHostFromRequest } from '../utils/aposHost.js';
+
+const { widget } = Astro.props;
+const layout = widget.layout || 'grid';
+const limit = widget.limit || 3;
+const minRating = widget.minRating || 1;
+const heading = widget.heading || 'What Our Guests Say';
+
+let testimonials = [];
+try {
+  const aposHost = aposHostFromRequest(Astro.request);
+  const params = new URLSearchParams();
+  params.set('perPage', String(Math.max(limit * 3, limit)));
+  params.set('sort[stayDate]', '-1');
+  const response = await fetch(`${aposHost}/api/v1/testimonial?${params.toString()}`);
+  if (response.ok) {
+    const data = await response.json();
+    testimonials = (data.results || [])
+      .filter((t) => (t.rating || 5) >= minRating)
+      .slice(0, limit);
+  } else {
+    console.error('Testimonial API response:', response.status, response.statusText);
+  }
+} catch (error) {
+  console.error('Failed to fetch testimonials:', error);
+}
+---
+
+<section class={`widget testimonial-widget testimonial-widget--${layout}`}>
+  {heading && <h3 class="testimonial-widget__heading">{heading}</h3>}
+  {testimonials.length > 0 ? (
+    layout === 'feature' ? (
+      <div class="testimonial-grid">
+        <TestimonialCard testimonial={testimonials[0]} feature={true} />
+      </div>
+    ) : (
+      <div class="testimonial-grid">
+        {testimonials.map((t) => (
+          <TestimonialCard testimonial={t} />
+        ))}
+      </div>
+    )
+  ) : (
+    <p class="no-testimonials">No guest reviews yet.</p>
+  )}
+</section>
+
+<style>
+  .testimonial-widget {
+    margin: 2rem 0;
+  }
+  .testimonial-widget__heading {
+    text-align: center;
+    font-size: 1.75rem;
+    margin: 0 0 1.5rem;
+  }
+  .no-testimonials {
+    text-align: center;
+    color: #6b7280;
+    padding: 2rem;
+  }
+</style>

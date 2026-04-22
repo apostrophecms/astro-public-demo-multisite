@@ -1,0 +1,15 @@
+{
+  "title": "Rooftop Suite",
+  "roomType": "suite",
+  "bedConfiguration": "king",
+  "view": "city",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 720,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "balcony", "jacuzzi", "smart-tv", "workspace", "room-service" ],
+  "nightlyRate": 560,
+  "rateCurrency": "USD",
+  "featuredImage": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Floor-to-ceiling windows on the top floor, a soaking tub with a skyline view, and a private balcony just off the bar. Our most-requested suite on weekends.</p>",
+  "visibility": "public"
+}

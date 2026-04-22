@@ -1,0 +1,15 @@
+{
+  "title": "Classic Ocean Room",
+  "roomType": "standard",
+  "bedConfiguration": "queen",
+  "view": "ocean",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 380,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "smart-tv" ],
+  "nightlyRate": 320,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>Our most approachable ocean-view room. Thoughtfully designed with the same natural materials and handmade ceramics that define our higher room categories, at a price that rewards planning ahead.</p>",
+  "visibility": "public"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Ocean King Suite",
+  "roomType": "suite",
+  "bedConfiguration": "king",
+  "view": "ocean",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 680,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "balcony", "smart-tv", "workspace", "room-service" ],
+  "nightlyRate": 620,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>A private veranda above the sea</h3><p>Wake to the sound of waves in our signature 680 sq ft suite. A private teak balcony frames uninterrupted views of the bay, while the marble spa bath and walk-in rain shower turn every evening into a ritual.</p><h3>In your suite</h3><ul><li>King bed dressed in Egyptian cotton linens</li><li>Nespresso bar with local specialty roasts</li><li>Smart mirror with in-room wellness app</li><li>Daily turndown with artisan pastries</li></ul><p>Breakfast is served on your terrace at the hour you choose.</p>",
+  "visibility": "public"
+}

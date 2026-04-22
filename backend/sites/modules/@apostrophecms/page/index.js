@@ -13,8 +13,8 @@ export default {
         label: 'project:articleIndexPage'
       },
       {
-        name: 'job-page',
-        label: 'Job Board'
+        name: 'room-page',
+        label: 'Rooms & Suites'
       },
       {
         name: '@apostrophecms/home-page',

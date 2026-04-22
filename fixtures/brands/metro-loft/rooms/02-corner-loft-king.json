@@ -1,0 +1,19 @@
+{
+  "title": "Corner Loft King",
+  "roomType": "deluxe",
+  "bedConfiguration": "king",
+  "view": "city",
+  "maxOccupancy": 2,
+  "bedroomCount": 1,
+  "squareFeet": 450,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "smart-tv", "workspace", "room-service" ],
+  "nightlyRate": 320,
+  "rateCurrency": "USD",
+  "featuredImage": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<p>Two-sided windows, a proper desk, and the full Metro Loft welcome — locally roasted coffee, vinyl player, and a curated stack of records picked by the floor's assigned concierge.</p>",
+  "visibility": "public"
+}

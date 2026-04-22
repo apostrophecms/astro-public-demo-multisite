@@ -1,0 +1,35 @@
+---
+const { name } = Astro.props;
+
+// Inline SVG set for hotel amenities. Kept minimal (stroke-based, currentColor).
+const icons = {
+  pool: `<path d="M2 20c3 0 3-2 6-2s3 2 6 2 3-2 6-2M2 16c3 0 3-2 6-2s3 2 6 2 3-2 6-2M6 12V5a2 2 0 1 1 4 0M14 12V5a2 2 0 1 1 4 0M6 9h12"/>`,
+  spa: `<path d="M12 3c0 0 5 4 5 9a5 5 0 0 1-10 0c0-5 5-9 5-9zM12 21v-5M4 17c4 0 5-2 5-2M20 17c-4 0-5-2-5-2"/>`,
+  gym: `<path d="M6 4v16M18 4v16M2 8v8M22 8v8M6 12h12"/>`,
+  restaurant: `<path d="M6 3v18M4 3v6a2 2 0 0 0 4 0V3M15 13v8M15 3c0 0-3 3-3 6s3 4 3 4"/>`,
+  bar: `<path d="M5 22h14M12 22v-8M4 4h16l-8 10z"/>`,
+  wifi: `<path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5v.01M2 9a15 15 0 0 1 20 0"/>`,
+  parking: `<path d="M9 18V6h5a3 3 0 0 1 0 6H9" /><rect x="3" y="3" width="18" height="18" rx="3" fill="none"/>`,
+  valet: `<path d="M3 19h18M5 19v-5l2-5h10l2 5v5M7 15h10"/>`,
+  pet: `<path d="M4 14a3 3 0 1 1 6 0 3 3 0 0 1-6 0zM14 14a3 3 0 1 1 6 0 3 3 0 0 1-6 0zM7 7a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM13 7a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM8 18c0 2 2 3 4 3s4-1 4-3c0-1.5-2-2-4-2s-4 .5-4 2z"/>`,
+  beach: `<path d="M2 21h20M12 3a7 7 0 0 0-7 7h7M12 3a7 7 0 0 1 7 7h-7M12 3v18"/>`,
+  ski: `<path d="M3 21l18-9M6 20l3-4M14 4l4 9M8 7l10 10"/>`,
+  concierge: `<path d="M7 20h10M12 20v-4M6 16h12c0-4-3-6-6-6s-6 2-6 6zM9 7a3 3 0 0 1 6 0 3 3 0 0 1-6 0z"/>`,
+  'room-service': `<path d="M3 20h18M5 17h14a6 6 0 0 0-12 0h12M12 7V3M9 3h6"/>`,
+  breakfast: `<path d="M3 10h14a4 4 0 0 1 0 8H3zM17 13h3a2 2 0 1 0 0-4h-3M7 6V3M11 6V3M15 6V3"/>`,
+  business: `<path d="M3 7h18v13H3zM8 7V4h8v3"/>`,
+  meetings: `<path d="M3 20h18M5 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0zM13 9a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM2 17c0-3 2-4 5-4s5 1 5 4M13 17c0-2 1.5-3 4-3s4 1 4 3"/>`,
+  shuttle: `<path d="M3 16V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8M3 16h18M3 16v3h3v-3M18 16v3h3v-3M6 10h12M7 13h1M16 13h1"/>`,
+  airport: `<path d="M12 3l3 9 6 2-9 3-3 6-2-6-6-2 6-3 2-9z" transform="rotate(30 12 12)"/>`,
+  family: `<path d="M8 10a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM14 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM4 20c0-3 2-5 6-5s6 2 6 5M14 20c0-2 2-3 4-3s4 1 4 3"/>`,
+  accessible: `<circle cx="12" cy="5" r="2"/><path d="M12 8v6M12 14h5l2 6M8 12l-2 3a4 4 0 0 0 8 2"/>`,
+  laundry: `<rect x="4" y="3" width="16" height="18" rx="2" fill="none"/><circle cx="12" cy="14" r="4" fill="none"/><circle cx="8" cy="7" r="0.5"/><circle cx="12" cy="7" r="0.5"/>`,
+  rooftop: `<path d="M3 21h18M4 21V10l8-6 8 6v11M8 14h2M14 14h2M10 21v-4h4v4"/>`
+};
+
+const path = icons[name] || icons.pool;
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <Fragment set:html={path} />
+</svg>

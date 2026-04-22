@@ -41,7 +41,7 @@ if (aposData.notFound) {
 
   <AposTemplate {aposData} slot="main" />
 
-  <SiteFooter slot="afterMain" />
+  <SiteFooter {aposData} slot="afterMain" />
   <Fragment {aposData} slot="endBody">
     <script>
       import "../widgets/players.ts";

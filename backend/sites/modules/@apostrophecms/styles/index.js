@@ -52,7 +52,7 @@ export default {
       surfaceColor: {
         label: 'Surface (cards, panels)',
         type: 'color',
-        def: '#efefef',
+        def: '#ffffff',
         selector: ':root',
         property: '--surface-color'
       },

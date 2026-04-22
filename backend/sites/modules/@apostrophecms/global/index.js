@@ -1,3 +1,5 @@
+import { basicConfig } from '../../../lib/area.js';
+
 export default {
   fields: {
     add: {
@@ -16,12 +18,24 @@ export default {
         type: 'relationship',
         withType: '@apostrophecms/image',
         max: 1
+      },
+      footer: {
+        label: 'Footer',
+        type: 'area',
+        help: 'Edited per-site; drop in a layout widget with columns of rich text, links, or images.',
+        options: {
+          widgets: basicConfig
+        }
       }
     },
     group: {
       general: {
         label: 'project:general',
         fields: [ 'siteTitle', 'companyName', '_siteLogo', 'favicon' ]
+      },
+      footer: {
+        label: 'Footer',
+        fields: [ 'footer' ]
       }
     }
   },

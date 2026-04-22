@@ -50,5 +50,39 @@ export default {
         max: 12
       }
     }
+  },
+  styles: {
+    add: {
+      padding: 'padding',
+      gap: {
+        label: 'Space Between Cards',
+        type: 'range',
+        min: 8,
+        max: 48,
+        step: 2,
+        def: 20,
+        unit: 'px',
+        selector: '.room-widget__list',
+        property: 'gap'
+      },
+      cardRadius: {
+        label: 'Card Corner Radius',
+        type: 'range',
+        min: 0,
+        max: 32,
+        step: 1,
+        def: 6,
+        unit: 'px',
+        selector: '.room-excerpt',
+        property: 'border-radius'
+      },
+      headingColor: {
+        label: 'Heading Color',
+        type: 'color',
+        def: '#242859',
+        selector: '.room-widget__heading',
+        property: 'color'
+      }
+    }
   }
 };

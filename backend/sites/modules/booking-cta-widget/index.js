@@ -71,5 +71,47 @@ export default {
         help: 'Where the form should submit; leave blank to open an availability placeholder'
       }
     }
+  },
+  styles: {
+    add: {
+      padding: 'padding',
+      radius: {
+        label: 'Corner Radius',
+        type: 'range',
+        min: 0,
+        max: 32,
+        step: 1,
+        def: 8,
+        unit: 'px',
+        selector: '.booking-cta',
+        property: 'border-radius'
+      },
+      accent: {
+        label: 'Button Color',
+        type: 'color',
+        def: '#0b1ae9',
+        selector: '.booking-cta__submit',
+        property: 'background-color'
+      },
+      buttonText: {
+        label: 'Button Text Color',
+        type: 'color',
+        def: '#ffffff',
+        selector: '.booking-cta__submit',
+        property: 'color'
+      },
+      align: {
+        label: 'Text Alignment',
+        type: 'select',
+        def: 'left',
+        selector: '.booking-cta__header',
+        property: 'text-align',
+        choices: [
+          { label: 'Left', value: 'left' },
+          { label: 'Center', value: 'center' },
+          { label: 'Right', value: 'right' }
+        ]
+      }
+    }
   }
 };

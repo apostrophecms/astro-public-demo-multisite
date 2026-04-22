@@ -30,6 +30,9 @@ export default async function (site) {
       // Manages apostrophe's overall asset pipeline
       '@apostrophecms/asset': {},
 
+      // Site-wide editor-controllable palette, typography and spacing
+      '@apostrophecms/styles': {},
+
       // Manage page and piece SEO metadata
       '@apostrophecms/seo': {},
 

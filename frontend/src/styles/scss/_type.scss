@@ -26,6 +26,7 @@ h1 {
 h1, h2, h3, h4 {
   &:not([class^="apos"]) {
     font-family: var(--heading-font);
+    color: var(--heading-color);
   }
 }
 

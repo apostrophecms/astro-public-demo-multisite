@@ -90,5 +90,39 @@ export default {
         }
       }
     }
+  },
+  styles: {
+    add: {
+      iconColor: {
+        label: 'Icon Color',
+        type: 'color',
+        def: '#0b1ae9',
+        selector: '.amenity__icon',
+        property: 'color'
+      },
+      iconSize: {
+        label: 'Icon Size',
+        type: 'range',
+        min: 24,
+        max: 96,
+        step: 2,
+        def: 48,
+        unit: 'px',
+        selector: '.amenity__icon svg',
+        property: 'width'
+      },
+      gridGap: {
+        label: 'Grid Gap',
+        type: 'range',
+        min: 8,
+        max: 64,
+        step: 2,
+        def: 24,
+        unit: 'px',
+        selector: '.amenities-grid',
+        property: 'gap'
+      },
+      padding: 'padding'
+    }
   }
 };

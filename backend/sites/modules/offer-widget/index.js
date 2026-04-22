@@ -58,5 +58,36 @@ export default {
         }
       }
     }
+  },
+  styles: {
+    add: {
+      padding: 'padding',
+      cardRadius: {
+        label: 'Card Corner Radius',
+        type: 'range',
+        min: 0,
+        max: 32,
+        step: 1,
+        def: 8,
+        unit: 'px',
+        selector: '.offer-card',
+        property: 'border-radius'
+      },
+      ribbonColor: {
+        label: 'Promo Ribbon Color',
+        type: 'color',
+        def: '#ea433a',
+        selector: '.offer-card__promo',
+        property: 'background-color'
+      },
+      priceColor: {
+        label: 'Price Color',
+        type: 'color',
+        def: '#0b1ae9',
+        selector: '.offer-card__price',
+        property: 'color'
+      },
+      shadow: 'boxShadow'
+    }
   }
 };

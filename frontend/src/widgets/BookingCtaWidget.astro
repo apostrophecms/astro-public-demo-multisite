@@ -1,0 +1,73 @@
+---
+import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset
+} from '@apostrophecms/apostrophe-astro/lib/attachment.js';
+
+const { widget } = Astro.props;
+const style = widget.style || 'dark';
+const headline = widget.headline || 'Reserve Your Stay';
+const buttonLabel = widget.buttonLabel || 'Check Availability';
+const showGuests = widget.showGuests !== false;
+const showPromoCode = !!widget.showPromoCode;
+const bookingUrl = widget.bookingUrl || '#availability';
+const hasSubhead = widget?.subhead?.items?.length > 0;
+
+const bgWidget = widget?.background?.items?.[0];
+const bgImage = bgWidget?._image?.[0];
+const bgUrl = bgImage ? getAttachmentUrl(bgImage) : null;
+const bgSrcset = bgImage ? getAttachmentSrcset(bgImage) : null;
+
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+const iso = (d) => d.toISOString().slice(0, 10);
+---
+
+<section class={`widget booking-cta booking-cta--${style}`}>
+  {bgUrl && (
+    <div class="booking-cta__background">
+      <img src={bgUrl} srcset={bgSrcset} alt="" loading="lazy" />
+    </div>
+  )}
+  <div class="booking-cta__inner">
+    <div class="booking-cta__header">
+      <h2 class="booking-cta__headline">{headline}</h2>
+      {hasSubhead && (
+        <div class="booking-cta__subhead">
+          <AposArea area={widget.subhead} />
+        </div>
+      )}
+    </div>
+    <form class="booking-cta__form" action={bookingUrl} method="get">
+      <div class="booking-cta__field">
+        <label for="booking-check-in">Check in</label>
+        <input id="booking-check-in" type="date" name="checkIn" min={iso(today)} value={iso(today)} />
+      </div>
+      <div class="booking-cta__field">
+        <label for="booking-check-out">Check out</label>
+        <input id="booking-check-out" type="date" name="checkOut" min={iso(tomorrow)} value={iso(tomorrow)} />
+      </div>
+      {showGuests && (
+        <div class="booking-cta__field">
+          <label for="booking-guests">Guests</label>
+          <select id="booking-guests" name="guests">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5+ Guests</option>
+          </select>
+        </div>
+      )}
+      {showPromoCode && (
+        <div class="booking-cta__field">
+          <label for="booking-promo">Promo</label>
+          <input id="booking-promo" type="text" name="promo" placeholder="Promo code" />
+        </div>
+      )}
+      <button class="booking-cta__submit" type="submit">{buttonLabel}</button>
+    </form>
+  </div>
+</section>

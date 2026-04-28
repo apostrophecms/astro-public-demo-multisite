@@ -1,0 +1,27 @@
+{
+  "slug": "metro-loft",
+  "name": "Metro Loft Hotels",
+  "tagline": "Design-led boutique stays in the heart of the city",
+  "description": "Metro Loft Hotels are neighborhood-first boutique properties carved out of reimagined warehouses. Exposed brick, custom-built furniture, cocktail programs worth crossing town for.",
+  "home": {
+    "heroHeadline": "Downtown feels like yours.",
+    "heroSubhead": "Seven boutique properties. Zero cookie-cutter rooms.",
+    "heroImage": "https://images.unsplash.com/photo-1455587734955-081b22074882?w=1800&q=80&auto=format&fit=crop",
+    "bookingHeadline": "Book Tonight or Plan Ahead",
+    "bookingSubhead": "Same-day availability always live \u2014 plus rates for a weekend you haven't planned yet.",
+    "bookingImage": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1800&q=80&auto=format&fit=crop"
+  },
+  "amenities": {
+    "heading": "The Essentials, Done Properly",
+    "intro": "We'd rather do a few things well than list twenty that don't matter.",
+    "columns": "3",
+    "items": [
+      { "icon": "bar", "label": "Rooftop Cocktail Bar", "description": "On the 14th floor, open to the public until 1am" },
+      { "icon": "restaurant", "label": "Ground-Floor Restaurant", "description": "Seasonal small plates by Chef Mira Tan" },
+      { "icon": "wifi", "label": "Gigabit Wi-Fi", "description": "No paywall, no loading spinner" },
+      { "icon": "business", "label": "Coworking Lounge", "description": "24/7 access for all in-house guests" },
+      { "icon": "gym", "label": "Fitness Studio", "description": "Peloton, free weights, and classes twice daily" },
+      { "icon": "valet", "label": "Valet Parking", "description": "Keep the keys, we'll bring the car" }
+    ]
+  }
+}

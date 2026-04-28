@@ -4,10 +4,8 @@ import {
   getWidth,
   getHeight,
 } from "@apostrophecms/apostrophe-astro/lib/attachment.js";
-import LocaleSwitcher from './LocaleSwitcher.astro';
-
 const { aposData } = Astro.props;
-const { page, home, global, localizations } = aposData;
+const { page, home, global } = aposData;
 
 const logoAttachment = global?._siteLogo?.[0];
 const logoUrl = logoAttachment ? getAttachmentUrl(logoAttachment, { size: 'one-third' }) : null;
@@ -50,7 +48,6 @@ const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
       </ul>
     </nav>
     <div class="nav-bar__end">
-      <LocaleSwitcher localizations={localizations} />
     </div>
     <button class="nav__mobile-button" data-mobile-trigger aria-controls="mobile-nav">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
@@ -82,9 +79,6 @@ const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
       ))}
     </ul>
   </nav>
-  <div class="mobile-nav__locales">
-    <LocaleSwitcher localizations={localizations} />
-  </div>
 </div>
 
 <script is:inline>

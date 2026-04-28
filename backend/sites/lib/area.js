@@ -91,7 +91,12 @@ const fullConfig = Object.assign({
   '@apostrophecms/layout': {},
   article: {},
   card: {},
-  'price-card': {}
+  'price-card': {},
+  room: {},
+  offer: {},
+  testimonial: {},
+  amenities: {},
+  'booking-cta': {}
 }, basicConfig);
 
 const fullConfigExpandedGroups = {
@@ -118,7 +123,19 @@ const fullConfigExpandedGroups = {
       'github-prs': {},
       '@apostrophecms/rich-text': defaultRtConfig,
       article: {},
-      'price-card': {}
+      'price-card': {},
+      card: {}
+    },
+    columns: 3
+  },
+  hospitality: {
+    label: 'Hospitality',
+    widgets: {
+      room: {},
+      offer: {},
+      testimonial: {},
+      amenities: {},
+      'booking-cta': {}
     },
     columns: 3
   }

@@ -1,0 +1,19 @@
+{
+  "title": "Cliffside Penthouse",
+  "roomType": "penthouse",
+  "bedConfiguration": "king-sofa",
+  "view": "ocean",
+  "maxOccupancy": 4,
+  "bedroomCount": 2,
+  "squareFeet": 1850,
+  "amenities": [ "wifi", "breakfast", "mini-bar", "balcony", "jacuzzi", "fireplace", "kitchenette", "smart-tv", "workspace", "room-service" ],
+  "nightlyRate": 2400,
+  "rateCurrency": "EUR",
+  "featuredImage": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1630660664869-c9d3cc676880?w=1200&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>The summit of the resort</h3><p>Perched at the highest point of the property, the Cliffside Penthouse commands a full 270-degree panorama of coastline. Two bedrooms, a private plunge pool, and a dining pavilion make it a natural choice for milestone celebrations.</p><ul><li>Private 20-ft plunge pool and sun deck</li><li>Two king bedrooms plus sofa bed</li><li>Outdoor dining pavilion for 8</li><li>Dedicated butler on call 24/7</li><li>Complimentary airport transfer</li></ul>",
+  "visibility": "public"
+}

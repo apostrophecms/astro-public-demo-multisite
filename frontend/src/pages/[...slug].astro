@@ -41,10 +41,15 @@ if (aposData.notFound) {
 
   <AposTemplate {aposData} slot="main" />
 
-  <SiteFooter slot="afterMain" />
+  <SiteFooter {aposData} slot="afterMain" />
   <Fragment {aposData} slot="endBody">
     <script>
       import "../widgets/players.ts";
+    </script>
+    <script>
+      import htmx from "htmx.org";
+      // Ensure htmx is available globally and processes the initial page
+      window.htmx = htmx;
     </script>
   </Fragment>
 </AposLayout>

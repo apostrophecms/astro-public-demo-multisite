@@ -1,0 +1,68 @@
+---
+import RoomExcerpt from '../components/RoomExcerpt.astro';
+import { aposHostFromRequest } from '../utils/aposHost.js';
+
+const { widget } = Astro.props;
+const limit = widget.limit || 3;
+const layout = widget.layout || 'grid';
+const heading = widget.heading || 'Our Rooms & Suites';
+const roomType = widget.roomType || '';
+
+const params = new URLSearchParams();
+params.set('perPage', String(limit));
+params.set('sort[nightlyRate]', '1');
+if (roomType) params.set('roomType', roomType);
+
+let rooms = [];
+try {
+  const aposHost = aposHostFromRequest(Astro.request);
+  const response = await fetch(`${aposHost}/api/v1/room?${params.toString()}`);
+  if (response.ok) {
+    const data = await response.json();
+    rooms = data.results || [];
+  } else {
+    console.error('Room API response:', response.status, response.statusText);
+  }
+} catch (error) {
+  console.error('Failed to fetch rooms:', error);
+}
+---
+
+<div class={`widget room-widget room-widget--${layout}`}>
+  {heading && <h3 class="room-widget__heading">{heading}</h3>}
+  {rooms.length > 0 ? (
+    <div class={`room-widget__list room-widget__list--${layout}`}>
+      {rooms.map((room) => (
+        <RoomExcerpt room={room} layout={layout} />
+      ))}
+    </div>
+  ) : (
+    <p class="no-rooms">No rooms to feature yet.</p>
+  )}
+</div>
+
+<style>
+  .room-widget {
+    margin: 2rem 0;
+  }
+  .room-widget__heading {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+  }
+  .room-widget__list--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .room-widget__list--list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .no-rooms {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+</style>

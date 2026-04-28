@@ -1,0 +1,20 @@
+{
+  "title": "Coastline Wellness Retreat",
+  "subtitle": "Five days of restorative rituals",
+  "tagline": "New for 2026",
+  "fromPrice": 2450,
+  "priceCurrency": "EUR",
+  "priceUnit": "per person",
+  "validFrom": "2026-09-01",
+  "validTo": "2026-11-30",
+  "promoCode": "RESTORE",
+  "highlights": [
+    { "text": "Four nights in a Garden Villa" },
+    { "text": "Daily sunrise yoga on the bluff" },
+    { "text": "Five guided spa treatments" },
+    { "text": "Nutritionist-designed tasting menu" }
+  ],
+  "ctaText": "Plan your retreat",
+  "heroImage": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80&auto=format&fit=crop",
+  "description": "<p>A five-day program designed with our spa director to reset sleep, movement, and nutrition habits before the autumn rush. Small groups, single rooms, and no phones after sunset.</p>"
+}

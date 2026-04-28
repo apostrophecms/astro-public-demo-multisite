@@ -30,5 +30,8 @@
   "workspaces": [
     "backend",
     "frontend"
-  ]
+  ],
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
 }

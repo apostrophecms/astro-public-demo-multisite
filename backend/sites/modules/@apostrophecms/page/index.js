@@ -13,6 +13,10 @@ export default {
         label: 'project:articleIndexPage'
       },
       {
+        name: 'room-page',
+        label: 'Rooms & Suites'
+      },
+      {
         name: '@apostrophecms/home-page',
         label: 'project:home'
       }

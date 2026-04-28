@@ -1,0 +1,128 @@
+---
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getWidth,
+  getHeight
+} from '@apostrophecms/apostrophe-astro/lib/attachment.js';
+
+const { offer, layout = 'card' } = Astro.props;
+
+const imageObj = offer?._heroImage?.[0];
+const imageUrl = imageObj ? getAttachmentUrl(imageObj, { size: 'one-half' }) : null;
+const imageSrcset = imageObj ? getAttachmentSrcset(imageObj) : null;
+const imageWidth = imageObj ? getWidth(imageObj) : undefined;
+const imageHeight = imageObj ? getHeight(imageObj) : undefined;
+
+function formatRate(amount, currency) {
+  if (!amount) return null;
+  const fmt = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currency || 'USD',
+    maximumFractionDigits: 0
+  });
+  return fmt.format(amount);
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr + 'T00:00:00');
+  if (Number.isNaN(d.getTime())) return dateStr;
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+const price = formatRate(offer.fromPrice, offer.priceCurrency);
+const validFrom = formatDate(offer.validFrom);
+const validTo = formatDate(offer.validTo);
+const ctaLink = offer.ctaUrl || offer._url || '#';
+const ctaLabel = offer.ctaText || 'Learn More';
+const highlights = (offer.highlights || []).slice(0, 4);
+---
+
+{layout === 'feature' ? (
+  <div class="offer-feature">
+    {imageUrl && (
+      <div class="offer-card__image">
+        <img
+          src={imageUrl}
+          srcset={imageSrcset}
+          alt={imageObj?.title || offer.title}
+          width={imageWidth}
+          height={imageHeight}
+          loading="lazy"
+        />
+      </div>
+    )}
+    <div class="offer-card__body">
+      {offer.tagline && <span class="offer-card__tagline">{offer.tagline}</span>}
+      <h3 class="offer-card__title">{offer.title}</h3>
+      {offer.subtitle && <p class="offer-card__subtitle">{offer.subtitle}</p>}
+      {price && (
+        <div class="offer-card__price">
+          <span class="offer-card__price-from">From</span>
+          <span class="offer-card__price-amount">{price}</span>
+          {offer.priceUnit && <span class="offer-card__price-unit">{offer.priceUnit}</span>}
+        </div>
+      )}
+      {highlights.length > 0 && (
+        <ul class="offer-card__highlights">
+          {highlights.map((h) => (<li>{h.text}</li>))}
+        </ul>
+      )}
+      {(validFrom || validTo) && (
+        <p class="offer-card__dates">
+          {validFrom && validTo ? `Valid ${validFrom} – ${validTo}` : `Valid through ${validTo || validFrom}`}
+        </p>
+      )}
+      {offer.promoCode && (
+        <p class="offer-card__promo">Use code <code>{offer.promoCode}</code> at booking.</p>
+      )}
+      <div class="offer-card__cta">
+        <a class="link button primary" href={ctaLink}>{ctaLabel}</a>
+      </div>
+    </div>
+  </div>
+) : (
+  <article class="offer-card">
+    {imageUrl && (
+      <div class="offer-card__image">
+        <img
+          src={imageUrl}
+          srcset={imageSrcset}
+          alt={imageObj?.title || offer.title}
+          width={imageWidth}
+          height={imageHeight}
+          loading="lazy"
+        />
+      </div>
+    )}
+    <div class="offer-card__body">
+      {offer.tagline && <span class="offer-card__tagline">{offer.tagline}</span>}
+      <h3 class="offer-card__title">{offer.title}</h3>
+      {offer.subtitle && <p class="offer-card__subtitle">{offer.subtitle}</p>}
+      {price && (
+        <div class="offer-card__price">
+          <span class="offer-card__price-from">From</span>
+          <span class="offer-card__price-amount">{price}</span>
+          {offer.priceUnit && <span class="offer-card__price-unit">{offer.priceUnit}</span>}
+        </div>
+      )}
+      {highlights.length > 0 && (
+        <ul class="offer-card__highlights">
+          {highlights.map((h) => (<li>{h.text}</li>))}
+        </ul>
+      )}
+      {(validFrom || validTo) && (
+        <p class="offer-card__dates">
+          {validFrom && validTo ? `Valid ${validFrom} – ${validTo}` : `Valid through ${validTo || validFrom}`}
+        </p>
+      )}
+      {offer.promoCode && (
+        <p class="offer-card__promo">Use code <code>{offer.promoCode}</code></p>
+      )}
+      <div class="offer-card__cta">
+        <a class="link button primary" href={ctaLink}>{ctaLabel}</a>
+      </div>
+    </div>
+  </article>
+)}

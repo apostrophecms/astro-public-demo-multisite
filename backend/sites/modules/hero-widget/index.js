@@ -72,5 +72,46 @@ export default {
         }
       }
     }
+  },
+  styles: {
+    add: {
+      minHeight: {
+        label: 'Minimum Height',
+        type: 'range',
+        min: 200,
+        max: 900,
+        step: 20,
+        def: 420,
+        unit: 'px',
+        selector: '.hero-widget',
+        property: 'min-height'
+      },
+      textAlign: {
+        label: 'Text Alignment',
+        type: 'select',
+        def: 'center',
+        selector: '.hero-widget__content',
+        property: 'text-align',
+        choices: [
+          { label: 'Left', value: 'left' },
+          { label: 'Center', value: 'center' },
+          { label: 'Right', value: 'right' }
+        ]
+      },
+      background: {
+        label: 'Background Color',
+        type: 'color',
+        def: '#242859',
+        selector: '.hero-widget',
+        property: 'background-color'
+      },
+      textColor: {
+        label: 'Text Color',
+        type: 'color',
+        def: '#ffffff',
+        selector: '.hero-widget__content',
+        property: 'color'
+      }
+    }
   }
 };

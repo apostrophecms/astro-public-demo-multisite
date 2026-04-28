@@ -1,0 +1,143 @@
+.booking-cta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 2rem 0;
+
+  &--dark {
+    color: #fff;
+    background: #0f172a;
+  }
+
+  &--light {
+    background: var(--surface-color);
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  }
+
+  &--bar {
+    background: var(--surface-color);
+    color: #111827;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 1rem 1.5rem;
+
+    .booking-cta__inner {
+      padding: 0;
+    }
+
+    .booking-cta__header {
+      display: none;
+    }
+
+    .booking-cta__form {
+      flex-direction: row;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.booking-cta__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5));
+  }
+}
+
+.booking-cta--light .booking-cta__background::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.95));
+}
+
+.booking-cta__inner {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 2rem;
+}
+
+.booking-cta__header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+}
+
+.booking-cta__headline {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.booking-cta__subhead {
+  opacity: 0.9;
+}
+
+.booking-cta__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.booking-cta__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+  flex: 1 0 140px;
+}
+
+.booking-cta__field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.booking-cta__field input,
+.booking-cta__field select {
+  padding: 0.65rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: var(--surface-color);
+  color: #111827;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.booking-cta__submit {
+  padding: 0.8rem 1.5rem;
+  border: 0;
+  background: var(--a-primary, #6236ff);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  min-width: 180px;
+
+  &:hover {
+    background: #4c1d95;
+    transform: translateY(-1px);
+  }
+}
+
+.booking-cta--bar .booking-cta__submit {
+  min-width: 160px;
+}

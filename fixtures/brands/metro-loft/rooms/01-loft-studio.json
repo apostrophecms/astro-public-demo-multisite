@@ -1,0 +1,18 @@
+{
+  "title": "The Loft Studio",
+  "roomType": "studio",
+  "bedConfiguration": "queen",
+  "view": "city",
+  "maxOccupancy": 2,
+  "bedroomCount": 0,
+  "squareFeet": 320,
+  "amenities": [ "wifi", "mini-bar", "smart-tv", "workspace" ],
+  "nightlyRate": 245,
+  "rateCurrency": "USD",
+  "featuredImage": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1505693314120-0d443867891c?w=1200&q=80&auto=format&fit=crop"
+  ],
+  "description": "<h3>Compact. Considered.</h3><p>The signature Metro Loft room. 320 square feet with nothing you don't need and everything you do — including a built-in workspace that doubles as a dining table and a queen bed that runs rings around hotel beds twice its price.</p>",
+  "visibility": "public"
+}

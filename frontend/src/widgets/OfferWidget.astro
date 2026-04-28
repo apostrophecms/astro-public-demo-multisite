@@ -1,0 +1,71 @@
+---
+import OfferCard from '../components/OfferCard.astro';
+import { aposHostFromRequest } from '../utils/aposHost.js';
+
+const { widget } = Astro.props;
+const layout = widget.layout || 'cards';
+const limit = widget.limit || 3;
+const heading = widget.heading || 'Special Offers';
+
+let offers = Array.isArray(widget._offers) ? widget._offers.slice(0, limit) : [];
+
+if (offers.length === 0) {
+  try {
+    const aposHost = aposHostFromRequest(Astro.request);
+    const params = new URLSearchParams();
+    params.set('perPage', String(limit));
+    params.set('sort[validFrom]', '1');
+    const response = await fetch(`${aposHost}/api/v1/offer?${params.toString()}`);
+    if (response.ok) {
+      const data = await response.json();
+      offers = data.results || [];
+    } else {
+      console.error('Offer API response:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Failed to fetch offers:', error);
+  }
+}
+---
+
+<div class={`widget offer-widget offer-widget--${layout}`}>
+  {heading && <h3 class="offer-widget__heading">{heading}</h3>}
+  {offers.length > 0 ? (
+    layout === 'feature' ? (
+      <div class="offer-feature-list">
+        {offers.map((offer) => (
+          <OfferCard offer={offer} layout="feature" />
+        ))}
+      </div>
+    ) : (
+      <div class="offer-grid">
+        {offers.map((offer) => (
+          <OfferCard offer={offer} layout="card" />
+        ))}
+      </div>
+    )
+  ) : (
+    <p class="no-offers">No current offers.</p>
+  )}
+</div>
+
+<style>
+  .offer-widget {
+    margin: 2rem 0;
+  }
+  .offer-widget__heading {
+    margin: 0 0 1.25rem;
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  .offer-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .no-offers {
+    text-align: center;
+    color: #6b7280;
+    padding: 2rem;
+  }
+</style>

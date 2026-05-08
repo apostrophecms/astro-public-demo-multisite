@@ -57,7 +57,7 @@ if (article?.blurb && !article.blurb.options) {
       </div>
     )}
     <div class="article-detail article-published">
-      {dayjs(article.publishedDate).format('MMMM D, YYYY')}
+      {dayjs(article.publishedAt).format('MMMM D, YYYY')}
     </div>
     <h3><a href={article._url}>{article.title}</a></h3>
     <article>

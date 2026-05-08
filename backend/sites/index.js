@@ -15,6 +15,7 @@ export default async function (site) {
     // Theme name is globally available as apos.options.theme
     theme: site.theme,
     nestedModuleSubdirs: true,
+    bundles: [ '@apostrophecms/blog' ],
     modules: {
       // Apostrophe module configuration
 
@@ -62,14 +63,15 @@ export default async function (site) {
       // A page type for ordinary pages
       'default-page': {},
 
-      // A piece type for articles
+      // Extends @apostrophecms/blog
       article: {},
+
+      // Extends @apostrophecms/blog-page.
+      // Paginated index of articles, with "show pages" for individual articles
+      'article-page': {},
 
       // Tease an article on any page
       'article-widget': {},
-
-      // Paginated index of articles, and with pages for individual articles
-      'article-page': {},
 
       // A piece type for categorizing articles
       'article-category': {},

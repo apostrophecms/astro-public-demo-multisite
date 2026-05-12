@@ -20,16 +20,16 @@
     "url": ""
   },
   "dependencies": {
-    "@apostrophecms-pro/automatic-translation": "^1.4.4",
+    "@apostrophecms-pro/automatic-translation": "^1.5.0",
     "@apostrophecms-pro/multisite": "^4.4.2",
     "@apostrophecms-pro/multisite-dashboard": "1.6.0",
     "@apostrophecms/blog": "^1.0.6",
     "@apostrophecms/favicon": "^1.1.3",
-    "@apostrophecms/import-export": "^2.4.1",
+    "@apostrophecms/import-export": "^3.6.0",
     "@apostrophecms/open-graph": "^1.2.3",
-    "@apostrophecms/seo": "^1.2.3",
-    "@apostrophecms/vite": "^1.1.0",
-    "apostrophe": "4.27.0-alpha.2",
+    "@apostrophecms/seo": "^1.4.2",
+    "@apostrophecms/vite": "^1.1.1",
+    "apostrophe": "4.29.0",
     "cross-env": "^10.1.0",
     "dayjs": "^1.11.20",
     "klona": "^2.0.6"

@@ -74,7 +74,7 @@ cd backend && npm run dev
 cd frontend && npm run dev
 ```
 
-Visit `http://localhost:4321` to see the site.
+Visit `http://dashboard.localhost:4321` to see the dashboard.
 
 ### Create an Admin User
 

@@ -30,5 +30,15 @@
   "workspaces": [
     "backend",
     "frontend"
-  ]
+  ],
+  "allowScripts": {
+    "@parcel/watcher": true,
+    "better-sqlite3": true,
+    "esbuild": true,
+    "fsevents": true,
+    "protobufjs": true,
+    "sharp": true,
+    "unrs-resolver": true,
+    "vue-demi": true
+  }
 }

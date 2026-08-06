@@ -176,6 +176,130 @@ export default {
 
           self.apos.util.log(`fitness-seed: seeded + published home for ${brand.name} (${key}).`);
         }
+      },
+      booking: {
+        usage: 'Insert a "Book a class" booking-widget under the pricing cards on the home page, with ' +
+          'the class type set to match the brand\'s discipline. Skips (does not duplicate) if a booking ' +
+          'widget is already present. Options: --brand=<key>',
+        task: async (argv) => {
+          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const brand = brands[key];
+          const info = bookingInfo[key];
+          if (!brand || !info) {
+            throw new Error(`Unknown brand "${key}". Valid: ${Object.keys(bookingInfo).join(', ')}`);
+          }
+
+          const req = self.apos.task.getReq({ mode: 'draft' });
+          const gen = () => self.apos.util.generateId();
+
+          const home = await self.apos.page.find(req, { slug: '/' }).toObject();
+          if (!home) {
+            throw new Error('Home page (slug "/") not found for this site.');
+          }
+
+          const items = (home.main && home.main.items) || [];
+          if (items.some((item) => item.type === 'booking')) {
+            self.apos.util.log(`fitness-seed: booking widget already present for ${brand.name}, skipping.`);
+            return;
+          }
+
+          const widget = {
+            _id: gen(),
+            metaType: 'widget',
+            type: 'booking',
+            heading: info.heading,
+            intro: info.intro,
+            classType: info.classType
+          };
+
+          // Insert right after the last pricing card, same placement used on Cadence.
+          let insertAt = items.length;
+          for (let i = items.length - 1; i >= 0; i--) {
+            if (items[i].type === 'price-card') {
+              insertAt = i + 1;
+              break;
+            }
+          }
+          items.splice(insertAt, 0, widget);
+          home.main.items = items;
+
+          await self.apos.page.update(req, home);
+          await self.apos.page.publish(req, home);
+
+          self.apos.util.log(`fitness-seed: booking widget added for ${brand.name} (${key}).`);
+        }
+      },
+      layoutMembership: {
+        usage: 'Wrap the three top-level pricing cards under "Membership" in a 3-equal-column ' +
+          '@apostrophecms/layout widget, in place. Skips if a layout widget is already present ' +
+          'in main. Options: --brand=<key>',
+        task: async (argv) => {
+          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const brand = brands[key];
+          if (!brand) {
+            throw new Error(`Unknown brand "${key}". Valid: ${Object.keys(brands).join(', ')}`);
+          }
+
+          const req = self.apos.task.getReq({ mode: 'draft' });
+          const gen = () => self.apos.util.generateId();
+          const area = (items) => ({ _id: gen(), metaType: 'area', items });
+
+          const home = await self.apos.page.find(req, { slug: '/' }).toObject();
+          if (!home) {
+            throw new Error('Home page (slug "/") not found for this site.');
+          }
+
+          const items = (home.main && home.main.items) || [];
+          if (items.some((item) => item.type === '@apostrophecms/layout')) {
+            self.apos.util.log(`fitness-seed: pricing cards already laid out for ${brand.name}, skipping.`);
+            return;
+          }
+
+          const cardIndexes = items
+            .map((item, i) => [ item, i ])
+            .filter(([ item ]) => item.type === 'price-card')
+            .map(([ , i ]) => i);
+
+          if (!cardIndexes.length) {
+            self.apos.util.warn(`fitness-seed: no price-card widgets found for ${brand.name}, skipping.`);
+            return;
+          }
+
+          const firstIndex = cardIndexes[0];
+          const cards = cardIndexes.map((i) => items[i]);
+          const colspan = Math.floor(12 / cards.length);
+
+          const columns = cards.map((card, i) => ({
+            _id: gen(),
+            metaType: 'widget',
+            type: '@apostrophecms/layout-column',
+            colstart: i * colspan + 1,
+            colspan,
+            rowstart: 1,
+            rowspan: 1,
+            order: i,
+            content: area([ card ])
+          }));
+
+          const layoutWidget = {
+            _id: gen(),
+            metaType: 'widget',
+            type: '@apostrophecms/layout',
+            columns: area(columns)
+          };
+
+          // Cards are contiguous (all seeded together by the `home` task), so
+          // removing them and inserting the layout widget at the first card's
+          // old index preserves the position of everything else.
+          const newItems = items.filter((_, i) => !cardIndexes.includes(i));
+          newItems.splice(firstIndex, 0, layoutWidget);
+          home.main.items = newItems;
+
+          await self.apos.page.update(req, home);
+          await self.apos.page.publish(req, home);
+
+          self.apos.util.log(`fitness-seed: wrapped ${cards.length} pricing cards in a layout for ${brand.name} (${key}).`);
+        }
       }
     };
   }
@@ -215,6 +339,20 @@ const themes = {
   barretheory: { accent: '#B76E79', link: '#9E5763', heading: 'Cormorant Garamond', body: 'Jost' },
   unwind:      { accent: '#5B8A9A', link: '#3E6C7C', heading: 'Nunito',             body: 'Nunito Sans' },
   wake:        { accent: '#2C9BA0', link: '#12324F', heading: 'Manrope',            body: 'Inter' }
+};
+
+// Per-brand booking-widget config, matching each studio's real discipline
+// (see booking-widget's classType choices) and voice (see brand.unit above).
+const bookingInfo = {
+  cadence: { classType: 'cycling', heading: 'Book a ride', intro: 'Reserve your spot in a live Cadence class.' },
+  emberflow: { classType: 'yoga', heading: 'Book a class', intro: 'Reserve your mat for the next heated flow or restorative session.' },
+  ironhaus: { classType: 'strength', heading: 'Book a session', intro: 'Reserve your spot on the floor for a coached session.' },
+  southpaw: { classType: 'boxing', heading: 'Book a class', intro: 'Get in the ring — reserve your spot in a live class.' },
+  reformroom: { classType: 'pilates', heading: 'Book a class', intro: 'Reserve your spot on the reformer.' },
+  gritlab: { classType: 'hiit', heading: 'Book a session', intro: 'Reserve your spot in the next coached session.' },
+  barretheory: { classType: 'barre', heading: 'Book a class', intro: 'Reserve your spot at the barre.' },
+  unwind: { classType: 'recovery', heading: 'Book a session', intro: 'Reserve your spot for stretch, mobility, or recovery.' },
+  wake: { classType: 'rowing', heading: 'Book a row', intro: 'Reserve your spot on the erg.' }
 };
 
 // ---------------------------------------------------------------------------

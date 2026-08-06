@@ -10,6 +10,10 @@
   text-decoration: none;
 }
 
+.home-title {
+  margin-bottom: calc(var(--widget-spacer) / 2);
+}
+
 h6.meta {
   display: inline-block;
 }

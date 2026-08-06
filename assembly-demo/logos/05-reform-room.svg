@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Reform Room Pilates">
+  <rect width="520" height="200" rx="20" fill="#F3F1E9"></rect>
+  <g transform="translate(70 100)" stroke="#6B8E6B" fill="none" stroke-linecap="round">
+    
+    <line x1="-46" y1="-16" x2="46" y2="-16" stroke-width="4"></line>
+    <line x1="-46" y1="16" x2="46" y2="16" stroke-width="4"></line>
+    <rect x="-30" y="-24" width="44" height="48" rx="8" stroke-width="5" fill="#6B8E6B" fill-opacity="0.12"></rect>
+    <line x1="-46" y1="-26" x2="-46" y2="26" stroke-width="4"></line>
+    <line x1="46" y1="-26" x2="46" y2="26" stroke-width="4"></line>
+  </g>
+  <g font-family="'Helvetica Neue', Arial, sans-serif">
+    <text x="148" y="94" font-size="38" font-weight="300" letter-spacing="2" fill="#33402F">REFORM</text>
+    <text x="148" y="132" font-size="38" font-weight="600" letter-spacing="2" fill="#6B8E6B">ROOM</text>
+  </g>
+</svg>

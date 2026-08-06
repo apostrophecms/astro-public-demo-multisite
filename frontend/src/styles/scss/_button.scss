@@ -10,24 +10,24 @@
   text-decoration: none;
   transition: background-color 250ms ease 0s;
 
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border: 2px solid var(--accent-color);
+  background: var(--button-primary-color, var(--accent-color));
+  color: var(--button-primary-label-color, var(--contrast-color));
+  border: 2px solid var(--button-primary-color, var(--accent-color));
 
   &:hover {
-    background: color-mix(in srgb, var(--accent-color), black 10%);
-    border-color: color-mix(in srgb, var(--accent-color), black 10%);
+    background: color-mix(in srgb, var(--button-primary-color, var(--accent-color)), black 10%);
+    border-color: color-mix(in srgb, var(--button-primary-color, var(--accent-color)), black 10%);
     transform: translateY(-2px);
   }
 }
 
 .button.outline {
   background: transparent;
-  color: var(--accent-color);
-  border: 2px solid var(--accent-color);
+  color: var(--button-outline-label-color, var(--accent-color));
+  border: 2px solid var(--button-outline-color, var(--accent-color));
 
   &:hover {
-    background: var(--accent-color);
+    background: var(--button-outline-color, var(--accent-color));
     color: var(--contrast-color);
     transform: translateY(-2px);
   }

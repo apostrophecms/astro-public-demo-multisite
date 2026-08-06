@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Cadence icon">
+  <g transform="translate(80 80)">
+    <!-- spinning wheel -->
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#FF4757" stroke-width="7"/>
+    <g stroke="#FF4757" stroke-width="4" stroke-linecap="round">
+      <line x1="0" y1="0" x2="0" y2="-38"/>
+      <line x1="0" y1="0" x2="33" y2="19"/>
+      <line x1="0" y1="0" x2="-33" y2="19"/>
+    </g>
+    <circle cx="0" cy="0" r="7" fill="#FF4757"/>
+    <!-- motion arcs -->
+    <path d="M-54 -18 A40 40 0 0 0 -54 18" fill="none" stroke="#FF4757" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    <path d="M-63 -12 A30 30 0 0 0 -63 12" fill="none" stroke="#FF4757" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  </g>
+</svg>

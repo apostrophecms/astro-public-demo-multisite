@@ -35,6 +35,19 @@ if (aposData.notFound) {
     <link rel="preload" href="/fonts/quicksand.subset.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/roboto.subset.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/roboto-italic.subset.woff2" as="font" type="font/woff2" crossorigin />
+    {(aposData.global?.headingFont || aposData.global?.bodyFont) && (
+      <link rel="stylesheet"
+        href={`https://fonts.googleapis.com/css2?${[aposData.global?.headingFont, aposData.global?.bodyFont]
+          .filter(Boolean)
+          .map((f) => `family=${encodeURIComponent(f).replace(/%20/g, '+')}:wght@400;500;600;700;900`)
+          .join('&')}&display=swap`} />
+    )}
+    <style set:html={`:root{`
+      + (aposData.global?.accentColor ? `--accent-color:${aposData.global.accentColor} !important;` : '')
+      + (aposData.global?.linkColor ? `--link-color:${aposData.global.linkColor} !important;` : '')
+      + (aposData.global?.headingFont ? `--heading-font:'${aposData.global.headingFont}',sans-serif !important;--nav-font:'${aposData.global.headingFont}',sans-serif !important;` : '')
+      + (aposData.global?.bodyFont ? `--default-font:'${aposData.global.bodyFont}',system-ui,sans-serif !important;` : '')
+      + `}`}></style>
   </Fragment>
 
   <SiteHeader {aposData} slot="beforeMain" />

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Grit Lab HIIT">
+  <rect width="520" height="200" rx="20" fill="#1B1B1B"/>
+  <g transform="translate(70 100)">
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#C6FF00" stroke-width="5"/>
+    <!-- lightning bolt -->
+    <path d="M8 -34 L-18 6 L-2 6 L-8 34 L20 -8 L2 -8 Z" fill="#C6FF00"/>
+  </g>
+  <g font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif">
+    <text x="150" y="98" font-size="46" font-weight="900" letter-spacing="0" fill="#FFFFFF">GRIT<tspan fill="#C6FF00">LAB</tspan></text>
+    <text x="152" y="130" font-size="15" font-weight="700" letter-spacing="5" fill="#C6FF00" font-family="'Helvetica Neue', Arial, sans-serif">HIIT &amp; BOOTCAMP</text>
+  </g>
+</svg>

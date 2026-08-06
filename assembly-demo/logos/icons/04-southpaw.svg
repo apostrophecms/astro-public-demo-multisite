@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Southpaw icon">
+  <g transform="translate(80 80)">
+    
+    <path d="M-30 -34 C6 -46 40 -30 40 6 C40 34 20 46 -6 46 L-30 46 C-40 46 -44 40 -44 30 L-44 8 C-52 6 -52 -8 -44 -12 L-44 -22 C-44 -30 -38 -34 -30 -34 Z" fill="#C1121F"></path>
+    <path d="M-44 -12 C-52 -8 -52 6 -44 8 L-30 8 L-30 -12 Z" fill="#9E0E19"></path>
+    <path d="M-30 12 L36 12" stroke="#F4F1EA" stroke-width="4" stroke-linecap="round"></path>
+  </g>
+</svg>

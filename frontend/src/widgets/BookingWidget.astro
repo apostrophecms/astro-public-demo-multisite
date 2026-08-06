@@ -1,0 +1,178 @@
+---
+// DEMO ONLY: this widget fakes a live class schedule. The "schedule" below is
+// generated with Math.random() at render time and the day-switching / booking
+// interactions are handled entirely client-side — nothing here reads from or
+// writes to a real booking system.
+const { widget } = Astro.props;
+
+const DAYS = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
+const todayIndex = (new Date().getDay() + 6) % 7; // JS Sun=0 -> Mon-first index
+
+const CLASS_POOLS = {
+  cycling: [ 'Sunrise Ride', 'Power Cycle', 'Rhythm Ride', 'Climb + Sprint', 'Recovery Spin', 'Beat Ride' ],
+  yoga: [ 'Vinyasa Flow', 'Slow Flow', 'Power Yoga', 'Restorative Yoga', 'Sunrise Yoga', 'Yin + Stretch' ],
+  strength: [ 'Barbell Basics', 'Strength Circuit', 'Total Body Lift', 'Powerlifting 101', 'Open Gym Coached', 'Iron Conditioning' ],
+  boxing: [ 'Boxing Fundamentals', 'Bag + Burn', 'Mitt Work', 'Footwork Focus', 'Sparring Prep', 'Conditioning Rounds' ],
+  pilates: [ 'Reformer Foundations', 'Full-Body Flow', 'Core + Control', 'Mat Pilates', 'Reformer Sculpt', 'Pilates Express' ],
+  hiit: [ 'Grit Circuit', 'Engine Builder', 'Metcon Mix', 'Tabata Blast', 'Strength + Sprint', 'Full Throttle' ],
+  barre: [ 'Barre Foundations', 'Barre Flow', 'Barre + Stretch', 'Sculpt & Tone', 'Barre Cardio', 'Pure Barre Burn' ],
+  recovery: [ 'Assisted Stretch', 'Mobility Class', 'Recovery Lounge', 'Foam + Flow', 'Breathwork', 'Cold + Compression' ],
+  rowing: [ 'Row 101', 'Row + Strength', 'Endurance Row', 'Sprint Intervals', 'Team Row', 'Recovery Row' ]
+};
+CLASS_POOLS.all = Object.values(CLASS_POOLS).flat();
+
+const INSTRUCTORS = [ 'Jordan M.', 'Casey L.', 'Taylor R.', 'Morgan K.', 'Sam P.', 'Alex D.', 'Riley T.', 'Jamie C.', 'Drew S.', 'Quinn B.' ];
+const TIME_SLOTS = [ '6:00 AM', '7:15 AM', '9:00 AM', '12:00 PM', '4:30 PM', '5:45 PM', '6:30 PM', '7:30 PM' ];
+const DURATIONS = [ 30, 45, 60 ];
+
+const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+function fakeDaySchedule(pool) {
+  const count = 4 + Math.floor(Math.random() * 3); // 4-6 slots
+  const times = [ ...TIME_SLOTS ]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, count)
+    .sort((a, b) => TIME_SLOTS.indexOf(a) - TIME_SLOTS.indexOf(b));
+
+  return times.map((time, i) => ({
+    id: `slot-${i}`,
+    time,
+    className: pick(pool),
+    instructor: pick(INSTRUCTORS),
+    duration: pick(DURATIONS),
+    spots: 1 + Math.floor(Math.random() * 8)
+  }));
+}
+
+const pool = CLASS_POOLS[widget.classType] || CLASS_POOLS.all;
+const schedule = DAYS.map(() => fakeDaySchedule(pool));
+const widgetId = `booking-${widget._id}`;
+const pluralize = (n) => (n === 1 ? '' : 's');
+---
+
+<section class="widget booking-widget" id={widgetId} data-booking-widget data-today={todayIndex}>
+  <div class="booking-widget__intro">
+    <h2 class="booking-widget__heading">{widget.heading || 'Book a class'}</h2>
+    {widget.intro && <p class="booking-widget__subheading">{widget.intro}</p>}
+  </div>
+
+  <div class="booking-widget__days" role="group" aria-label="Choose a day">
+    {DAYS.map((day, i) => (
+      <button
+        type="button"
+        class="booking-widget__day"
+        data-day-index={i}
+        aria-pressed={i === todayIndex ? 'true' : 'false'}
+      >{day}</button>
+    ))}
+  </div>
+
+  <ul class="booking-widget__slots">
+    {schedule[todayIndex].map((slot) => (
+      <li class="booking-widget__slot" data-slot-key={`${todayIndex}-${slot.id}`}>
+        <div class="booking-widget__slot-time">{slot.time}</div>
+        <div class="booking-widget__slot-info">
+          <span class="booking-widget__slot-name">{slot.className}</span>
+          <span class="booking-widget__slot-meta">{slot.instructor} · {slot.duration} min</span>
+        </div>
+        <span class="booking-widget__spots">{slot.spots} spot{pluralize(slot.spots)} left</span>
+        <button type="button" class="booking-widget__book-btn">Book</button>
+      </li>
+    ))}
+  </ul>
+
+  <p class="booking-widget__toast" role="status" aria-live="polite" hidden></p>
+
+  <script type="application/json" class="booking-widget__data" set:html={JSON.stringify(schedule)} />
+</section>
+
+<script is:inline>
+  // DEMO ONLY: everything below simulates live booking behavior against the
+  // fake schedule embedded above. No network requests are made.
+  (function() {
+    function pluralize(n) {
+      return n === 1 ? '' : 's';
+    }
+
+    function initBookingWidget(root) {
+      if (root.dataset.bookingInit) return;
+      root.dataset.bookingInit = 'true';
+
+      const dataEl = root.querySelector('.booking-widget__data');
+      const schedule = JSON.parse((dataEl && dataEl.textContent) || '[]');
+      const dayButtons = [].slice.call(root.querySelectorAll('.booking-widget__day'));
+      const slotsEl = root.querySelector('.booking-widget__slots');
+      const toastEl = root.querySelector('.booking-widget__toast');
+      const bookedKeys = new Set();
+      let toastTimer;
+
+      function renderDay(dayIndex) {
+        const daySlots = schedule[dayIndex] || [];
+        if (!slotsEl) return;
+        slotsEl.innerHTML = daySlots.map((slot) => {
+          const key = dayIndex + '-' + slot.id;
+          const booked = bookedKeys.has(key);
+          return (
+            '<li class="booking-widget__slot' + (booked ? ' is-booked' : '') + '" data-slot-key="' + key + '">' +
+              '<div class="booking-widget__slot-time">' + slot.time + '</div>' +
+              '<div class="booking-widget__slot-info">' +
+                '<span class="booking-widget__slot-name">' + slot.className + '</span>' +
+                '<span class="booking-widget__slot-meta">' + slot.instructor + ' · ' + slot.duration + ' min</span>' +
+              '</div>' +
+              '<span class="booking-widget__spots">' + slot.spots + ' spot' + pluralize(slot.spots) + ' left</span>' +
+              '<button type="button" class="booking-widget__book-btn"' + (booked ? ' disabled' : '') + '>' + (booked ? 'Booked ✓' : 'Book') + '</button>' +
+            '</li>'
+          );
+        }).join('');
+      }
+
+      dayButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dayIndex = Number(btn.dataset.dayIndex);
+          dayButtons.forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+          renderDay(dayIndex);
+        });
+      });
+
+      function showToast(message) {
+        if (!toastEl) return;
+        toastEl.textContent = message;
+        toastEl.hidden = false;
+        toastEl.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove('is-visible');
+          toastEl.hidden = true;
+        }, 3000);
+      }
+
+      if (slotsEl) {
+        slotsEl.addEventListener('click', (e) => {
+          const btn = e.target.closest('.booking-widget__book-btn');
+          if (!btn || btn.disabled) return;
+          const li = btn.closest('.booking-widget__slot');
+          if (!li) return;
+          const key = li.dataset.slotKey || '';
+          bookedKeys.add(key);
+          li.classList.add('is-booked');
+          btn.textContent = 'Booked ✓';
+          btn.disabled = true;
+
+          const nameEl = li.querySelector('.booking-widget__slot-name');
+          const timeEl = li.querySelector('.booking-widget__slot-time');
+          showToast('You\'re booked for ' + (nameEl ? nameEl.textContent : 'your class') + ' at ' + (timeEl ? timeEl.textContent : '') + '.');
+        });
+      }
+    }
+
+    function init() {
+      document.querySelectorAll('[data-booking-widget]').forEach(initBookingWidget);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

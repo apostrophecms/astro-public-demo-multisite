@@ -1,3 +1,10 @@
+---
+// The dashboard's hostname is always "dashboard.<domain>" (see backend/domains.js
+// and the shortName-based hostname convention used across all sites). The
+// dark/light toggle should only appear on tenant sites, not the dashboard itself.
+const isDashboard = Astro.url.hostname.startsWith('dashboard.') || Astro.url.hostname === 'dashboard';
+---
+
 <footer class='footer'>
   <div class='footer__section footer__top'>
     <div class='footer__column footer__column--logo'>
@@ -172,6 +179,8 @@
   </div>
 </footer>
 
+{!isDashboard && (
+<Fragment>
 <!-- Light/Dark mode switch -->
 <div class='mode-switch' data-mode-switch>
   <label for='light-dark-toggle'>
@@ -283,3 +292,5 @@
     }
   }, 300);
 </script>
+</Fragment>
+)}

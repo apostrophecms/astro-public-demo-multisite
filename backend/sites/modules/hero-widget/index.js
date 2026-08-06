@@ -10,6 +10,32 @@ export default {
   },
   fields: {
     add: {
+      _backgroundImage: {
+        label: 'project:heroBackgroundImage',
+        help: 'project:heroBackgroundImageHelp',
+        type: 'relationship',
+        withType: '@apostrophecms/image',
+        max: 1
+      },
+      overlayStrength: {
+        label: 'project:heroOverlayStrength',
+        type: 'select',
+        choices: [
+          {
+            label: 'project:light',
+            value: 'light'
+          },
+          {
+            label: 'project:medium',
+            value: 'medium',
+            def: true
+          },
+          {
+            label: 'project:strong',
+            value: 'strong'
+          }
+        ]
+      },
       content: {
         label: 'project:textContent',
         help: 'project:textContentHelp',

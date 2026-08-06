@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Unwind Recovery">
+  <rect width="520" height="200" rx="20" fill="#F1EDE4"/>
+  <g transform="translate(70 100)">
+    <!-- unwinding spiral -->
+    <path d="M44 6 A38 38 0 1 1 6 -32 A26 26 0 1 0 32 -6 A14 14 0 1 1 6 -20"
+          fill="none" stroke="#5B8A9A" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g font-family="'Helvetica Neue', Arial, sans-serif">
+    <text x="140" y="96" font-size="44" font-weight="400" letter-spacing="3" fill="#2E4750">unwind</text>
+    <text x="142" y="128" font-size="13" font-weight="500" letter-spacing="3" fill="#5B8A9A">STRETCH &#183; MOBILITY &#183; RECOVERY</text>
+  </g>
+</svg>

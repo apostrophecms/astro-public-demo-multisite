@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Wake Rowing">
+  <rect width="520" height="200" rx="20" fill="#EAF4F5"></rect>
+  <g transform="translate(70 100)" fill="none" stroke-linecap="round">
+    
+    <path d="M-48 -6 Q-24 -26 0 -6 T48 -6" stroke="#12324F" stroke-width="6"></path>
+    <path d="M-48 12 Q-24 -8 0 12 T48 12" stroke="#34C7C7" stroke-width="6"></path>
+    <path d="M-40 28 Q-20 12 0 28 T40 28" stroke="#12324F" stroke-width="5" opacity="0.5"></path>
+  </g>
+  <g font-family="'Helvetica Neue', Arial, sans-serif">
+    <text x="148" y="98" font-size="48" font-weight="700" letter-spacing="1" fill="#12324F">WAKE</text>
+    <text x="150" y="130" font-size="15" font-weight="600" letter-spacing="6" fill="#2C9BA0">INDOOR ROWING</text>
+  </g>
+</svg>

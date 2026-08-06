@@ -59,6 +59,8 @@ export default async function (site) {
         }
       },
       'price-card-widget': {},
+      'booking-widget': {},
+      'fitness-seed': {},
 
       // A page type for ordinary pages
       'default-page': {},
@@ -77,13 +79,15 @@ export default async function (site) {
       'article-category': {},
 
       // Import and export content
-      '@apostrophecms/import-export': {},
-      '@apostrophecms-pro/automatic-translation': {
-        options: {
-          provider: 'deepl'
-        }
-      },
-      '@apostrophecms-pro/automatic-translation-deepl': {}
+      '@apostrophecms/import-export': {}
+      // Automatic translation (DeepL) disabled for local dev — requires
+      // APOS_DEEPL_API_SECRET, not needed for this demo.
+      // '@apostrophecms-pro/automatic-translation': {
+      //   options: {
+      //     provider: 'deepl'
+      //   }
+      // },
+      // '@apostrophecms-pro/automatic-translation-deepl': {}
     }
   };
 

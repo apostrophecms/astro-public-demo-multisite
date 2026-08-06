@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="130px" height="89px" viewBox="0 0 130 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>booking</title>
+    <defs>
+        <path d="M0,0 L130,0 L130,89 L0,89 L0,0 Z" id="path-1"></path>
+    </defs>
+    <g id="booking" stroke="none" fill="none" xlink:href="#path-1">
+        <use fill="#ADC4FE" fill-rule="evenodd" xlink:href="#path-1"></use>
+        <rect id="card" fill="#FFFFFD" fill-rule="evenodd" x="10" y="10" width="110" height="69" rx="8"></rect>
+        <rect id="day-pill-1" fill="#2C5AD8" x="20" y="20" width="18" height="12" rx="6"></rect>
+        <rect id="day-pill-2" fill="#E4EBFC" x="42" y="20" width="18" height="12" rx="6"></rect>
+        <rect id="day-pill-3" fill="#E4EBFC" x="64" y="20" width="18" height="12" rx="6"></rect>
+        <rect id="day-pill-4" fill="#E4EBFC" x="86" y="20" width="18" height="12" rx="6"></rect>
+        <line x1="20" y1="44" x2="70" y2="44" id="slot-line-1" stroke="#587FEA" stroke-width="3" stroke-linecap="round"></line>
+        <rect id="book-btn-1" fill="#2C5AD8" x="86" y="40" width="24" height="9" rx="4.5"></rect>
+        <line x1="20" y1="58" x2="70" y2="58" id="slot-line-2" stroke="#ADC4FE" stroke-width="3" stroke-linecap="round"></line>
+        <rect id="book-btn-2" fill="#2C5AD8" x="86" y="54" width="24" height="9" rx="4.5"></rect>
+        <line x1="20" y1="72" x2="70" y2="72" id="slot-line-3" stroke="#ADC4FE" stroke-width="3" stroke-linecap="round"></line>
+        <rect id="book-btn-3" fill="#2C5AD8" x="86" y="68" width="24" height="9" rx="4.5"></rect>
+    </g>
+</svg>

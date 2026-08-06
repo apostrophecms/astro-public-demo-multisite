@@ -1,11 +1,38 @@
 ---
 import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+import {
+  getAttachmentUrl,
+  getAttachmentSrcset,
+  getFocalPoint,
+} from '@apostrophecms/apostrophe-astro/lib/attachment.js';
 import { getLinkPath, opensInNewTab } from '../utils/link.js';
 
 const { widget } = Astro.props;
+
+const bgImage = widget._backgroundImage?.[0];
+const bgSrc = bgImage ? getAttachmentUrl(bgImage, { size: 'full' }) : null;
+const bgSrcset = bgImage ? getAttachmentSrcset(bgImage) : null;
+const bgObjectPosition = bgImage ? getFocalPoint(bgImage) : null;
+const bgAlt = bgImage?.alt || bgImage?.attachment?._alt || '';
+const overlayStrength = widget.overlayStrength || 'medium';
+const heroClass = `widget hero-widget${bgImage ? ' hero-widget--has-image' : ''}`;
 ---
 
-<div class="widget hero-widget">
+<div class={heroClass} data-overlay={bgImage ? overlayStrength : undefined}>
+  {bgImage && (
+    <img
+      class="hero-widget__background"
+      src={bgSrc}
+      srcset={bgSrcset}
+      sizes="100vw"
+      alt={bgAlt}
+      style={bgObjectPosition ? `object-position: ${bgObjectPosition};` : undefined}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  )}
+  {bgImage && <div class="hero-widget__scrim" aria-hidden="true"></div>}
   <div class="hero-widget__content">
     <AposArea area={widget.content} />
   </div>

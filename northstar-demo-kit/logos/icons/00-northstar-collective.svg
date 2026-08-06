@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Northstar Fitness Collective icon">
+  <g transform="translate(80 80)">
+    <!-- north star: four-point sparkle -->
+    <path d="M0 -46 L11 -11 L46 0 L11 11 L0 46 L-11 11 L-46 0 L-11 -11 Z" fill="#F2C14E"/>
+    <path d="M0 -22 L6 -6 L22 0 L6 6 L0 22 L-6 6 L-22 0 L-6 -6 Z" fill="#1E2A5A"/>
+    <circle cx="0" cy="0" r="4.5" fill="#F2C14E"/>
+  </g>
+</svg>

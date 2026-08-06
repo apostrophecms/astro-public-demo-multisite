@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Cadence Cycling">
+  <rect width="520" height="200" rx="20" fill="#14161C"></rect>
+  <g transform="translate(70 100)">
+    
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#FF4757" stroke-width="7"></circle>
+    <g stroke="#FF4757" stroke-width="4" stroke-linecap="round">
+      <line x1="0" y1="0" x2="0" y2="-38"></line>
+      <line x1="0" y1="0" x2="33" y2="19"></line>
+      <line x1="0" y1="0" x2="-33" y2="19"></line>
+    </g>
+    <circle cx="0" cy="0" r="7" fill="#FF4757"></circle>
+    
+    <path d="M-54 -18 A40 40 0 0 0 -54 18" fill="none" stroke="#FF4757" stroke-width="3" stroke-linecap="round" opacity="0.55"></path>
+    <path d="M-63 -12 A30 30 0 0 0 -63 12" fill="none" stroke="#FF4757" stroke-width="3" stroke-linecap="round" opacity="0.3"></path>
+  </g>
+  <g font-family="'Helvetica Neue', Arial, sans-serif">
+    <text x="150" y="98" font-size="46" font-weight="800" font-style="italic" letter-spacing="-1" fill="#FFFFFF">CADENCE</text>
+    <text x="152" y="130" font-size="16" font-weight="600" letter-spacing="6" fill="#FF4757">RIDE IN RHYTHM</text>
+  </g>
+</svg>

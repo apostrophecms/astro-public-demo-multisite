@@ -22,7 +22,7 @@ export default defineConfig({
   },
   integrations: [
     apostrophe({
-      aposHost: 'http://localhost:3000',
+      aposHost: 'http://localhost:3001',
       widgetsMapping: './src/widgets',
       templatesMapping: './src/templates',
       includeResponseHeaders: [

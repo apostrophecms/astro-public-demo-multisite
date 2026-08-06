@@ -13,8 +13,16 @@ const logoAttachment = global?._siteLogo?.[0];
 const logoUrl = logoAttachment ? getAttachmentUrl(logoAttachment, { size: 'one-third' }) : null;
 const logoWidth = logoAttachment ? getWidth(logoAttachment) : 100;
 const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
+
+// The dashboard's hostname is always "dashboard.<domain>" (see backend/domains.js
+// and the shortName-based hostname convention used across all sites). This nav
+// bar (site title, page nav, locale switcher) should only appear on tenant
+// sites, not the dashboard itself.
+const isDashboard = Astro.url.hostname.startsWith('dashboard.') || Astro.url.hostname === 'dashboard';
 ---
 
+{!isDashboard && (
+<Fragment>
 <header class="header">
   <div class="nav-bar">
     <h2>
@@ -86,6 +94,8 @@ const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
     <LocaleSwitcher localizations={localizations} />
   </div>
 </div>
+</Fragment>
+)}
 
 <script is:inline>
   (function() {

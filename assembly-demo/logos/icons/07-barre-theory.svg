@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Barre Theory icon">
+  <g transform="translate(80 80)" stroke="#B76E79" stroke-linecap="round">
+    
+    <line x1="-48" y1="-18" x2="48" y2="-18" stroke-width="6"></line>
+    <line x1="-34" y1="-18" x2="-34" y2="34" stroke-width="5"></line>
+    <line x1="34" y1="-18" x2="34" y2="34" stroke-width="5"></line>
+    <circle cx="-48" cy="-18" r="6" fill="#B76E79" stroke="none"></circle>
+    <circle cx="48" cy="-18" r="6" fill="#B76E79" stroke="none"></circle>
+  </g>
+</svg>

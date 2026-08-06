@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Barre Theory">
+  <rect width="520" height="200" rx="20" fill="#F7F0F0"></rect>
+  <g transform="translate(70 100)" stroke="#B76E79" stroke-linecap="round">
+    
+    <line x1="-48" y1="-18" x2="48" y2="-18" stroke-width="6"></line>
+    <line x1="-34" y1="-18" x2="-34" y2="34" stroke-width="5"></line>
+    <line x1="34" y1="-18" x2="34" y2="34" stroke-width="5"></line>
+    <circle cx="-48" cy="-18" r="6" fill="#B76E79" stroke="none"></circle>
+    <circle cx="48" cy="-18" r="6" fill="#B76E79" stroke="none"></circle>
+  </g>
+  <g font-family="'Palatino Linotype', Palatino, Georgia, serif">
+    <text x="146" y="94" font-size="40" font-weight="500" letter-spacing="1" fill="#4A3236">Barre</text>
+    <text x="146" y="132" font-size="40" font-style="italic" font-weight="400" letter-spacing="1" fill="#B76E79">Theory</text>
+  </g>
+</svg>

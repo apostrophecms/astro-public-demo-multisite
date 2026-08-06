@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="Northstar Fitness Collective">
+  <rect width="520" height="200" rx="20" fill="#1E2A5A"/>
+  <g transform="translate(70 100)">
+    <!-- north star: four-point sparkle -->
+    <path d="M0 -46 L11 -11 L46 0 L11 11 L0 46 L-11 11 L-46 0 L-11 -11 Z" fill="#F2C14E"/>
+    <path d="M0 -22 L6 -6 L22 0 L6 6 L0 22 L-6 6 L-22 0 L-6 -6 Z" fill="#1E2A5A"/>
+    <circle cx="0" cy="0" r="4.5" fill="#F2C14E"/>
+  </g>
+  <g fill="#FFFFFF" font-family="'Helvetica Neue', Arial, sans-serif">
+    <text x="140" y="92" font-size="40" font-weight="700" letter-spacing="1">NORTHSTAR</text>
+    <text x="141" y="128" font-size="19" font-weight="400" letter-spacing="7" fill="#B9C2E6">FITNESS COLLECTIVE</text>
+  </g>
+</svg>

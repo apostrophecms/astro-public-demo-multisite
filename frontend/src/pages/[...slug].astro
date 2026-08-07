@@ -8,7 +8,15 @@ import "../styles/scss/index.scss";
 import "../styles/app.css";
 import "../styles/styles.css";
 
-const aposData = await aposPageFetch(Astro.request);
+// Multisite spins tenant instances up lazily and periodically frees idle
+// ones (see @apostrophecms-pro/multisite's janitor sweep). The very first
+// request to hit a freshly-evicted site loses a race with that spin-up and
+// gets a transient "not found" instead of real page data. Retry once,
+// silently, before surfacing that as a page error to the visitor.
+let aposData = await aposPageFetch(Astro.request);
+if (aposData.errorFetchingPage) {
+  aposData = await aposPageFetch(Astro.request);
+}
 
 // Determine body class based on page type
 const isHomePage = aposData.page?.type === '@apostrophecms/home-page';

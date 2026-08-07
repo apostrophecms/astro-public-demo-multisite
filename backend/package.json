@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apostrophecms-pro/automatic-translation": "^1.5.0",
+    "@ctrl/tinycolor": "^4.2.0",
     "@apostrophecms-pro/multisite": "^4.4.2",
     "@apostrophecms-pro/multisite-dashboard": "^1.6.0",
     "@apostrophecms/blog": "^1.0.6",

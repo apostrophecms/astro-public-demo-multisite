@@ -25,6 +25,8 @@
 //     anything built in the editor since the last run — use it once per site
 //     to lay down the initial content, not as a way to touch branding.
 
+import { brandProfiles, inferBrandKey } from '../../lib/brandProfiles.js';
+
 export default {
   tasks(self) {
     return {
@@ -32,7 +34,7 @@ export default {
         usage: 'Set only the site title, logo, and theme (colors/fonts) on the Global doc. ' +
           'Options: --brand=<key> [--logoDir=<path>] [--no-logo]',
         task: async (argv) => {
-          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const key = (argv.brand || inferBrandKey(self.apos.shortName)).toLowerCase();
           const brand = brands[key];
           if (!brand) {
             throw new Error(`Unknown brand "${key}". Valid: ${Object.keys(brands).join(', ')}`);
@@ -70,7 +72,7 @@ export default {
             // whatever the (stale, empty) _siteLogo already was.
             g._siteLogo = [ logoImage ];
           }
-          const th = themes[key];
+          const th = brandProfiles[key];
           if (th) {
             g.accentColor = th.accent;
             g.linkColor = th.link;
@@ -88,7 +90,7 @@ export default {
           'publish it. Destructive to editor changes — use once per site, not for branding tweaks. ' +
           'Options: --brand=<key>',
         task: async (argv) => {
-          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const key = (argv.brand || inferBrandKey(self.apos.shortName)).toLowerCase();
           const brand = brands[key];
           if (!brand) {
             throw new Error(`Unknown brand "${key}". Valid: ${Object.keys(brands).join(', ')}`);
@@ -182,7 +184,7 @@ export default {
           'the class type set to match the brand\'s discipline. Skips (does not duplicate) if a booking ' +
           'widget is already present. Options: --brand=<key>',
         task: async (argv) => {
-          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const key = (argv.brand || inferBrandKey(self.apos.shortName)).toLowerCase();
           const brand = brands[key];
           const info = bookingInfo[key];
           if (!brand || !info) {
@@ -234,7 +236,7 @@ export default {
           '@apostrophecms/layout widget, in place. Skips if a layout widget is already present ' +
           'in main. Options: --brand=<key>',
         task: async (argv) => {
-          const key = (argv.brand || inferBrand(self)).toLowerCase();
+          const key = (argv.brand || inferBrandKey(self.apos.shortName)).toLowerCase();
           const brand = brands[key];
           if (!brand) {
             throw new Error(`Unknown brand "${key}". Valid: ${Object.keys(brands).join(', ')}`);
@@ -305,11 +307,6 @@ export default {
   }
 };
 
-function inferBrand(self) {
-  const sn = self.apos.shortName || '';
-  return sn.replace(/^.*?-(?=[a-z]+$)/, '') || sn;
-}
-
 // Standard 3-tier membership, flavored by the class-noun (ride/class/row...).
 function tiers(unit, prices = {}) {
   const p = { drop: '$24', pack: '$190', unlimited: '$159', ...prices };
@@ -323,23 +320,6 @@ function tiers(unit, prices = {}) {
       features: [ `Unlimited ${unit}s`, 'Access every Northstar studio', 'Guest passes each month' ], cta: 'Go unlimited' }
   ];
 }
-
-// Per-site brand theme. accent = buttons/cards, link = readable text links,
-// heading/body = a known-good Google Fonts pairing (all real Google families;
-// several are superfamilies, which pair by design). The frontend loads both
-// fonts and applies these as :root CSS-variable overrides.
-const themes = {
-  northstar:   { accent: '#1E2A5A', link: '#1E2A5A', heading: 'Sora',               body: 'Inter' },
-  cadence:     { accent: '#FF3B47', link: '#E11D2A', heading: 'Anton',              body: 'Inter' },
-  emberflow:   { accent: '#E2571E', link: '#C0430F', heading: 'Fraunces',           body: 'Nunito Sans' },
-  ironhaus:    { accent: '#F5A623', link: '#B57400', heading: 'Archivo Black',      body: 'Archivo' },
-  southpaw:    { accent: '#C1121F', link: '#C1121F', heading: 'Oswald',             body: 'Roboto' },
-  reformroom:  { accent: '#6B8E6B', link: '#4E6E4E', heading: 'Jost',               body: 'Inter' },
-  gritlab:     { accent: '#C6FF00', link: '#5C7000', heading: 'Barlow Condensed',   body: 'Barlow' },
-  barretheory: { accent: '#B76E79', link: '#9E5763', heading: 'Cormorant Garamond', body: 'Jost' },
-  unwind:      { accent: '#5B8A9A', link: '#3E6C7C', heading: 'Nunito',             body: 'Nunito Sans' },
-  wake:        { accent: '#2C9BA0', link: '#12324F', heading: 'Manrope',            body: 'Inter' }
-};
 
 // Per-brand booking-widget config, matching each studio's real discipline
 // (see booking-widget's classType choices) and voice (see brand.unit above).

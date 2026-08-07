@@ -1,17 +1,45 @@
-const darkColors = [ '#000000', '#232323', '#343434', '#464646', '#575757', '#7a7a7a' ];
-const lightColors = [ '#f8f9fa', '#dee2e6', '#adb5bd', '#6c757d', '#495057' ];
-const strongAccents = [
-  '#5e5bd7',
-  '#ec5ac0',
-  '#efc799',
-  '#ed7165',
-  '#ecd9bf',
-  '#5dae89',
-  '#eb5159',
-  '#f3eee9'
-];
-const surfaceLight = [ '#dd6e42', '#e8dab2', '#4f6d7a', '#c0d6df', '#eaeaea' ];
-const surfaceDark = [ '#5a3b72', '#3f2d76', '#081664', '#04447b', '#065c6c' ];
+import { TinyColor } from '@ctrl/tinycolor';
+import { brandProfiles } from '../../../../lib/brandProfiles.js';
+
+// Structural colors (page/surface backgrounds, and the text color that has
+// to read clearly on top of a vivid accent button) aren't part of any
+// brand's identity — tinting them per-brand would hurt readability for no
+// governance benefit. These stay a small, shared set for every tenant.
+export const neutralLight = [ '#ffffff', '#f8f9fa', '#eaeaea' ];
+export const neutralDark = [ '#000000', '#1a1a1a', '#2e2e2e' ];
+
+function tint(hex, amount) {
+  return new TinyColor(hex).mix('#ffffff', amount).toHexString();
+}
+function shade(hex, amount) {
+  return new TinyColor(hex).mix('#000000', amount).toHexString();
+}
+function lighten(hex, amount) {
+  return new TinyColor(hex).lighten(amount).toHexString();
+}
+
+// Every other color field IS part of brand identity (text, headings, soft
+// and strong accents) — derive a short, on-brand swatch list for each from
+// a tenant's two established colors (accent + link), rather than showing
+// every tenant the same generic swatches. Used both for the static fallback
+// schema below (Northstar's colors, in case the request-time patch in
+// extendMethods.js can't run) and, per-request, for the tenant actually
+// being viewed — see extendMethods.js.
+export function brandSwatches({ accent, link }) {
+  return {
+    accentLight: [ accent, link ],
+    accentDark: [ lighten(accent, 12), lighten(link, 12) ],
+    faintLight: [ tint(accent, 85), tint(link, 85) ],
+    faintDark: [ shade(accent, 65), shade(link, 65) ],
+    headingLight: [ shade(accent, 55), '#111111' ],
+    headingDark: [ tint(accent, 70), '#ffffff' ],
+    defaultLight: [ shade(accent, 70), '#333333' ],
+    defaultDark: [ tint(accent, 78), '#e5e5e5' ]
+  };
+}
+
+const fallback = brandSwatches(brandProfiles.northstar);
+
 export default {
   fields: {
     defaultColorLight: {
@@ -20,9 +48,9 @@ export default {
       help: 'project:textColorHelp',
       selector: ':root',
       property: '--default-color',
-      def: '#4a4b64',
+      def: fallback.defaultLight[0],
       options: {
-        presetColors: darkColors
+        presetColors: fallback.defaultLight
       }
     },
     headingColorLight: {
@@ -31,9 +59,9 @@ export default {
       help: 'project:headingColorHelp',
       selector: ':root',
       property: '--heading-color',
-      def: '#242859',
+      def: fallback.headingLight[0],
       options: {
-        presetColors: darkColors
+        presetColors: fallback.headingLight
       }
     },
     faintColorLight: {
@@ -42,9 +70,9 @@ export default {
       help: 'project:softAccentHelp',
       selector: ':root',
       property: '--faint-color',
-      def: '#e8e8e8',
+      def: fallback.faintLight[0],
       options: {
-        presetColors: darkColors
+        presetColors: fallback.faintLight
       }
     },
     accentColorLight: {
@@ -53,9 +81,9 @@ export default {
       help: 'project:strongAccentHelp',
       selector: ':root',
       property: '--accent-color',
-      def: '#0b1ae9',
+      def: fallback.accentLight[0],
       options: {
-        presetColors: strongAccents
+        presetColors: fallback.accentLight
       }
     },
     contrastColorLight: {
@@ -66,7 +94,7 @@ export default {
       property: '--contrast-color',
       def: '#ffffff',
       options: {
-        presetColors: lightColors
+        presetColors: neutralLight
       }
     },
     backgroundColorLight: {
@@ -76,7 +104,7 @@ export default {
       property: '--background-color',
       def: '#ffffff',
       options: {
-        presetColors: lightColors
+        presetColors: neutralLight
       }
     },
     surfaceColorLight: {
@@ -87,8 +115,7 @@ export default {
       property: '--surface-color',
       def: '#efefef',
       options: {
-        presetColors: surfaceLight
-
+        presetColors: neutralLight
       }
     },
     defaultColorDark: {
@@ -97,9 +124,9 @@ export default {
       help: 'project:textColorHelp',
       selector: '.dark',
       property: '--default-color',
-      def: '#e8e7f7',
+      def: fallback.defaultDark[0],
       options: {
-        presetColors: lightColors
+        presetColors: fallback.defaultDark
       }
     },
     headingColorDark: {
@@ -108,9 +135,9 @@ export default {
       help: 'project:headingColorHelp',
       selector: '.dark',
       property: '--heading-color',
-      def: '#ffffff',
+      def: fallback.headingDark[0],
       options: {
-        presetColors: lightColors
+        presetColors: fallback.headingDark
       }
     },
     faintColorDark: {
@@ -119,9 +146,9 @@ export default {
       help: 'project:softAccentHelp',
       selector: '.dark',
       property: '--faint-color',
-      def: '#303034',
+      def: fallback.faintDark[0],
       options: {
-        presetColors: darkColors
+        presetColors: fallback.faintDark
       }
     },
     accentColorDark: {
@@ -130,9 +157,9 @@ export default {
       help: 'project:strongAccentHelp',
       selector: '.dark',
       property: '--accent-color',
-      def: '#524dd3',
+      def: fallback.accentDark[0],
       options: {
-        presetColors: strongAccents
+        presetColors: fallback.accentDark
       }
     },
     contrastColorDark: {
@@ -143,7 +170,7 @@ export default {
       property: '--contrast-color',
       def: '#ffffff',
       options: {
-        presetColors: lightColors
+        presetColors: neutralLight
       }
     },
     backgroundColorDark: {
@@ -153,7 +180,7 @@ export default {
       property: '--background-color',
       def: '#05071e',
       options: {
-        presetColors: darkColors
+        presetColors: neutralDark
       }
     },
     surfaceColorDark: {
@@ -164,7 +191,7 @@ export default {
       property: '--surface-color',
       def: '#131428',
       options: {
-        presetColors: surfaceDark
+        presetColors: neutralDark
       }
     }
   },

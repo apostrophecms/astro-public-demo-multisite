@@ -7,6 +7,7 @@ import priceCard from './lib/priceCard.js';
 import footer from './lib/footer.js';
 import spacing from './lib/spacing.js';
 import table from './lib/table.js';
+import extendMethods from './lib/extendMethods.js';
 
 export default {
   styles: {
@@ -32,5 +33,6 @@ export default {
       ...spacing.group,
       ...footer.group
     }
-  }
+  },
+  extendMethods
 };

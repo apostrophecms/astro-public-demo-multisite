@@ -12,10 +12,29 @@ import "../styles/styles.css";
 // ones (see @apostrophecms-pro/multisite's janitor sweep). The very first
 // request to hit a freshly-evicted site loses a race with that spin-up and
 // gets a transient "not found" instead of real page data. Retry once,
-// silently, before surfacing that as a page error to the visitor.
+// silently, before treating it as a real failure.
 let aposData = await aposPageFetch(Astro.request);
 if (aposData.errorFetchingPage) {
   aposData = await aposPageFetch(Astro.request);
+}
+
+// Answer here rather than falling through to AposTemplate, which throws on
+// errorFetchingPage. An uncaught error during SSR is broadcast by Astro's
+// dev server over the HMR socket, which replaces the page in every open
+// tab — so one request for an unknown hostname (a health check hitting
+// http://localhost:4321/ with no tenant subdomain, say) would otherwise
+// wipe out unrelated tenant sites a developer has open.
+if (aposData.errorFetchingPage) {
+  const unreachable = aposData.errorFetchingPage.code === 'ECONNREFUSED';
+  return new Response(
+    unreachable
+      ? 'The CMS backend is not reachable.'
+      : 'No site is configured for this hostname.',
+    {
+      status: unreachable ? 503 : 404,
+      headers: { 'content-type': 'text/plain; charset=utf-8' }
+    }
+  );
 }
 
 // Determine body class based on page type

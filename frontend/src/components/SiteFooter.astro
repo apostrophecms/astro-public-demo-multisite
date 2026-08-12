@@ -1,3 +1,12 @@
+---
+import isDashboard from '../lib/isDashboard.js';
+
+// The light/dark switch toggles a `dark` class that only the tenant sites'
+// styles respond to. The dashboard has its own admin UI and never picks the
+// class up, so the control appears there but does nothing.
+const onDashboard = isDashboard(Astro.url);
+---
+
 <footer class='footer'>
   <div class='footer__section footer__top'>
     <div class='footer__column footer__column--logo'>
@@ -172,6 +181,8 @@
   </div>
 </footer>
 
+{!onDashboard && (
+<Fragment>
 <!-- Light/Dark mode switch -->
 <div class='mode-switch' data-mode-switch>
   <label for='light-dark-toggle'>
@@ -283,3 +294,5 @@
     }
   }, 300);
 </script>
+</Fragment>
+)}

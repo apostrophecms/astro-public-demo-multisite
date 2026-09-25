@@ -7,8 +7,10 @@ import {
   getHeight,
 } from "@apostrophecms/apostrophe-astro/lib/attachment.js";
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Byline from '../components/Byline.astro';
+import { getChoiceFilter } from '../utils/filters.js';
 
-const { page, piece } = Astro.props.aposData;
+const { page, piece, locale } = Astro.props.aposData;
 const article = piece;
 
 const imageObj = article?._image?.[0];
@@ -25,12 +27,15 @@ const height = imageObj ? getHeight(imageObj) : undefined;
     <h1 class="page-title">{article.title}</h1>
   </div>
   <div class="article-details">
-    {article._author?.length > 0 && (
+    {article._authors?.length > 0 && (
       <div class="article-detail article-author">
         Written by{' '}
-        <a href={`${article._parentSlug}?author=${article._author[0].slug}`}>
-          {article._author[0].title}
-        </a>
+        <Byline
+          authors={article._authors}
+          {locale}
+          authorUrl={(author) => article._parentUrl +
+            getChoiceFilter('authors', author.slug, 1)}
+        />
       </div>
     )}
     <div class="article-detail article-published">
@@ -40,7 +45,7 @@ const height = imageObj ? getHeight(imageObj) : undefined;
   {article._categories?.length > 0 && (
     <div class="inner article-topics article-topics--show">
       {article._categories.map((category) => (
-        <a href={`${article._parentSlug}?categories=${category.slug}`} class="chip">{category.title}</a>
+        <a href={article._parentUrl + getChoiceFilter('categories', category.slug, 1)} class="chip">{category.title}</a>
       ))}
     </div>
   )}

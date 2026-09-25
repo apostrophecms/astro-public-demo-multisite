@@ -7,8 +7,10 @@ import {
   getHeight,
 } from "@apostrophecms/apostrophe-astro/lib/attachment.js";
 import dayjs from 'dayjs';
+import Byline from './Byline.astro';
+import { getChoiceFilter } from '../utils/filters.js';
 
-const { article } = Astro.props;
+const { article, locale } = Astro.props;
 
 const imageObj = article?._image?.[0];
 const url = imageObj ? getAttachmentUrl(imageObj, { size: 'one-half' }) : null;
@@ -47,13 +49,13 @@ if (article?.blurb && !article.blurb.options) {
     {article._categories?.length > 0 && (
       <div class="article-topics">
         {article._categories.map((category) => (
-          <a href={`${article._parentUrl}?categories=${category.slug}`} class="chip">{category.title}</a>
+          <a href={article._parentUrl + getChoiceFilter('categories', category.slug, 1)} class="chip">{category.title}</a>
         ))}
       </div>
     )}
-    {article._author?.length > 0 && (
+    {article._authors?.length > 0 && (
       <div class="article-detail article-author">
-        Written by {article._author[0].title}
+        Written by <Byline authors={article._authors} {locale} />
       </div>
     )}
     <div class="article-detail article-published">

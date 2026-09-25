@@ -5,6 +5,7 @@ import {
   getHeight,
 } from "@apostrophecms/apostrophe-astro/lib/attachment.js";
 import LocaleSwitcher from './LocaleSwitcher.astro';
+import isDashboard from '../lib/isDashboard.js';
 
 const { aposData } = Astro.props;
 const { page, home, global, localizations } = aposData;
@@ -13,8 +14,15 @@ const logoAttachment = global?._siteLogo?.[0];
 const logoUrl = logoAttachment ? getAttachmentUrl(logoAttachment, { size: 'one-third' }) : null;
 const logoWidth = logoAttachment ? getWidth(logoAttachment) : 100;
 const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
+
+// The site title, page nav and locale switcher belong to tenant sites. The
+// dashboard has its own admin UI and none of this content, so rendering it
+// there shows an empty "Site Title" bar over the dashboard.
+const onDashboard = isDashboard(Astro.url);
 ---
 
+{!onDashboard && (
+<Fragment>
 <header class="header">
   <div class="nav-bar">
     <h2>
@@ -86,6 +94,8 @@ const logoHeight = logoAttachment ? getHeight(logoAttachment) : 36;
     <LocaleSwitcher localizations={localizations} />
   </div>
 </div>
+</Fragment>
+)}
 
 <script is:inline>
   (function() {

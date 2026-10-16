@@ -115,8 +115,8 @@ strings:
 
 ## Requirements for local development
 
-* Node.js v22 or later
-* MongoDB v6.0 or later
+* Node.js v22 or later (v24 recommended)
+* MongoDB v7.0 or later (v8.0 recommended)
 
 See the Apostrophe
 [development setup guide](https://apostrophecms.com/docs/guide/development-setup.html)

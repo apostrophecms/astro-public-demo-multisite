@@ -146,12 +146,5 @@ export default {
     // - null
     transform: null,
     hmr: false
-  },
-  methods(self) {
-    return {
-      getNamespace() {
-        return self.apos.options.theme;
-      }
-    };
   }
 };

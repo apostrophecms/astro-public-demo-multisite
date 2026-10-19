@@ -46,6 +46,9 @@ a multisite project the backend is laid out differently:
 | `backend/themes.js` | The list of available site themes. |
 | `backend/deployment/` | Build and migration scripts that run once for the dashboard and once per theme or site. |
 
+### Prerequisites
+- Node.js v22.19 or later
+- MongoDB v6.0 or later ([setup guide](https://docs.apostrophecms.org/guide/development-setup.html))
 And the frontend:
 
 ```
@@ -148,6 +151,13 @@ cd astro-public-demo-multisite
 npm update
 ```
 
+Automatic translation with DeepL is optional. To turn it on, also set your DeepL API key:
+
+```bash
+export APOS_DEEPL_API_SECRET=your-deepl-key
+```
+
+Then start both servers:
 Add an admin user to the **dashboard** site (it manages all the others). You'll be
 prompted for a password:
 

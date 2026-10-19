@@ -12,10 +12,12 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
-    security: {
+  security: {
     allowedDomains: [
       {
-        hostname: '**.apos.dev',
+        // Placeholder: replace with a wildcard matching the staging and
+        // prod domains in backend/domains.js
+        hostname: '**.example.com',
         protocol: 'https',
       },
     ],

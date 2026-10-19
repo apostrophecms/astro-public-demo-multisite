@@ -36,7 +36,7 @@ This hybrid approach combines:
 ## Quick Start
 
 ### Prerequisites
-- Node.js v22 or later
+- Node.js v22.19 or later
 - MongoDB v6.0 or later ([setup guide](https://docs.apostrophecms.org/guide/development-setup.html))
 
 ### Installation
@@ -56,6 +56,12 @@ Set the environment variable in your terminal:
 
 ```bash
 export APOS_EXTERNAL_FRONT_KEY=dev
+```
+
+Automatic translation with DeepL is optional. To turn it on, also set your DeepL API key:
+
+```bash
+export APOS_DEEPL_API_SECRET=your-deepl-key
 ```
 
 Then start both servers:

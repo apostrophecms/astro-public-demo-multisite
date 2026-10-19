@@ -40,5 +40,8 @@
     "sharp": true,
     "unrs-resolver": true,
     "vue-demi": true
+  },
+  "engines": {
+    "node": ">=22.19.0"
   }
 }

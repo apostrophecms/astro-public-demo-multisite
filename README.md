@@ -104,12 +104,10 @@ environment variable).
 Before any real deployment, replace the placeholder secrets with your own random
 strings:
 
-* `sessionSecret` in `backend/app.js` (currently `CHANGEME`)
-* `session.secret` in `backend/sites/modules/@apostrophecms/express/index.js`
+* `sessionSecret` in `backend/app.js` (currently `CHANGEME`). This one secret
+  signs sessions for every site.
 * `session.secret` in `backend/dashboard/modules/@apostrophecms/express/index.js`
   (currently `undefined`)
-* The `myapikey` admin API key in
-  `backend/sites/modules/@apostrophecms/express/index.js`: rename or remove it
 * `disabledFileKey` in
   `backend/dashboard/modules/@apostrophecms/uploadfs/index.js` (currently
   `CHANGEME`; used to disable access to files in the local uploads backend)

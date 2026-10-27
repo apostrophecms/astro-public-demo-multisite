@@ -65,17 +65,9 @@ Register at page level instead:
 2. Add `import './MyWidget';` to `frontend/src/widgets/players.ts`.
 3. `players.ts` is already loaded from the `endBody` slot in `frontend/src/pages/[...slug].astro`; nothing else is needed.
 
-Resolve data in the component's frontmatter and pass it to the element as a `data-` attribute rather than fetching from inside the element. apostrophe-astro re-renders through Astro on every edit-mode change, so server-resolved data stays current.
+Pass data to the element as a `data-` attribute rather than fetching from inside the element. apostrophe-astro re-renders through Astro on every edit-mode change, so server-rendered data stays current.
 
-```astro
----
-// aposFetch is server-side only — never import it into client code.
-import { aposFetch } from '@apostrophecms/apostrophe-astro/helpers/server';
-const response = await aposFetch('/api/v1/...');
-const payload = response.ok ? JSON.stringify(await response.json()) : '';
----
-<my-widget data-payload={payload}></my-widget>
-```
+Get that data from the page or widget itself — schema fields, or relationship fields Apostrophe populates — not from an API call in the component's frontmatter. The backend chooses the site from the request's `Host` header, and neither `aposFetch` from `@apostrophecms/apostrophe-astro/helpers/server` nor plain `fetch` sends the site's hostname, so a server-side call to `/api/v1/...` gets a 404 instead of reaching the site. `ArticleWidget.astro` makes such a call; do not copy it.
 
 Never fetch from an Apostrophe API route in client-side code. `VideoWidget.ts` predates this rule and still fetches oembed data from the browser; do not copy that part of it.
 

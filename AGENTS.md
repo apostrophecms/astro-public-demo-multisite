@@ -67,9 +67,19 @@ Register at page level instead:
 
 Prefer passing data to the element as a `data-` attribute, taken from the page or widget itself — schema fields, or relationship fields Apostrophe populates. apostrophe-astro re-renders through Astro on every edit-mode change, so data that arrives this way stays current.
 
-Do not call an Apostrophe API route from a component's frontmatter. The backend chooses the site from the request's `Host` header, and neither `aposFetch` from `@apostrophecms/apostrophe-astro/helpers/server` nor plain `fetch` sends the site's hostname, so the call gets a 404 instead of reaching the site. `ArticleWidget.astro` makes such a call and renders no articles; do not copy it.
+When a widget needs data from an API route, fetch it in the component's frontmatter with `Astro.locals.aposFetch` and pass the result to the element as a `data-` attribute. `Astro.locals.aposFetch` is scoped to the current request: it sends the site's hostname, so it reaches the right site, and the visitor's cookies, so a logged-in editor sees what their permissions allow. `ArticleWidget.astro` and `VideoWidget.astro` / `VideoWidget.ts` are the reference implementations.
 
-When a widget needs data from an API route, fetch it from the element in the browser with a relative URL (`/api/v1/...`). The request goes through Astro with the site's hostname, so it reaches the right site. `VideoWidget.ts` does this for oembed data. Keep the URL relative: an absolute backend URL loses the site's hostname and gets the same 404.
+```astro
+---
+const response = await Astro.locals.aposFetch('/api/v1/...');
+const payload = response.ok ? JSON.stringify(await response.json()) : '';
+---
+<my-widget data-payload={payload}></my-widget>
+```
+
+Do not use `aposFetch` from `@apostrophecms/apostrophe-astro/helpers/server` or plain `fetch` in a component. Neither sends the site's hostname, and the backend chooses the site from the request's `Host` header, so the call gets a 404 instead of reaching the site.
+
+Do not fetch API routes from the element in the browser either. It costs an extra round trip on every page view and breaks static builds, where no backend is running.
 
 Registration of web components must be eager; the *implementation* behind it need not be. Everything `players.ts` imports ships on every page, so if it grows large, move the heavy code behind a dynamic `import()` inside `connectedCallback` and keep only the `customElements.define()` call at page level. Note that a dynamic import also stops Astro inlining the script into each page's HTML, making it a separately cached file instead.
 

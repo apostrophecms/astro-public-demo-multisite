@@ -1,7 +1,26 @@
 ---
-const { widget } = Astro.props;
+const { widget, options } = Astro.props;
 const placeholder = widget?.aposPlaceholder ? "true" : "";
 const url = widget?.video?.url;
+const className = options.className || widget.className || "video-widget";
+
+let oembedData = "";
+
+const videoUrl = placeholder ? "https://youtu.be/Q5UX9yexEyM" : url;
+if (videoUrl) {
+  try {
+    const oembedUrl =
+      `/api/v1/@apostrophecms/oembed/query?` +
+      new URLSearchParams({ url: videoUrl });
+    const response = await Astro.locals.aposFetch(oembedUrl);
+    if (response.ok) {
+      const result = await response.json();
+      oembedData = JSON.stringify(result);
+    }
+  } catch (e) {
+    // oembed fetch failed, widget will render empty
+  }
+}
 ---
 
 <style>
@@ -9,6 +28,9 @@ const url = widget?.video?.url;
     width: 100%;
   }
 </style>
-<video-widget url={placeholder ? "https://youtu.be/Q5UX9yexEyM" : url}>
+<video-widget
+  url={placeholder ? "https://youtu.be/Q5UX9yexEyM" : url}
+  data-oembed={oembedData}
+  class={className}
+>
 </video-widget>
-<script></script>

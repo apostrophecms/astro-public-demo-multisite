@@ -8,9 +8,8 @@ const display = widget.display || '';
 
 let articles = [];
 try {
-  const aposHost = import.meta.env.APOS_HOST || process.env.APOS_HOST || 'http://localhost:3000';
-  const response = await fetch(
-    `${aposHost}/api/v1/article?perPage=${limit}&sort[createdAt]=-1`
+  const response = await Astro.locals.aposFetch(
+    `/api/v1/article?perPage=${limit}&sort[createdAt]=-1`
   );
 
   if (response.ok) {

@@ -9,15 +9,25 @@ class VideoWidget extends HTMLElement {
     super();
     this.init();
   }
-  init() {
+  async init() {
     const oembedAttr = this.getAttribute('data-oembed');
     if (!oembedAttr) {
+      this.renderError('Video unavailable');
       return;
     }
 
-    this.result = JSON.parse(oembedAttr);
+    try {
+      this.result = JSON.parse(oembedAttr);
+    } catch (e) {
+      this.renderError('Video unavailable');
+      return;
+    }
 
     this.renderVideo();
+  }
+
+  renderError(message) {
+    this.innerHTML = `<p>${message}</p>`;
   }
 
   renderVideo() {

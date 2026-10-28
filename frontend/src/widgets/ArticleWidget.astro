@@ -1,7 +1,7 @@
 ---
 import ArticleExcerpt from '../components/ArticleExcerpt.astro';
 
-const { widget } = Astro.props;
+const { widget, locale } = Astro.props;
 
 const limit = widget.limit || 5;
 const display = widget.display || '';
@@ -27,7 +27,7 @@ try {
 <div class={`widget article-widget article-excerpts ${display ? `article-excerpts--display-${display}` : ''}`}>
   {articles.length > 0 ? (
     articles.map((article) => (
-      <ArticleExcerpt article={article} />
+      <ArticleExcerpt article={article} {locale} />
     ))
   ) : (
     <p>No articles available</p>

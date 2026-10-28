@@ -48,9 +48,9 @@ try {
       {response.map((item) => (
         <li class="gh-pr-widget__item">
           <h2 class="gh-pr-widget__subtitle">
-            <a href={item.url}>{item.title}</a>
+            <a href={item.html_url}>{item.title}</a>
           </h2>
-          <a target="_blank" href={item.user.html_url} class="gh-pr-widget__details">
+          <a target="_blank" rel="noopener noreferrer" href={item.user.html_url} class="gh-pr-widget__details">
             <img loading="lazy" class="gh-pr-widget__avatar" src={item.user.avatar_url} alt={item.user.login} />
             <p class="gh-pr-widget__login">{item.user.login}</p>
           </a>

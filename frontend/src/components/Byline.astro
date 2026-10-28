@@ -1,0 +1,23 @@
+---
+// Lists an article's authors, joined the way the locale does ("A, B and C"
+// in English, "A, B et C" in French). With `authorUrl`, each name links there.
+const { authors = [], locale, authorUrl } = Astro.props;
+
+const parts = new Intl.ListFormat(locale || 'en', { type: 'conjunction' })
+  .formatToParts(authors.map((author) => author.title));
+let next = 0;
+const items = parts.map((part) => {
+  if (part.type === 'literal') {
+    return { text: part.value };
+  }
+  const author = authors[next++];
+  return {
+    text: author.title,
+    href: authorUrl ? authorUrl(author) : null
+  };
+});
+---
+
+{items.map((item) => (
+  item.href ? <a href={item.href}>{item.text}</a> : item.text
+))}

@@ -1,18 +1,30 @@
 ---
 import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
-import setParameter from '@apostrophecms/apostrophe-astro/lib/aposSetQueryParameter.js';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ArticleExcerpt from '../components/ArticleExcerpt.astro';
+import { getChoiceFilter, getPageFilter } from '../utils/filters.js';
 
+// Filter and pager links are paths (`/articles/categories/news/page/2`), not
+// query strings, because the backend sets `static: true` on
+// @apostrophecms/url.
 const {
   page,
   pieces = [],
-  _categories,
-  query,
+  filters = [],
+  locale,
   currentPage = 1,
-  totalPages = 1,
-  url: pageUrl
+  totalPages = 1
 } = Astro.props.aposData;
+
+// Populated by the backend from the `piecesFilters` option in
+// backend/sites/modules/article-page/index.js. Each choice carries its own
+// `_url` and `active` flag.
+const categoryChoices = filters.find((filter) => filter.name === 'categories')?.choices || [];
+
+// A static URL can express at most one filter, so paging keeps whichever
+// one is active (a category or an author) and drops the rest.
+const activeFilter = filters.find((filter) => filter.choices.some((choice) => choice.active));
+const activeChoice = activeFilter?.choices.find((choice) => choice.active);
 
 const pagerOptions = {
   page: currentPage,
@@ -45,7 +57,9 @@ const showHeadGap = currentPage > 3;
 const showTailGap = currentPage < totalPages - 2;
 
 function buildUrl(pageNum) {
-  return setParameter(new URL(pageUrl, Astro.url), 'page', pageNum);
+  return page._url + (activeChoice
+    ? getChoiceFilter(activeFilter.name, activeChoice.value, pageNum)
+    : getPageFilter(pageNum));
 }
 ---
 
@@ -54,20 +68,20 @@ function buildUrl(pageNum) {
 <div class="article-title-wrapper">
   <div class="layout">
     <h1 class="page-title">{page.title}</h1>
-    {_categories?.length > 0 && (
+    {categoryChoices.length > 0 && (
       <ul class="article-topic-filters">
         <li>
           <a
-            href="?"
-            class={!query?.categories ? 'active' : ''}
+            href={page._url}
+            class={!activeChoice ? 'active' : ''}
           >All Articles</a>
         </li>
-        {_categories.map((category) => (
+        {categoryChoices.map((choice) => (
           <li>
             <a
-              href={`?categories=${category.slug}`}
-              class={query?.categories === category.slug ? 'active' : ''}
-            >{category.title}</a>
+              href={choice._url}
+              class={choice.active ? 'active' : ''}
+            >{choice.label}</a>
           </li>
         ))}
       </ul>
@@ -85,14 +99,14 @@ function buildUrl(pageNum) {
       {/* First two articles with featured/horizontal treatment */}
       <div class="article-excerpts article-excerpts--display-horizontal article-excerpts--display-featured">
         {pieces.slice(0, 2).map((article) => (
-          <ArticleExcerpt article={article} />
+          <ArticleExcerpt article={article} {locale} />
         ))}
       </div>
 
       {/* Remaining articles in grid */}
       <div class="article-excerpts article-excerpts--display-grid">
         {pieces.slice(2).map((article) => (
-          <ArticleExcerpt article={article} />
+          <ArticleExcerpt article={article} {locale} />
         ))}
       </div>
 

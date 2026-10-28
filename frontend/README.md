@@ -11,7 +11,7 @@ For installation and setup instructions, see the [main README](../README.md) at 
 npm run dev
 ```
 
-The frontend runs on `http://localhost:4321` and connects to the ApostropheCMS backend for content.
+The frontend runs on port 4321 and serves every site by hostname (e.g. `http://dashboard.localhost:4321`, `http://company1.localhost:4321`), fetching content from the ApostropheCMS multisite backend.
 
 ## Learning More About Astro
 

@@ -9,6 +9,8 @@
  * user editable settings in @apostrophecms/global.
  */
 
+const hasDeeplKey = Boolean(process.env.APOS_DEEPL_API_SECRET);
+
 export default async function (site) {
   const config = {
     root: import.meta,
@@ -76,14 +78,22 @@ export default async function (site) {
       // A piece type for categorizing articles
       'article-category': {},
 
+      // Bylines for articles, optionally linked to a user
+      author: {},
+
       // Import and export content
       '@apostrophecms/import-export': {},
+      // Automatic translation via DeepL is only turned on when
+      // APOS_DEEPL_API_SECRET is set, so the site starts without a key
       '@apostrophecms-pro/automatic-translation': {
         options: {
+          enabled: hasDeeplKey,
           provider: 'deepl'
         }
       },
-      '@apostrophecms-pro/automatic-translation-deepl': {}
+      ...(hasDeeplKey && {
+        '@apostrophecms-pro/automatic-translation-deepl': {}
+      })
     }
   };
 

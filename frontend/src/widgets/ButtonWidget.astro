@@ -14,16 +14,10 @@ if (widget.alignment) {
 }
 ---
 
-<div class={classes} id={widget._id}>
+<div class={classes}>
   <a
     class="link button"
     href={path}
     target={isBlank ? '_blank' : undefined}
   >{widget.linkText}</a>
 </div>
-
-<style define:vars={{ hoverColor: widget.color }}>
-  .button:hover {
-    background-color: var(--hoverColor);
-  }
-</style>

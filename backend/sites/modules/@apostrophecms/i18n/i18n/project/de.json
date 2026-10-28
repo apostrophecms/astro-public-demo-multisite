@@ -4,8 +4,11 @@
   "align": "Ausrichten",
   "apostropheCmsSite": "ApostropheCMS Website",
   "article": "Artikel",
-  "articleAuthor": "Autor",
-  "articleAuthorColumn": "Autor",
+  "author": "Autor",
+  "authors": "Autoren",
+  "articleAuthors": "Autoren",
+  "articleAuthorsColumn": "Autoren",
+  "authorName": "Name",
   "articleBlurb": "Kurzbeschreibung",
   "articleBlurbHelp": "Eine kurze Zusammenfassung",
   "articleCategories": "Artikelkategorien",
@@ -162,5 +165,7 @@
   "vertical": "Vertikal",
   "video": "Video",
   "videoDescription": "Einen Videoplayer von Diensten wie YouTube hinzufügen",
-  "writtenBy": "Verfasst von"
+  "writtenBy": "Verfasst von",
+  "userAuthor": "Autor",
+  "userAuthorHelp": "Die Autorenzeile, die genannt wird, wenn dieser Benutzer einen Artikel schreibt. Wird automatisch angelegt, sobald er zum ersten Mal an einem Artikel arbeitet."
 }

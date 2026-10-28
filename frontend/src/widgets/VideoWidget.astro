@@ -2,6 +2,24 @@
 const { widget } = Astro.props;
 const placeholder = widget?.aposPlaceholder ? "true" : "";
 const url = widget?.video?.url;
+
+let oembedData = "";
+
+const videoUrl = placeholder ? "https://youtu.be/Q5UX9yexEyM" : url;
+if (videoUrl) {
+  try {
+    const response = await Astro.locals.aposFetch(
+      '/api/v1/@apostrophecms/oembed/query?' + new URLSearchParams({ url: videoUrl })
+    );
+    if (response.ok) {
+      oembedData = JSON.stringify(await response.json());
+    } else {
+      console.error('oembed API response:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Failed to fetch oembed data:', error);
+  }
+}
 ---
 
 <style>
@@ -9,6 +27,6 @@ const url = widget?.video?.url;
     width: 100%;
   }
 </style>
-<video-widget url={placeholder ? "https://youtu.be/Q5UX9yexEyM" : url}>
+<video-widget url={videoUrl} data-oembed={oembedData}>
 </video-widget>
 <script></script>

@@ -9,25 +9,15 @@ class VideoWidget extends HTMLElement {
     super();
     this.init();
   }
-  async init() {
-    const videoUrl = this.getAttribute('url');
-
-    if (!videoUrl) {
+  init() {
+    const oembedAttr = this.getAttribute('data-oembed');
+    if (!oembedAttr) {
       return;
     }
 
-    this.result = await this.oembed(videoUrl);
+    this.result = JSON.parse(oembedAttr);
 
     this.renderVideo();
-  }
-  async oembed(url) {
-    const response = await fetch('/api/v1/@apostrophecms/oembed/query?' + new URLSearchParams({
-      url
-    }));
-    if (response.status >= 400) {
-      throw new Error(`oembed error code: ${response.status}`);
-    }
-    return response.json();
   }
 
   renderVideo() {

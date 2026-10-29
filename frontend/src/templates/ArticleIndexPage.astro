@@ -53,8 +53,11 @@ function getPageRange(options) {
 }
 
 const pageRange = getPageRange(pagerOptions);
-const showHeadGap = currentPage > 3;
-const showTailGap = currentPage < totalPages - 2;
+// Derive the gaps from the range itself so an ellipsis only appears when
+// pages are actually skipped (page 4 of 6 previously showed "1 … 2 3 4 5 6").
+const showHeadGap = pageRange.length > 0 && pageRange[0] > 2;
+const showTailGap =
+  pageRange.length > 0 && pageRange[pageRange.length - 1] < totalPages - 1;
 
 function buildUrl(pageNum) {
   return page._url + (activeChoice
@@ -112,17 +115,23 @@ function buildUrl(pageNum) {
 
       {/* Pagination */}
       {(currentPage > 1 || totalPages > 1) && (
-        <div>
-          <span class={`${currentPage === 1 ? 'is-active' : ''} is-first`}>
+        <nav class="pager" aria-label="Pagination">
+          <span
+            class={`pager__item is-first ${currentPage === 1 ? 'is-active' : ''}`}
+            aria-current={currentPage === 1 ? 'page' : undefined}
+          >
             {currentPage !== 1 ? (
               <a href={buildUrl(1)}>1</a>
             ) : (
               1
             )}
           </span>
-          {showHeadGap && <span>&hellip;</span>}
+          {showHeadGap && <span class="pager__gap">&hellip;</span>}
           {pageRange.map((pageNum) => (
-            <span class={currentPage === pageNum ? 'is-active' : ''}>
+            <span
+              class={`pager__item ${currentPage === pageNum ? 'is-active' : ''}`}
+              aria-current={currentPage === pageNum ? 'page' : undefined}
+            >
               {currentPage !== pageNum ? (
                 <a href={buildUrl(pageNum)}>{pageNum}</a>
               ) : (
@@ -130,9 +139,12 @@ function buildUrl(pageNum) {
               )}
             </span>
           ))}
-          {showTailGap && <span>&hellip;</span>}
+          {showTailGap && <span class="pager__gap">&hellip;</span>}
           {totalPages > 1 && (
-            <span class={`${currentPage === totalPages ? 'is-active' : ''} is-last`}>
+            <span
+              class={`pager__item is-last ${currentPage === totalPages ? 'is-active' : ''}`}
+              aria-current={currentPage === totalPages ? 'page' : undefined}
+            >
               {currentPage !== totalPages ? (
                 <a href={buildUrl(totalPages)}>{totalPages}</a>
               ) : (
@@ -140,7 +152,7 @@ function buildUrl(pageNum) {
               )}
             </span>
           )}
-        </div>
+        </nav>
       )}
     </section>
   </main>

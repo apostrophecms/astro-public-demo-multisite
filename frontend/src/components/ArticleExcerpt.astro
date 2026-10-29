@@ -6,17 +6,22 @@ import {
   getWidth,
   getHeight,
 } from "@apostrophecms/apostrophe-astro/helpers/universal";
-import dayjs from 'dayjs';
 import Byline from './Byline.astro';
 import { getChoiceFilter } from '../utils/filters.js';
 
-const { article, locale } = Astro.props;
+const { article, locale = 'en' } = Astro.props;
 
 const imageObj = article?._image?.[0];
 const url = imageObj ? getAttachmentUrl(imageObj, { size: 'one-half' }) : null;
 const srcset = imageObj ? getAttachmentSrcset(imageObj) : null;
 const width = imageObj ? getWidth(imageObj) : undefined;
 const height = imageObj ? getHeight(imageObj) : undefined;
+
+// Intl rather than a fixed English format, so /fr and /de get localized month names.
+const publishedAt = article?.publishedAt ? new Date(article.publishedAt) : null;
+const publishedLabel = publishedAt
+  ? new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(publishedAt)
+  : null;
 
 const hasBlurb = article?.blurb?.items?.length > 0;
 
@@ -28,12 +33,17 @@ if (article?.blurb && !article.blurb.options) {
 
 <div class="article-excerpt">
   {url && (
-    <a class="article-excerpt-image-container" href={article._url}>
+    <a
+      class="article-excerpt-image-container"
+      href={article._url}
+      tabindex="-1"
+      aria-hidden="true"
+    >
       <img
         loading="lazy"
         class="article-excerpt-image"
         src={url}
-        alt={imageObj?.title || ''}
+        alt=""
         width={width}
         height={height}
         srcset={srcset}
@@ -58,9 +68,11 @@ if (article?.blurb && !article.blurb.options) {
         Written by <Byline authors={article._authors} {locale} />
       </div>
     )}
-    <div class="article-detail article-published">
-      {dayjs(article.publishedAt).format('MMMM D, YYYY')}
-    </div>
+    {publishedAt && (
+      <time class="article-detail article-published" datetime={publishedAt.toISOString()}>
+        {publishedLabel}
+      </time>
+    )}
     <h3><a href={article._url}>{article.title}</a></h3>
     <article>
       {hasBlurb ? (

@@ -1,5 +1,6 @@
 .pager {
   display: flex;
+  justify-content: center;
   margin: 20px 0;
 
   .pager__gap,
@@ -14,7 +15,8 @@
   }
 
   .pager__item {
-    background-color: #fff;
+    // A theme token rather than #fff, so the pager follows dark mode.
+    background-color: var(--surface-color);
     box-shadow: 0 100px 140px -50px rgba(0,0,0,.25), 0 0 20px 0 rgba(0,0,0,.03);
     border-radius: 50%;
 
@@ -23,8 +25,13 @@
       text-decoration: none;
     }
 
+    &:has(a:hover) {
+      color: var(--accent-color);
+    }
+
     &.is-active {
-      opacity: 0.5;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
     }
   }
 }

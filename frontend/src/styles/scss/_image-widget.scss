@@ -1,3 +1,6 @@
 .demo-image__wrapper {
   display: flex;
+  // Stack the image and caption so the align style's auto margins have
+  // the full width to work with.
+  flex-direction: column;
 }

@@ -1,0 +1,28 @@
+# Scheduled tasks for ApostropheCMS hosting
+#
+# ApostropheCMS hosting reads this file on every deploy and runs the
+# entries in it on a schedule. It has no effect if you host the project
+# yourself. See https://apostrophecms.com/docs/guide/hosting.html#scheduled-tasks
+#
+# - Times are UTC.
+# - Commands run from the root of this repository.
+#   ApostropheCMS is in backend/, so commands start with node backend/app.js.
+# - Schedules use five numeric fields (digits, *, ",", - and /) or one of
+#   @hourly, @midnight, @daily, @weekly, @monthly, @annually. Day and month
+#   names, @yearly, @reboot and VAR=value lines are not supported.
+# - Your project's environment variables are available to every task.
+# - To stop a task, comment out or delete its line. Don't delete this file:
+#   that leaves the previously installed tasks running.
+# - Each comment line shows up in the deploy log as "Ignoring unsupported
+#   crontab line". That is expected.
+#
+# In this multisite project every task must name its site or sites with
+# --site=..., --sites=... or --all-sites. An entry without one fails.
+#
+# Examples. Remove the leading "# " to enable one.
+#
+# Every hour, on every site:
+# 0 * * * * node backend/app.js my-module:my-task --all-sites
+#
+# Every day at 03:00 UTC, on the dashboard site only:
+# 0 3 * * * node backend/app.js my-module:my-nightly-task --site=dashboard

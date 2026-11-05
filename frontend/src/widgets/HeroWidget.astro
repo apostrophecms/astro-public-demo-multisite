@@ -1,5 +1,7 @@
 ---
-import AposArea from '@apostrophecms/apostrophe-astro/components/AposArea.astro';
+// `content` is a richText field with `wysiwyg: true` in the backend schema, which
+// is what sends AposField the rendered markup. Props are flat, with no `with`.
+import AposField from '@apostrophecms/apostrophe-astro/components/AposField.astro';
 import { getLinkPath, opensInNewTab } from '../utils/link.js';
 
 const { widget } = Astro.props;
@@ -7,7 +9,8 @@ const { widget } = Astro.props;
 
 <div class="widget hero-widget">
   <div class="hero-widget__content">
-    <AposArea area={widget.content} />
+    {/* `demo-rte` keeps the shared rich text styles the old rich text widget carried. */}
+    <AposField doc={widget} name="content" class="demo-rte hero-widget__text" />
   </div>
   {widget.links?.length > 0 && (
     <div class="hero-widget__buttons">

@@ -195,6 +195,21 @@ const { page } = Astro.props;
 <AposArea area={page.main} />
 ```
 
+## AposField
+
+Renders one `string` or `richText` field, editable in place. The backend field needs
+`wysiwyg: true` (or the module's `wysiwygFields` option for inherited fields like `title`),
+or Astro receives no rendered markup and no editing info. Props are flat; there is no `with`.
+For an area, use `AposArea`.
+
+```astro
+---
+import AposField from '@apostrophecms/apostrophe-astro/components/AposField.astro';
+const { widget } = Astro.props;
+---
+<AposField doc={widget} name="content" class="hero-widget__text" />
+```
+
 ## i18n Key Convention
 
 The project uses the `project:` namespace by default: `label: 'project:myField'`.

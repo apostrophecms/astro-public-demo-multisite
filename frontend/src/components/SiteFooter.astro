@@ -1,12 +1,15 @@
 ---
 import isDashboard from '../lib/isDashboard.js';
 
-// The light/dark switch toggles a `dark` class that only the tenant sites'
-// styles respond to. The dashboard has its own admin UI and never picks the
-// class up, so the control appears there but does nothing.
+// The footer and the light/dark switch belong to tenant sites. The footer's
+// demo links mean nothing on the dashboard, which has its own admin UI, and
+// the switch toggles a `dark` class that only the tenant sites' styles
+// respond to, so on the dashboard it appears but does nothing.
 const onDashboard = isDashboard(Astro.url);
 ---
 
+{!onDashboard && (
+<Fragment>
 <footer class='footer'>
   <div class='footer__section footer__top'>
     <div class='footer__column footer__column--logo'>
@@ -181,8 +184,6 @@ const onDashboard = isDashboard(Astro.url);
   </div>
 </footer>
 
-{!onDashboard && (
-<Fragment>
 <!-- Light/Dark mode switch -->
 <div class='mode-switch' data-mode-switch>
   <label for='light-dark-toggle'>

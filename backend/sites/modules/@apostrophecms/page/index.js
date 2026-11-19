@@ -1,8 +1,49 @@
 // This configures the @apostrophecms/pages module to add a "home" page type to the
 // pages menu
 
+// Just enough of a related page to link to it: its tree position plus what the
+// navigation and breadcrumbs (frontend/src/components/SiteHeader.astro and
+// Breadcrumbs.astro) show. Without a projection, every page is loaded with
+// `_children` and `_ancestors` (and `home`, which is `_ancestors[0]` or fetched
+// with the same builders) carrying each related page's entire content, all of
+// it sent to Astro as JSON and never displayed.
+const relatedPageProjection = {
+  title: 1,
+  slug: 1,
+  type: 1,
+  metaType: 1,
+  path: 1,
+  level: 1,
+  rank: 1,
+  orphan: 1,
+  visibility: 1,
+  aposDocId: 1,
+  aposLocale: 1,
+  aposMode: 1,
+  _url: 1
+};
+
 export default {
   options: {
+    // Replaces the core default, `{ ancestors: { children: true }, children: true }`,
+    // keeping its shape but projecting the related pages
+    builders: {
+      ancestors: {
+        // The @apostrophecms/seo module falls back to the home page's
+        // SEO title and description
+        project: {
+          ...relatedPageProjection,
+          seoTitle: 1,
+          seoDescription: 1
+        },
+        children: {
+          project: relatedPageProjection
+        }
+      },
+      children: {
+        project: relatedPageProjection
+      }
+    },
     types: [
       {
         name: 'default-page',

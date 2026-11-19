@@ -39,7 +39,7 @@ const height = imageObj ? getHeight(imageObj) : undefined;
       </div>
     )}
     <div class="article-detail article-published">
-      {new Date(article.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      {new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(article.publishedAt))}
     </div>
   </div>
   {article._categories?.length > 0 && (

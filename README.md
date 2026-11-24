@@ -47,8 +47,8 @@ a multisite project the backend is laid out differently:
 | `backend/deployment/` | Build and migration scripts that run once for the dashboard and once per theme or site. |
 
 ### Prerequisites
-- Node.js v22.19 or later
-- MongoDB v6.0 or later ([setup guide](https://docs.apostrophecms.org/guide/development-setup.html))
+- Node.js v22.23.4 or later (v24 recommended)
+- MongoDB v7.0 or later (v8.0 recommended) ([setup guide](https://docs.apostrophecms.org/guide/development-setup.html))
 And the frontend:
 
 ```
@@ -116,7 +116,7 @@ strings:
 
 ## Requirements for local development
 
-* Node.js v22 or later (v24 recommended)
+* Node.js v22.23.4 or later (v24 recommended)
 * MongoDB v7.0 or later (v8.0 recommended)
 
 See the Apostrophe
